@@ -1,0 +1,63 @@
+.button-pink {
+  padding: 8px 24px;
+  color: $red;
+  background: $pink;
+  border-radius: 10px;
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+.button-pink:hover {
+  text-decoration: none;
+  color: $red;
+  background: $white;
+  border: 1px solid;
+  border-color: $red;
+}
+
+.button-blue {
+  padding: 8px 24px;
+  color: $white;
+  background: $blue;
+  border-radius: 10px;
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+.button-blue:hover {
+  text-decoration: none;
+  color: $blue;
+  background: $white;
+  border: 1px solid;
+  border-color: $blue;
+}
+
+.button-red {
+  padding: 8px 24px;
+  color: $white;
+  background: $red;
+  border-radius: 10px;
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+.button-red:hover {
+  text-decoration: none;
+  color: $red;
+  background: $white;
+  border: 1px solid;
+  border-color: $red;
+}
+
+.button-gray {
+  padding: 8px 24px;
+  color: $white;
+  background: $gray;
+  border-radius: 10px;
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+.button-gray:hover {
+  text-decoration: none;
+  color: $gray;
+  background: $white;
+  border: 1px solid;
+  border-color: $gray;
+}
