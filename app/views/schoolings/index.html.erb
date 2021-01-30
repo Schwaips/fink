@@ -1,0 +1,17 @@
+<h2>Ceci est l'index de schoolings</h2>
+
+
+
+<% if @schoolings.empty? %>
+  <p>rien pour le moment, </p>
+<% else %>
+  <ul>
+  <% @schoolings.each do |school| %>
+    <li>Suivi par <%= school.user.first_name %> (vous)</li>
+    <li>Cour de <%= school.lecture.title %> proposé par <%= school.lecture.user.first_name %></li>
+    <br> <br>
+  <% end %>
+</ul>
+<% end %>
+
+<%= link_to  "Retour à la liste des lectures", lectures_path %>

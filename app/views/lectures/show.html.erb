@@ -16,3 +16,5 @@
 
 <%= link_to  "Retour à la l'index des lectures", lectures_path, class: "btn btn-secondary" %>
 <%= link_to  "Editer", edit_lecture_path(@lecture), class: "btn btn-primary" %>
+<%= link_to  "Suivre ce cours", lecture_schoolings_path(@lecture), method: "POST", class: "btn btn-warning" %>
+
