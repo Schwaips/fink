@@ -1,0 +1,33 @@
+
+<div class="pt-5 text-center">
+        <h2>Ceci est la FICHE NEW de Lecture</h2>
+        <p class="lead">Créer une lecture en tant que prof</p>
+        <%# <img class="d-block mx-auto mb-4" src="https://res.cloudinary.com/cb-dev/image/upload/v1610904406/buddiest/smile-icon.png" alt="" width="72" height="72"> %>
+  </div>
+
+
+  <div class="row no-gutter">
+      <!-- The image half -->
+
+      <!-- The content half -->
+    <div class="col-md-6">
+      <div class="login d-flex align-items-center py-5">
+      <!-- Demo content-->
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-11 col-xl-10 mx-auto">
+              <div class="form-group">
+                <%= simple_form_for(@lecture) do |f| %>
+                  <%= f.input :title, input_html: { class: "offer-bar" } %>
+                  <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" } %>
+                  <%= f.input :photo, as: :file, label: "Miniature de l'offre" %>
+                  <%= f.input :category, label: "Categorie de votre lecture", collection: ["Art", "Developpement", "Gastronomie", "Langue", "Musique", "Photo & video", "Gaming", "Beauté", "Culture générale", "Nature"] %>
+                  <%= f.submit "Créer votre offre", class: "btn btn-green mt-4" %>
+                <% end %>
+              </div> <!-- fin form simple form -->
+            </div> <!-- fin col lg 10 col xl 7 -->
+          </div> <!-- fin row-->
+        </div><!-- fin container -->
+      </div> <!-- fin div login -->
+    </div><!-- fin col md 6 bg light -->
+<!-- fin container fluid -->

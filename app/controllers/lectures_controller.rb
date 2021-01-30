@@ -9,6 +9,22 @@ before_action :set_lecture, only: [:show, :edit, :update]
   def show
   end
 
+
+  def new
+    @lecture = Lecture.new
+  end
+
+  def create
+    @lecture = Lecture.new(params_lecture)
+    @lecture.user = current_user
+    if @lecture.save
+      flash[:notice] = "La #{@lecture.title} est maintenant publiée, merci"
+      redirect_to lecture_path(@lecture)
+    else
+      render :new
+    end
+  end
+
   def edit
   end
 
