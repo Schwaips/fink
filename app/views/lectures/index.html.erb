@@ -15,8 +15,6 @@
         <h1><%= lecture.category %></h1>
         <p><%= lecture.description %></p>
         <p>Created by <%= lecture.user.first_name %></p>
-      <%= link_to  "Voir la lecture", lecture_path(lecture), class: "btn button-blue"%>
-      <%= link_to  "Suivre ce cours", lecture_schoolings_path(lecture), method: "POST", class: "btn button-red" %>
       </div>
     <% end %>
   </div>

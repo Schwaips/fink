@@ -6,6 +6,25 @@
   align-items: center;
   justify-content: space-around;
   padding: 0 90px;
+  overflow: scroll;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+
+
+  &::-webkit-scrollbar {
+    width: 0 !important;
+    display: none;
+  }
+
+  > * + * {
+    margin-left: var(--space);
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    flex: 0 0 var(--space);
+  }
 }
 
 .card-lecture {
