@@ -6,5 +6,6 @@ class User < ApplicationRecord
   has_many :lectures
   validates :role, presence: true, inclusion: { in: ["student", "teacher"] }
   validates :first_name, :last_name, presence: true
-  has_one :photo
+  has_one_attached :photo
+
 end
