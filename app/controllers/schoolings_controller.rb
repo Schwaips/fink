@@ -1,16 +1,15 @@
 class SchoolingsController < ApplicationController
-before_action :set_lecture, only: [:create, :new]
+  before_action :new_schooling, only: [:create, :new]
+  before_action :set_lecture, only: [:create, :new]
 
   def index
     @schoolings = Schooling.where(user: current_user)
   end
 
   def new
-    @schooling = Schooling.new
   end
 
   def create
-    @schooling = Schooling.new
     @schooling.lecture = @lecture
     @schooling.user = current_user
       if Schooling.where(user: current_user).where(lecture: @lecture).exists?
@@ -32,6 +31,10 @@ before_action :set_lecture, only: [:create, :new]
 
   def set_lecture
     @lecture = Lecture.find(params[:lecture_id])
+  end
+
+  def new_schooling
+    @schooling = Schooling.new
   end
 
 end
