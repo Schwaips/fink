@@ -21,7 +21,7 @@
                   <%= f.input :title, input_html: { class: "offer-bar" } %>
                   <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" } %>
                   <%= f.input :photo, as: :file, label: "Miniature de l'offre" %>
-                  <%= f.input :category, label: "Categorie de votre lecture", collection: ["Art", "Developpement", "Gastronomie", "Langue", "Musique", "Photo & video", "Gaming", "Beauté", "Culture générale", "Nature"] %>
+                  <%= f.input :category, label: "Categorie de votre lecture", collection: Lecture::CATEGORY %>
                   <%= f.submit "Créer votre offre", class: "btn btn-green mt-4" %>
                 <% end %>
               </div> <!-- fin form simple form -->
