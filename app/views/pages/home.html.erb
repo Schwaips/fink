@@ -1,2 +1,68 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<%= link_to  "Réserver", '#', class: "btn button-pink" %>
+<%= link_to  "Sauvegarder", '#', class: "btn button-blue" %>
+<%= link_to  "Publier", '#', class: "btn button-gray" %>
+<%= link_to  "S'inscrire", '#', class: "btn button-red" %>
+
+
+
+
+<div class="header">
+
+<!--Content before waves-->
+  <div class="inner-header flex">
+    <h1>Découvrez nos cours</h1>
+
+  </div>
+
+  <a href="#" class="btn button-red">Découvrir</a>
+
+
+  <div class="card-board">
+    <div class="card-lecture">
+      <div class="card-lecture-image">
+        <p>Hey</p>
+        <img src="https://kitt.lewagon.com/placeholder/users/Schwaips" class="card-avatar avatar-bordered" />
+      </div>
+      <h1>Je suis un cours</h1>
+    </div>
+    <div class="card-lecture">
+      <div class="card-lecture-image">
+        <p>Je suis dans la card image</p>
+        <img src="https://kitt.lewagon.com/placeholder/users/ameliend" class="card-avatar avatar-bordered" />
+      </div>
+      <h1>Je suis un titre</h1>
+      <p>Je suis dans card lecture</p>
+    </div>
+    <div class="card-lecture">
+      <div class="card-lecture-image">
+        <p>Hey</p>
+        <img src="https://kitt.lewagon.com/placeholder/users/olhll" class="card-avatar avatar-bordered" />
+
+      </div>
+      <h1>Je suis un titre</h1>
+      <p>Lorem ipsum blablabla, je regarde ce que ça donne si j'écris beaucoup de texte</p>
+
+    </div>
+  </div>
+<!--Waves Container-->
+  <div>
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+        <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+      </g>
+    </svg>
+  </div>
+<!--Waves end-->
+
+</div>
+<%= render 'shared/footer' %>

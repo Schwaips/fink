@@ -11,3 +11,10 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.header {
+  position:relative;
+  text-align:center;
+  background: linear-gradient(60deg, rgba(93, 87, 107, 0.5) 0%, rgba(0, 175, 181, 0.5) 100%);
+  color:white;
+}
