@@ -18,7 +18,10 @@
           <%= link_to "Messages", "#", class: "nav-link" %>
         </li>
         <li>
-        <span><%= current_user.first_name %></span>
+          <span><%= current_user.first_name %></span>
+        </li>
+        <li>
+          <span><%= link_to  "Cours suivi", schoolings_path %></span>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

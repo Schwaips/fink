@@ -4,6 +4,7 @@ before_action :set_lecture, only: [:show, :edit, :update]
 
   def index
     @lectures = Lecture.all
+    @schooling = Schooling.new
   end
 
   def show
