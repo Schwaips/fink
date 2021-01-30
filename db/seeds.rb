@@ -21,4 +21,10 @@ puts "-- creating students--"
   r = User.create!(first_name: "Raphael", last_name: "Mosca", email: "raphael.mosca@live.com", password: "123456", role: "student")
 puts "--student created--"
 
+# lecture creation
+
+lecture = Lecture.create!(title: "Developpement Web Ruby", description: "Apprenez à developper sur Ruby on Rails en moins de 6 mois. Je vous fournis tout plein de video de cours. En parralèle, je peux faire des 1to1 sur demandes", category: "developpement")
+
+
+
 puts "---seeds ending---"
