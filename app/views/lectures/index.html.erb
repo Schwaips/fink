@@ -1,0 +1,13 @@
+<h1>Index for Lectures</h1>
+
+
+<% @lectures.each do |lecture| %>
+  <ul>
+    <li><%= lecture.title %></li>
+    <li><%= lecture.description %></li>
+    <li><%= lecture.category %></li>
+    <li>Created by <%= lecture.user.first_name %></li>
+    <%= link_to  "Voir la lecture", lecture_path(lecture) %>
+  </ul>
+  <br>
+<% end %>
