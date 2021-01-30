@@ -1,0 +1,21 @@
+
+
+<div class="col-md-6">
+      <div class="login d-flex align-items-center py-5">
+      <!-- Demo content-->
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-11 col-xl-10 mx-auto">
+              <div class="form-group">
+                <%= simple_form_for [@lecture, @block] do |f| %>
+                  <%= f.input :content, label: "Contenu", as: :text, input_html: { class: "offer-bar" } %>
+                  <%= f.input :photos, as: :file, label: "ajouter des médias a la lecture", input_html: { multiple: true } %>
+                  <%= f.input :block_type, label: "Categorie de votre lecture", collection: Block::BLOCK_TYPE %>
+                  <%= f.submit "Ajouter ce block", class: "btn btn-green mt-4" %>
+                <% end %>
+              </div> <!-- fin form simple form -->
+            </div> <!-- fin col lg 10 col xl 7 -->
+          </div> <!-- fin row-->
+        </div><!-- fin container -->
+      </div> <!-- fin div login -->
+    </div><!-- f

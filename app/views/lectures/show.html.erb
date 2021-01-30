@@ -18,3 +18,19 @@
 <%= link_to  "Editer", edit_lecture_path(@lecture), class: "btn btn-primary" %>
 <%= link_to  "Suivre ce cours", lecture_schoolings_path(@lecture), method: "POST", class: "btn btn-warning" %>
 
+<h2>BLOCK DU LECTURE</h2>
+
+
+<% @lecture.blocks.each do |block| %>
+  <%= block.content %>
+  <%= block.block_type %>``
+  <% block.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, width: 400, height: 300 %>
+  <% end %>
+<% end %>
+
+
+
+<h2>AJOUTER DU CONTENU AU BLOCK DE LA LECTURE KON REGARDE</h2>
+  <%= render partial:'blocks/new', :locals => { lecture: @lecture } %>
+
