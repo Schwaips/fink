@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_28_200900) do
+ActiveRecord::Schema.define(version: 2021_01_30_094529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 2021_01_28_200900) do
     t.index ["user_id"], name: "index_lectures_on_user_id"
   end
 
+  create_table "schoolings", force: :cascade do |t|
+    t.bigint "lecture_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lecture_id"], name: "index_schoolings_on_lecture_id"
+    t.index ["user_id"], name: "index_schoolings_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -64,4 +73,6 @@ ActiveRecord::Schema.define(version: 2021_01_28_200900) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "lectures", "users"
+  add_foreign_key "schoolings", "lectures"
+  add_foreign_key "schoolings", "users"
 end
