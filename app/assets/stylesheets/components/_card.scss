@@ -1,12 +1,33 @@
 .card-board {
-
+  margin: 0 90px;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   justify-content: space-around;
   padding: 0 90px;
+  border-left: solid 0.2px;
+  border-right: solid 0.2px;
+  overflow: scroll;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    width: 0 !important;
+    display: none;
+  }
+
+  > * + * {
+    margin-left: var(--space);
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    flex: 0 0 var(--space);
+  }
 }
+
 
 .card-lecture {
   background: #fff;
@@ -24,6 +45,16 @@
     color: $gray;
     font-size: 22px;
   }
+
+  p {
+    padding: 8px;
+    text-align: left;
+    line-height: 1.2;
+    font-size: 0.9rem;
+    font-weight: 200;
+
+
+  }
 }
 
 .card-lecture:hover {
@@ -36,6 +67,16 @@
   //   padding-top: 100px;
   //   font-weight: bolder;
   // }
+  .button-invisible {
+  position: absolute;
+  bottom: 8px;
+  text-decoration: none;
+  color: $red;
+  background: $white;
+  border: 1px solid;
+  border-color: $red;
+  opacity: 1;
+  }
 }
 
 .card-lecture-image {
@@ -54,3 +95,17 @@
   bottom: -20px;
   width: 40px;
 }
+
+.button-invisible {
+  position: absolute;
+  bottom: 8px;
+  left: 70px;
+  padding: 8px 24px;
+  color: $white;
+  background: $white;
+  border-radius: 10px;
+  transition: background 0.5s ease, color 0.3s ease, opacity 1s ease;
+  opacity: 0;
+}
+
+
