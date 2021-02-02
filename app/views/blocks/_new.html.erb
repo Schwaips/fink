@@ -13,7 +13,6 @@
                     <%= f.label :content %>
                     <%= f.rich_text_area :content %>
                   </div>
-                  <#%= f.input :content, label: "Contenu", as: :text, input_html: { class: "offer-bar" } %>
                   <%= f.input :photos, as: :file, label: "ajouter des médias a la lecture", input_html: { multiple: true } %>
                   <%= f.input :block_type, label: "Categorie de votre lecture", collection: Block::BLOCK_TYPE %>
                   <%= f.submit "Ajouter ce block", class: "btn btn-pink mt-4" %>
