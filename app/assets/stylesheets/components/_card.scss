@@ -1,3 +1,5 @@
+
+// card board container dans lequel tu fouts tes cards.
 .card-board {
   margin: 0 90px;
   text-align: center;
@@ -28,7 +30,7 @@
   }
 }
 
-
+// card individuelle
 .card-lecture {
   background: #fff;
   border-radius: 36px;
@@ -52,11 +54,10 @@
     line-height: 1.2;
     font-size: 0.9rem;
     font-weight: 200;
-
-
   }
 }
 
+// tu TOUCHES PAS. c'est quand tu hover ta card, ta le petit bouton qui apparait et tout et tout.
 .card-lecture:hover {
 
   .card-lecture-image {
