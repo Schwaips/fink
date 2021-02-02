@@ -1,36 +1,85 @@
-<h2>Bonjour <%= @user.first_name %> </h2>
+
+<div class="mb-5 container d-flex justify-content-between">
+
+  <div class="d-flex">
+
+    <% if @user.photo.attached? %>
+      <%= cl_image_tag @user.photo.key, class: 'avatar-large avatar-bordered img-circle' %>
+    <% else %>
+      <%= image_tag "https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg", class: 'avatar-large avatar-bordered img-circle' %>
+    <% end %>
+    <div class="ml-3">
+      <p>Bonjour <%= @user.first_name %> </p>
+      <p><%= @user.email %></p>
+      <p> Vous êtes un <%= @user.role %> </p>
+    </div>
 
 
-<div>
-  <% if @user.photo.attached? %>
-    <%= cl_image_tag @user.photo.key %>
-  <% else %>
-    <%= image_tag "https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg", class: 'avatar-bordered img-circle' %>
-  <% end %>
-</div>
+  </div>
 
-<div>
+
   <% if @user.role == "teacher" %>
-    <h3>Mes statistiques mensuelles</h3>
+        <div class="stat-card">
+          <h4>Mes statistiques mensuelles</h4>
+        </div>
 
-    <h3>Mes étudiants</h3>
-
-
-    <h3>Mes cours en ligne</h3>
-      <% @user.lectures.each do |lecture| %>
-        <p> <%= lecture.title %> </p>
-      <% end %>
-
-    <h3>Mes brouillons</h3>
-  <% end %>
+        <div class="stat-card">
+          <h4>Mes étudiants</h4>
+        </div>
+    <% end %>
 </div>
 
-<div>
-  <h3>Mes cours suivis</h3>
+<% if @user.role == "teacher" %>
+<div class="container mb-5">
+  <ul class="list-inline tabs-underlined">
+    <li>
+      <a data-toggle="tab" href="#publish" class="tab-underlined active">Mes cours en ligne</a>
+    </li>
+
+    <li>
+      <a data-toggle="tab" href="#draft" class="tab-underlined">Mes brouillons</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+
+    <div class="tabs tab-pane active mt-5" id="publish">
+        <% @user.lectures.each do |lecture| %>
+          <%= link_to lecture_path(lecture) do %>
+            <div class="card-dashboard">
+              <% if lecture.photo.attached? %>
+                <%= cl_image_tag lecture.photo.key %>
+              <% else %>
+                <%= image_tag "https://lescreasdetiti.fr/52303-large_default/motif-thermocollant-point-d-interrogation.jpg" %>
+              <% end %>
+              <div class="card-dashboard-infos">
+                <h2><%= lecture.title %></h2>
+                <p><%= lecture.description %></p>
+                <p><%= link_to "Editer", edit_lecture_path(lecture) %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+
+    <div class="tabs tab-pane" id="draft">
+    </div>
+
+  </div>
+</div>
+<% end %>
+
+<div class="theme_background">
+  <div class="container">
+    <h3 class="pt-3">Mes cours suivis</h3>
     <% @user.lectures_as_pupil.each do |lecture| %>
       <p> <%= lecture.title %> </p>
       <p> <%= lecture.description %> </p>
     <% end %>
+  </div>
 </div>
+
+
+
 
 
