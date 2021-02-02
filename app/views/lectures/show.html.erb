@@ -1,20 +1,24 @@
-<h1>La show pour la lecture intitulé <%= @lecture.title %></h1>
+<div class="card-big-lecture">
 
-<h2><%= @lecture.title %></h2>
-<p><%= @lecture.user.first_name %></p>
-<span><%= @lecture.description %></span>
-<br>
-<p><%= @lecture.category %></p>
+  <h1><%= @lecture.title %></h1>
 
+  <% if @lecture.photo.attached? %>
+    <%= cl_image_tag @lecture.photo.key, class: "card-lecture-bigimage" %>
+    <% else %>
+    <img src="https://source.unsplash.com/800x600/?<%= @lecture.category%>" alt="" class="card-lecture-bigimage">
+  <% end %>
 
-<% if @lecture.photo.attached? %>
-  <%= cl_image_tag @lecture.photo.key %>
-  <% else %>
-  <img src="https://source.unsplash.com/800x600/?<%= @lecture.category%>" alt="">
-<% end %>
+  <div class="card-lecture-bigtext">
+    <h1>La show pour la lecture intitulé <%= @lecture.title %></h1>
 
-
-<%= link_to  "Retour à la l'index des lectures", lectures_path, class: "btn btn-secondary" %>
-<%= link_to  "Editer", edit_lecture_path(@lecture), class: "btn btn-primary" %>
-<%= link_to  "Suivre ce cours", lecture_schoolings_path(@lecture), method: "POST", class: "btn btn-warning" %>
-
+    <p><%= @lecture.user.first_name %></p>
+    <span><%= @lecture.description %></span>
+    <br>
+    <p><%= @lecture.category %></p>
+  </div>
+  <div class="card-lecture-bigbuttons">
+    <%= link_to  "Retour à la l'index des lectures", lectures_path, class: "btn button-gray" %>
+    <%= link_to  "Editer", edit_lecture_path(@lecture), class: "btn button-gray" %>
+    <%= link_to  "Suivre ce cours", lecture_schoolings_path(@lecture), method: "POST", class: "btn button-blue" %>
+  </div>
+</div>
