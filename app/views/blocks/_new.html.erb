@@ -9,7 +9,11 @@
             <h1>AJOUTER DU CONTENU A VOTRE COURS</h1>
               <div class="form-group">
                 <%= simple_form_for [@lecture, @block] do |f| %>
-                  <%= f.input :content, label: "Contenu", as: :text, input_html: { class: "offer-bar" } %>
+                 <div class="field">
+                    <%= f.label :content %>
+                    <%= f.rich_text_area :content %>
+                  </div>
+                  <#%= f.input :content, label: "Contenu", as: :text, input_html: { class: "offer-bar" } %>
                   <%= f.input :photos, as: :file, label: "ajouter des médias a la lecture", input_html: { multiple: true } %>
                   <%= f.input :block_type, label: "Categorie de votre lecture", collection: Block::BLOCK_TYPE %>
                   <%= f.submit "Ajouter ce block", class: "btn btn-pink mt-4" %>
