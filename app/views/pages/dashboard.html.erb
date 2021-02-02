@@ -1,0 +1,36 @@
+<h2>Bonjour <%= @user.first_name %> </h2>
+
+
+<div>
+  <% if @user.photo.attached? %>
+    <%= cl_image_tag @user.photo.key %>
+  <% else %>
+    <%= image_tag "https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg", class: 'avatar-bordered img-circle' %>
+  <% end %>
+</div>
+
+<div>
+  <% if @user.role == "teacher" %>
+    <h3>Mes statistiques mensuelles</h3>
+
+    <h3>Mes étudiants</h3>
+
+
+    <h3>Mes cours en ligne</h3>
+      <% @user.lectures.each do |lecture| %>
+        <p> <%= lecture.title %> </p>
+      <% end %>
+
+    <h3>Mes brouillons</h3>
+  <% end %>
+</div>
+
+<div>
+  <h3>Mes cours suivis</h3>
+    <% @user.lectures_as_pupil.each do |lecture| %>
+      <p> <%= lecture.title %> </p>
+      <p> <%= lecture.description %> </p>
+    <% end %>
+</div>
+
+

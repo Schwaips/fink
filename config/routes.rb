@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   resources :schoolings, only: [:index ]
 
+  get '/dashboard', to: "pages#dashboard"
+
 end

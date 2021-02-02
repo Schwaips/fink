@@ -25,10 +25,15 @@ require("channels")
 // External imports
 import "bootstrap";
 
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap } from "gsap";
+
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initScroll } from '../controllers/scroll_controller';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initScroll(gsap, ScrollTrigger);
 });
