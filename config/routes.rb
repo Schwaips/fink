@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :blocks, only:  [:create]
   end
 
-  resources :schoolings, only: [:index ]
+  resources :schoolings, only: [:index]
 
   get '/dashboard', to: "pages#dashboard"
 

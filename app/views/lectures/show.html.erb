@@ -8,7 +8,7 @@
 
 
 <% if @lecture.photo.attached? %>
-  <%= cl_image_tag @lecture.photo.key %>
+  <%= cl_image_tag @lecture.photo.key, height: 150, width: 150 %>
   <% else %>
   <img src="https://source.unsplash.com/800x600/?<%= @lecture.category%>" alt="">
 <% end %>
@@ -23,14 +23,8 @@
 
 <% @lecture.blocks.each do |block| %>
   <%= block.content %>
-  <%= block.block_type %>``
+  <%= block.block_type %>
   <% block.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, width: 400, height: 300 %>
+    <%= cl_image_tag photo.key, class:"card-avatar avatar-bordered" %>
   <% end %>
 <% end %>
-
-
-
-<h2>AJOUTER DU CONTENU AU BLOCK DE LA LECTURE KON REGARDE</h2>
-  <%= render partial:'blocks/new', :locals => { lecture: @lecture } %>
-
