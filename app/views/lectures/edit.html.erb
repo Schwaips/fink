@@ -4,8 +4,6 @@
   <h2 class="pl-5">Formulaire pour edit une lecture</h2>
   <%# <img class="d-block mx-auto mb-4" src="https://res.cloudinary.com/cb-dev/image/upload/v1610904406/buddiest/smile-icon.png" alt="" width="72" height="72"> %>
 </div>
-
-
  <div class="row no-gutter">
       <!-- The image half -->
     <div class="col-md-6 d-none d-md-flex">
@@ -21,7 +19,7 @@
                 <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" } %>
                 <%= f.input :photo, as: :file, label: "Miniature de l'offre" %>
                 <%= f.input :category, label: "Categorie de votre lecture", collection: ["Art", "Developpement", "Gastronomie", "Langue", "Musique", "Photo & video", "Gaming", "Beauté", "Culture générale", "Nature"] %>
-                <%= f.submit "Sauvegarder", class: "btn btn-green mt-4" %>
+                <%= f.submit "Sauvegarder", class: "btn btn-pink mt-4" %>
               <% end %>
               </div> <!-- fin form simple form -->
             </div> <!-- fin col lg 10 col xl 7 -->
@@ -29,3 +27,5 @@
       </div> <!-- fin div login -->
     </div><!-- fin col md 6 bg light -->
 <!-- fin container fluid -->
+ <%= render partial:'blocks/new', :locals => { lecture: @lecture } %>
+
