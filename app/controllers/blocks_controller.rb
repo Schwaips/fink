@@ -10,7 +10,7 @@ before_action :new_block, only: [ :create ]
     else
       flash[:notice] = "Une erreur est survenue, veuillez réesayer."
     end
-    redirect_to lecture_path(@lecture)
+    redirect_to edit_lecture_path(@lecture)
   end
 
   private
