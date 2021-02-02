@@ -11,7 +11,7 @@
                 <%= simple_form_for [@lecture, @block] do |f| %>
                  <div class="field">
                     <%= f.label :content %>
-                    <%= f.rich_text_area :content %>
+                    <%= f.rich_text_area :content, background: $grey %>
                   </div>
                   <%= f.input :photos, as: :file, label: "ajouter des médias a la lecture", input_html: { multiple: true } %>
                   <%= f.input :block_type, label: "Categorie de votre lecture", collection: Block::BLOCK_TYPE %>
