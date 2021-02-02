@@ -1,22 +1,27 @@
-<h1>Les cours disponible</h1>
+<div class="container">
 
-<%= link_to  "Créer une lecture", new_lecture_path, class: "btn btn-primary" %>
-<br>
-<br>
+  <h1>Les cours disponibles</h1>
+
+  <%= link_to  "Créer un cours", new_lecture_path, class: "btn btn-primary" %>
+  <br>
+  <br>
 
 
-<% ["Art", "Developpement", "Gastronomie", "Langue", "Musique", "Photo & video", "Gaming", "Beauté", "Culture générale", "Nature"].each do |categorie|  %>
-  <div class="card-board">
-    <% @lectures.where(category: categorie).each do |lecture| %>
-      <div class="card-lecture">
-        <div class="card-lecture-image">
-          <img src="https://kitt.lewagon.com/placeholder/users/ameliend" class="card-avatar avatar-bordered" />
+  <% ["Art", "Developpement", "Langue"].each do |categorie|  %>
+    <h1>Dans la catégorie <%= categorie %>...</h1>
+    <div class="card-board">
+      <% @lectures.where(category: categorie).each do |lecture| %>
+        <div class="card-lecture">
+          <div class="card-lecture-image">
+            <img src="https://kitt.lewagon.com/placeholder/users/ameliend" class="card-avatar avatar-bordered" />
+          </div>
+          <h1><%= lecture.title %></h1>
+          <p><%= lecture.description %></p>
+          <p>Created by <%= lecture.user.first_name %></p>
+          <%= link_to "Découvrir", lecture_path(lecture), class: "btn button-invisible" %>
         </div>
-        <h1><%= lecture.category %></h1>
-        <p><%= lecture.description %></p>
-        <p>Created by <%= lecture.user.first_name %></p>
-      </div>
-    <% end %>
-  </div>
-<% end %>
-
+      <% end %>
+    </div>
+    </br></br></br>
+  <% end %>
+</div>
