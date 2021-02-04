@@ -7,8 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 
-
-
 puts "--- Destroying current data user/lecture ---"
 User.destroy_all
 Lecture.destroy_all
