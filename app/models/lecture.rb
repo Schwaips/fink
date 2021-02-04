@@ -5,6 +5,6 @@ class Lecture < ApplicationRecord
   validates :title, :description, presence: true
   validates :category, presence: true, inclusion: { in: CATEGORY }
   has_one_attached :photo
-  has_many :blocks, inverse_of: :lecture
+  has_many :blocks, inverse_of: :lecture, dependent: :destroy
   accepts_nested_attributes_for :blocks
 end

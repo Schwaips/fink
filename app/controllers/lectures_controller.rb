@@ -8,7 +8,6 @@ before_action :set_lecture, only: [:show, :edit, :update]
   end
 
   def show
-    @block = Block.new
   end
 
 
