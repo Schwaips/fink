@@ -6,8 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "--- Destroying current data ---"
+puts "--- Destroying current data user/lecture ---"
 User.destroy_all
+Lecture.destroy_all
 puts "--starting seedings"
 # user creation
 # creating teacher example
@@ -26,18 +27,24 @@ puts "--student created--"
 puts "-- lecture pour charlie--"
 lecture = Lecture.create!(title: "Developpement Web Ruby", description: "Apprenez à developper sur Ruby on Rails en moins de 6 mois. Je vous fournis tout plein de video de cours. En parralèle, je peux faire des 1to1 sur demandes", category: "Developpement", user: c)
 lecture1 = Lecture.create!(title: "Peinture à l'huile", description: "Je vous accompagne pour vos projets de peinture à l'huile. Toutes les techiques nécéssaires à l'implémentation de vos peintures", category: "Art", user: c)
-lecture2 = Lecture.create!(title: "Developpement Web Ruby", description: "Apprenez à developper sur Ruby on Rails en moins de 6 mois. Je vous fournis tout plein de video de cours. En parralèle, je peux faire des 1to1 sur demandes", category: "Developpement", user: c)
-lecture3 = Lecture.create!(title: "Peinture à l'huile", description: "Je vous accompagne pour vos projets de peinture à l'huile. Toutes les techiques nécéssaires à l'implémentation de vos peintures", category: "Art", user: c)
-lecture4 = Lecture.create!(title: "Developpement Web Ruby", description: "Apprenez à developper sur Ruby on Rails en moins de 6 mois. Je vous fournis tout plein de video de cours. En parralèle, je peux faire des 1to1 sur demandes", category: "Developpement", user: c)
-lecture5 = Lecture.create!(title: "Peinture à l'huile", description: "Je vous accompagne pour vos projets de peinture à l'huile. Toutes les techiques nécéssaires à l'implémentation de vos peintures", category: "Art", user: c)
-lecture6 = Lecture.create!(title: "Developpement Web Ruby", description: "Apprenez à developper sur Ruby on Rails en moins de 6 mois. Je vous fournis tout plein de video de cours. En parralèle, je peux faire des 1to1 sur demandes", category: "Developpement", user: c)
-lecture7 = Lecture.create!(title: "Peinture à l'huile", description: "Je vous accompagne pour vos projets de peinture à l'huile. Toutes les techiques nécéssaires à l'implémentation de vos peintures", category: "Art", user: c)
+
+b = Block.create!(lecture_id: lecture.id, block_type: "Video", content: "Découvrez le monde de Rails grâce à mon tutoriel de deux heures. Apprenez à faire des seeds " )
+b1 = Block.create!(lecture_id: lecture.id, block_type: "Podcast", content: "Je vous explique a travers ce podcast comment créer une app rails" )
+
+b2 = Block.create!(lecture_id: lecture1.id, block_type: "Text", content: "Voici un cheatsheet pour savoir comment faire une belle peinture à l'huile" )
+b3 = Block.create!(lecture_id: lecture1.id, block_type: "Video", content: "Une démonstration, comment faire des dragons avec de la peinture à l'huile" )
+
+
 puts "-- lecture pour amélien--"
 
 lecture8 = Lecture.create!(title: "Chants", description: "Je suis prêt à entrainer vos belles voix pour vos plus beaux concerts", category: "Art", user: a)
 lecture9 = Lecture.create!(title: "Cours d'anglais 101", description: "Accompagnement pour l'apprentissage d'anglais niveau débutant", category: "Langue", user: a)
-lecture10 = Lecture.create!(title: "Chants", description: "Je suis prêt à entrainer vos belles voix pour vos plus beaux concerts", category: "Art", user: a)
-lecture11 = Lecture.create!(title: "Cours d'anglais 101", description: "Accompagnement pour l'apprentissage d'anglais niveau débutant", category: "Langue", user: a)
-lecture12 = Lecture.create!(title: "Chants", description: "Je suis prêt à entrainer vos belles voix pour vos plus beaux concerts", category: "Art", user: a)
-lecture13 = Lecture.create!(title: "Cours d'anglais 101", description: "Accompagnement pour l'apprentissage d'anglais niveau débutant", category: "Langue", user: a)
+
+b4 = Block.create!(lecture_id: lecture8.id, block_type: "Text", content: "voyez une de mes création pour vous divertir et apprendre à écrire des chansons" )
+b5 = Block.create!(lecture_id: lecture8.id, block_type: "Video", content: "Entrainez votre thorax avant de faire un concert" )
+
+b6 = Block.create!(lecture_id: lecture9.id, block_type: "Video", content: "Tous sur les prononciations des UKs, mieux comprendre et avancer." )
+b6 = Block.create!(lecture_id: lecture9.id, block_type: "Text", content: "Tous vos verbes irrégulier, facile à apprendre" )
+
+
 puts "---seeds ending---"
