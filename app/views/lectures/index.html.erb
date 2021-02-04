@@ -1,12 +1,17 @@
-<div class="container background">
+
+<div>
+
+
+</div>
+
+
+
+<div class="background">
 
   <h1>Les cours disponibles</h1>
-
   <%= link_to  "Créer un cours", new_lecture_path, class: "btn btn-primary" %>
   <br>
   <br>
-
-
   <% ["Art", "Developpement", "Langue"].each do |categorie|  %>
     <h1>Dans la catégorie <%= categorie %>...</h1>
     <div class="card-board">

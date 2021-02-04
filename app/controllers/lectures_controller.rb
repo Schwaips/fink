@@ -10,7 +10,6 @@ before_action :set_lecture, only: [:show, :edit, :update]
   def show
   end
 
-
   def new
     @lecture = Lecture.new
     @lecture.blocks.build
