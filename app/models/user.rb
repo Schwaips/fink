@@ -10,7 +10,12 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
   has_one_attached :photo
 
+
   def lectures_as_pupil
     Lecture.all.joins(:schoolings).where(schoolings: {user_id: id})
+  end
+
+  def students
+    lectures.map(&:students).flatten.uniq
   end
 end
