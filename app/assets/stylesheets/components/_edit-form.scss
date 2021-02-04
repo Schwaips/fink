@@ -64,6 +64,11 @@
 
 #lecture_category_gastronomie + label {
   color: #62DDF5;
+  background-image: asset_url("icon-gas.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  background-size: 20%;
 }
 
 #lecture_category_gastronomie:checked + label {
@@ -71,26 +76,28 @@
   border-color: #62DDF5;
 }
 
-#lecture_category_gastronomie + label {
-  color: #62DDF5;
+
+#lecture_category_langue + label {
+  color: #E450EF;
+  background-image: asset_url("icon-langue.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  background-size: 20%;
 }
 
-#lecture_category_gastronomie:checked + label {
+#lecture_category_langue:checked + label {
   background-color: #E450EF;
   border-color: #E450EF;
 }
 
-#lecture_category_langue + label {
-  color: #E450EF;
-}
-
-#lecture_category_langue:checked + label {
-  background-color: #62DDF5;
-  border-color: #62DDF5;
-}
-
 #lecture_category_musique + label {
   color: #BA8555;
+  background-image: asset_url("icon-music.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  background-size: 20%;
 }
 
 #lecture_category_musique:checked + label {
@@ -100,6 +107,11 @@
 
 #lecture_category_photo__video + label {
   color: #00410F;
+  background-image: asset_url("icon-photo.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  background-size: 20%;
 }
 
 #lecture_category_photo__video:checked + label {
@@ -109,6 +121,11 @@
 
 #lecture_category_gaming + label {
   color: #DE7D15;
+  background-image: asset_url("icon-game.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  background-size: 20%;
 }
 
 #lecture_category_gaming:checked + label {
@@ -118,6 +135,11 @@
 
 #lecture_category_beauté + label {
   color: #6710C0;
+  background-image: asset_url("icon-beaute.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  background-size: 20%;
 }
 
 #lecture_category_beauté:checked + label {
