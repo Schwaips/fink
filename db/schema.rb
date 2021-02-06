@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(version: 2021_02_02_201337) do
     t.index ["lecture_id"], name: "index_blocks_on_lecture_id"
   end
 
+  create_table "flashcards", force: :cascade do |t|
+    t.bigint "block_id", null: false
+    t.string "question"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["block_id"], name: "index_flashcards_on_block_id"
+  end
+
   create_table "lectures", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title"
@@ -92,6 +100,7 @@ ActiveRecord::Schema.define(version: 2021_02_02_201337) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "blocks", "lectures"
+  add_foreign_key "flashcards", "blocks"
   add_foreign_key "lectures", "users"
   add_foreign_key "schoolings", "lectures"
   add_foreign_key "schoolings", "users"

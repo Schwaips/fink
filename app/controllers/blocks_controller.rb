@@ -13,6 +13,12 @@ before_action :new_block, only: [ :create ]
     redirect_to edit_lecture_path(@lecture)
   end
 
+   def edit
+    @block = Block.find(params[:id])
+    @flashcard = Flashcard.new
+    @lecture = Lecture.find(params[:lecture_id])
+  end
+
   private
 
   def new_block
@@ -22,5 +28,8 @@ before_action :new_block, only: [ :create ]
   def params_block
      params.require(:block).permit(:block_type, :content, photos: [] )
   end
+
+
+
 
 end
