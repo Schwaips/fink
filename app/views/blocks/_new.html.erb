@@ -1,27 +1,17 @@
 
-
-<div class="col-md-6">
-      <div class="login d-flex align-items-center py-5">
-      <!-- Demo content-->
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-11 col-xl-10 mx-auto">
             <h1>AJOUTER DU CONTENU A VOTRE COURS</h1>
               <div class="form-group">
                 <%= simple_form_for [@lecture, @block] do |f| %>
-                 <div class="field">
-                    <%= f.label :content %>
-                    <%= f.rich_text_area :content, background: $grey %>
-                  </div>
-                  <%= f.input :photos, as: :file, label: "ajouter des médias a la lecture", input_html: { multiple: true } %>
                   <%= f.input :block_type, label: "Categorie de votre lecture", collection: Block::BLOCK_TYPE %>
-                  <%= f.submit "Ajouter ce block", class: "btn btn-pink mt-4" %>
+                  <%= f.input :photos, as: :file, label: "ajouter des médias a la lecture", input_html: { multiple: true } %>
+
+
+                  <div class="field">
+                    <%= f.label :content %>
+                    <%= f.rich_text_area :content %>
+                  </div>
+                  <%= f.submit "Ajouter ce block", class: "btn button-pink mt-4" %>
                 <% end %>
               </div> <!-- fin form simple form -->
-            </div> <!-- fin col lg 10 col xl 7 -->
-          </div> <!-- fin row-->
-        </div><!-- fin container -->
-      </div> <!-- fin div login -->
-    </div><!-- f -->
 
 

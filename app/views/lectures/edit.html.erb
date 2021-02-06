@@ -1,52 +1,47 @@
-<div class="background">
+
+
+<div class="background margintop">
+
+  <div class="card-category" style=
+        "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+        url(<%= @lecture.photo.attached? ? cl_image_path(@lecture.photo.key, crop: :scale)
+        : "https://source.unsplash.com/300x150/?#{@lecture.category}" %>">
+          <h1><%= @lecture.title.upcase %></h1>
+  </div>
+
+
   <div class="container">
+    <br/>
 
-    <div class="pt-5 text-center">
-      <h2 class="pl-5">Formulaire pour edit une lecture</h2>
-      <%# <img class="d-block mx-auto mb-4" src="https://res.cloudinary.com/cb-dev/image/upload/v1610904406/buddiest/smile-icon.png" alt="" width="72" height="72"> %>
-    </div>
-    <div class="row no-gutter">
-          <!-- The image half -->
-        <div class="col-md-6 d-none d-md-flex">
-        </div>
-          <!-- The content half -->
-        <div class="col-md-6">
-          <div class="login d-flex align-items-center">
-          <!-- Demo content-->
-              <div class="row">
-                <div class="col-lg-11 col-xl-10">
-                  <%= simple_form_for(@lecture) do |f| %>
-                    <%= f.input :title, input_html: { class: "offer-bar" } %>
-                    <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" } %>
-                    <%= f.input :photo, as: :file, label: "Miniature de l'offre" %>
-                    <%= f.input :category, label: "Categorie de votre lecture", collection: ["Art", "Developpement", "Gastronomie", "Langue", "Musique", "Photo & video", "Gaming", "Beauté", "Culture générale", "Nature"] %>
-                    <%= f.submit "Sauvegarder", class: "btn btn-pink mt-4" %>
-                  <% end %>
-                  </div> <!-- fin form simple form -->
-                </div> <!-- fin col lg 10 col xl 7 -->
-            </div><!-- fin container -->
-          </div> <!-- fin div login -->
-        </div><!-- fin col md 6 bg light -->
-    <!-- fin container fluid -->
+    <div class="row">
+      <div class="col-6">
+        <div class="form-edit">
+          <h1>Modifier votre cours</h1>
+          <br/>
+          <p>Cours créé par vous-même</p>
+          <%= simple_form_for(@lecture) do |f| %>
+            <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
+            <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
+            <%= f.input :photo, as: :file, label: "Miniature de l'offre", label: "Choisir une nouvelle photo" %>
+            <%= f.input :category, label: "Categorie de votre cours", as: :radio_buttons,
+                collection_wrapper_tag: 'div',
+                collection_wrapper_class: 'category-wrapper',
+                item_wrapper_class: 'category-item',
+                input_html: {class: 'category-selector'},
+                collection: Lecture::CATEGORY %>
+            <%= f.submit "Sauvegarder", class: "btn button-pink" %>
+            <br/>
+              <br/>
+          <% end %>
+        </div> <!-- fin form-edit -->
+      </div> <!-- fin COl-6 -->
+      <div class="col-6">
+        <div class="mr-auto">
+          <%= render partial:'blocks/new', :locals => { lecture: @lecture } %>
+        </div> <!-- end of render block new -->
+      </div>
+    </div> <!-- end of row -->
 
-
-      <div>
-        <%= render partial:'blocks/new', :locals => { lecture: @lecture } %>
-      </div> <!-- end of render block new -->
-        <% @lecture.blocks.each_with_index do |block, index| %>
-
-            <div class="card-lecture">
-              <h1>Block numéro <%= index + 1 %></h1>
-                <div class="card-lecture-image">
-                  <% block.photos.each do |photo| %>
-                    <%= cl_image_tag photo.key, height: 120, width: 250, class: "card-avatar" %>
-                  <% end %>
-                </div> <!-- end of card lecture image -->
-                <h1><%= block.block_type %></h1>
-                <p><%= block.content %></p>
-            </div> <!-- end of card-lecture -->
-          </div> <!-- each block end div -->
-        <% end %>
 
 
 

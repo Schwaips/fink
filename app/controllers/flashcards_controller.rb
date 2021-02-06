@@ -2,6 +2,7 @@ class FlashcardsController < ApplicationController
 
   def new
     @flashcard = Flaschard.new
+    @block = Block.find(9)
   end
 
   def create
