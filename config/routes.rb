@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   end
 
   resources :schoolings, only: [:index]
-
+end
   get '/dashboard', to: "pages#dashboard"
 
-end
+
 end

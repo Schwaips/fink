@@ -12,6 +12,13 @@
     <ul class="navbar-nav mr-auto d-flex align-items-center">
       <% if user_signed_in? %>
 
+        <li class="search-bar">
+          <form action="/lectures">
+            <div class="form-group">
+              <input type="search" class="form-control search-control" name="query" id="search" placeholder="Chercher un cours" method="GET">
+            </div>
+          </form>
+        </li>
 
         <li class="pr-4">
          <%= current_user.first_name %>
