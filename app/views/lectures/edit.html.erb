@@ -1,10 +1,11 @@
- <div class="background">
   <div class="card-category" style=
         "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
         url(<%= @lecture.photo.attached? ? cl_image_path(@lecture.photo.key, crop: :scale)
         : "https://source.unsplash.com/300x150/?#{@lecture.category}" %>">
           <h1><%= @lecture.title.upcase %></h1>
-      </div>
+  </div>
+
+<div class="background margintop">
   <div class="container">
     <br/>
 
