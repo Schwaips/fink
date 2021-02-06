@@ -11,30 +11,29 @@
 
 
   <div class="container">
-    <br/>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Editer la lecture
+  </button>
+
+  <!-- Modal -->
+    <%= render partial:'lectures/shared/edit-modal', :locals => { lecture: @lecture } %>
 
     <div class="row">
-      <div class="col-6">
-        <div class="form-edit">
-          <h1>Modifier votre cours</h1>
-          <br/>
-          <p>Cours créé par vous-même</p>
-          <%= simple_form_for(@lecture) do |f| %>
-            <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
-            <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
-            <%= f.input :photo, as: :file, label: "Miniature de l'offre", label: "Choisir une nouvelle photo" %>
-            <%= f.input :category, label: "Categorie de votre cours", as: :radio_buttons,
-                collection_wrapper_tag: 'div',
-                collection_wrapper_class: 'category-wrapper',
-                item_wrapper_class: 'category-item',
-                input_html: {class: 'category-selector'},
-                collection: Lecture::CATEGORY %>
-            <%= f.submit "Sauvegarder", class: "btn button-pink" %>
-            <br/>
-              <br/>
+      <div class="col-4">
+        <%= link_to  lectures_path do %>
+          <% @lecture.blocks.each_with_index do |block, index| %>
+              <div class="card-dashboard">
+                <div class="card-dashboard-infos">
+                  <%= link_to "Cours numéro #{ index + 1 }", "/" %></h2>
+                  <span> Type : <%= block.block_type %></span>
+                </div>
+              </div>
           <% end %>
-        </div> <!-- fin form-edit -->
-      </div> <!-- fin COl-6 -->
+        <% end %>
+
+      </div> <!-- fin COl-4 -->
       <div class="col-6">
         <div class="mr-auto">
           <%= render partial:'blocks/new', :locals => { lecture: @lecture } %>
@@ -42,7 +41,29 @@
       </div>
     </div> <!-- end of row -->
 
-
-  </div> <!-- end of container div for color -->
+    </div> <!-- end of container div for color -->
 </div> <!-- end of background div for color -->
+
+<!-- begining of -->
+<div class="container">
+<br/>
+  <h2>Cours</h2>
+  <% @lecture.blocks.each_with_index do |block, index| %>
+    <div class="card-dashboard">
+      <div class="card-dashboard-infos">
+        <h2>Cours numéro <%= index + 1  %></h2>
+        <span> Type : <%= block.block_type %></span>
+        <p><%= block.content %></p>
+        <div class="d-flex">
+            <%= link_to "/" do %>
+              <p class="pr-3"><i class="far fa-edit"></i></p>
+            <% end %>
+            <%= link_to "/", method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <p><i class="far fa-trash-alt"></i></p>
+            <% end %>
+        </div> <!-- end of d flex -->
+      </div> <!-- end of card dashboard infos -->
+    </div> <!-- end of card dashboard -->
+  <% end %>
+</div> <!-- end of container of existing blocks -->
 

@@ -36,7 +36,7 @@ before_action :set_lecture, only: [:show, :edit, :update]
 
   def update
     @lecture.update(params_lecture)
-    redirect_to lecture_path(@lecture)
+    redirect_to edit_lecture_path(@lecture)
     flash[:notice] = "Votre lecture #{@lecture.title} est à jour, merci!"
   end
 
