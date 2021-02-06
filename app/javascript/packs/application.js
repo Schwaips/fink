@@ -36,6 +36,8 @@ import { initTabs } from '../components/tabs';
 // import { initSelect2 } from '../components/init_select2';
 import { initScroll } from '../controllers/scroll_controller';
 
+import { editBlock } from '../components/edit-block';
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();

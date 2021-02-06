@@ -30,7 +30,7 @@ before_action :set_lecture, only: [:show, :edit, :update]
 
   def edit
     @lecture = Lecture.find(params[:id])
-    @block = Block.new
+    @block = params[:block_id] ?  Block.find(params[:block_id]) : Block.new
   end
 
   def update

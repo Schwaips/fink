@@ -2,7 +2,7 @@ class FlashcardsController < ApplicationController
 
   def new
     @flashcard = Flaschard.new
-    @block = Block.find(9)
+    @block = Block.find(params[:id])
   end
 
   def create
