@@ -148,6 +148,11 @@
 }
 #lecture_category_culture_générale + label {
   color: #1737B2;
+  background-image: asset_url("icon-cult.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  background-size: 20%;
 }
 
 #lecture_category_culture_générale:checked + label {
@@ -155,8 +160,13 @@
   border-color: #1737B2;
 }
 
-#ecture_category_nature + label {
+#lecture_category_nature + label {
   color: #8AC642;
+  background-image: asset_url("icon-nature.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  background-size: 20%;
 }
 
 #lecture_category_nature:checked + label {
