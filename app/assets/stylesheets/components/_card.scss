@@ -4,7 +4,6 @@
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
-  white-space: nowrap;
   width: 90%;
   margin: 0 auto;
     &::-webkit-scrollbar {
@@ -38,6 +37,10 @@
     font-size: 0.9rem;
     font-weight: 200;
   }
+}
+
+.card-text {
+  padding: 20px;
 }
 
 // tu TOUCHES PAS. c'est quand tu hover ta card, ta le petit bouton qui apparait et tout et tout.
