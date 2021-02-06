@@ -1,4 +1,15 @@
-<%= simple_form_for [@lecture, @block, @flashcard] do |f| %>
-  <%= f.input :question, label: "Ajouter une question", as: :text, input_html: { class: "offer-bar" } %>
-  <%= f.submit "Sauvegarder", class: "btn btn-pink mt-4" %>
-<% end %>
+
+<div class="form-group">
+  <%= simple_form_for [@lecture, @block] do |f| %>
+    <%= f.input :block_type, label: "Categorie de votre lecture", collection: Block::BLOCK_TYPE %>
+    <%= f.input :photos, as: :file, label: "Ajouter des médias a la lecture", input_html: { multiple: true } %>
+
+
+    <div class="field">
+      <%= f.label :content %>
+      <%= f.rich_text_area :content %>
+    </div>
+
+  <% end %>
+
+</div> <!-- fin form simple form -->
