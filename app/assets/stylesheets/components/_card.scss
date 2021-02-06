@@ -1,30 +1,14 @@
 
 // card board container dans lequel tu fouts tes cards.
 .card-board {
-  margin: 0 90px;
-  text-align: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-around;
-  padding: 0 90px;
-  overflow: scroll;
-  overscroll-behavior-x: contain;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    width: 0 !important;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: 90%;
+  margin: 0 auto;
+    &::-webkit-scrollbar {
     display: none;
-  }
-
-  > * + * {
-    margin-left: var(--space);
-  }
-
-  &::after {
-    content: "";
-    display: block;
-    flex: 0 0 var(--space);
   }
 }
 
@@ -38,6 +22,7 @@
   width: 250px;
   box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.5);
   margin: 10px;
+  overflow-wrap: break-word;
 
 
   h1 {
