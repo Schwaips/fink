@@ -13,11 +13,17 @@ before_action :new_block, only: [ :create ]
     redirect_to edit_lecture_path(@lecture)
   end
 
-   def edit
+  def edit
     @block = Block.find(params[:id])
-    @flashcard = Flashcard.new
     @lecture = Lecture.find(params[:lecture_id])
   end
+
+  def update
+    @block.update(params_block)
+    redirect_to edit_lecture_path(@lecture)
+    flash[:notice] = "Votre contenu #{@lecture.title} est à jour, merci!"
+  end
+
 
   private
 
