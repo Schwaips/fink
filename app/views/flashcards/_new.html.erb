@@ -1,6 +1,6 @@
 
-          <div class="row no-gutter">
-          <!-- The image half -->
+       <div class="row no-gutter">
+      The image half -->
         <div class="col-md-6 d-none d-md-flex">
         </div>
           <!-- The content half -->
@@ -9,7 +9,7 @@
           <!-- Demo content-->
               <div class="row">
                 <div class="col-lg-11 col-xl-10">
-                  <%= simple_form_for [@block, @flashcards] do |f| %>
+                  <%= simple_form_for [@block, @flashcard] do |f| %>
                     <%= f.input :question, label: "Ajouter une question", as: :text, input_html: { class: "offer-bar" } %>
                     <%= f.submit "Sauvegarder", class: "btn btn-pink mt-4" %>
                   <% end %>
