@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :schoolings, only: [:index]
 
+end
   get '/dashboard', to: "pages#dashboard"
 
-end
 end
