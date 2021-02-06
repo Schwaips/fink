@@ -1,8 +1,7 @@
 
 <div class="mb-5 container d-flex justify-content-between margintop">
 
-  <div class="d-flex">
-
+  <div class="d-flex mt-5">
     <% if current_user.photo.attached? %>
       <%= cl_image_tag current_user.photo.key, class: 'avatar-large avatar-bordered img-circle' %>
     <% else %>
@@ -16,69 +15,69 @@
         <p class="pr-3"><i class="far fa-edit"></i> Modifier le profil </p>
       <% end %>
     </div>
-
-
   </div>
 
 
   <% if current_user.role == "teacher" %>
-        <div class="stat-card">
+        <div class="stat-card my-5 ">
           <h4>Mes statistiques mensuelles</h4>
         </div>
 
-        <div class="stat-card">
+        <div class="stat-card my-5">
           <h4>Mes étudiants</h4>
         </div>
     <% end %>
 </div>
 
-<% if current_user.role == "teacher" %>
-<div class="container mb-5">
-  <ul class="list-inline tabs-underlined">
-    <li>
-      <a data-toggle="tab" href="#publish" class="tab-underlined active">Mes cours en ligne</a>
-    </li>
+<div class="mt-5">
+  <% if current_user.role == "teacher" %>
+  <div class="container mb-5">
+    <ul class="list-inline tabs-underlined">
+      <li>
+        <a data-toggle="tab" href="#publish" class="tab-underlined active">Mes cours en ligne</a>
+      </li>
 
-    <li>
-      <a data-toggle="tab" href="#draft" class="tab-underlined">Mes brouillons</a>
-    </li>
-  </ul>
+      <li>
+        <a data-toggle="tab" href="#draft" class="tab-underlined">Mes brouillons</a>
+      </li>
+    </ul>
 
-  <div class="tab-content">
-
-    <div class="tabs tab-pane active mt-5" id="publish">
-        <% current_user.lectures.each do |lecture| %>
-          <%= link_to lecture_path(lecture) do %>
-            <div class="card-dashboard">
-              <% if lecture.photo.attached? %>
-                <%= cl_image_tag lecture.photo.key %>
-              <% else %>
-                <%= image_tag "https://lescreasdetiti.fr/52303-large_default/motif-thermocollant-point-d-interrogation.jpg" %>
-              <% end %>
-              <div class="card-dashboard-infos">
-                <h2><%= lecture.title %></h2>
-                <p><%= lecture.description %></p>
-                <div class="d-flex">
-                  <%= link_to edit_lecture_path(lecture) do %>
-                    <p class="pr-3"><i class="far fa-edit"></i></p>
-                  <% end %>
-                  <%= link_to lecture_path(lecture), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                   <p><i class="far fa-trash-alt"></i></p>
-                  <% end %>
-                </div>
-
+    <div class="tab-content">
+      <div class="tabs tab-pane active mt-5" id="publish">
+          <% current_user.lectures.each do |lecture| %>
+            <%= link_to lecture_path(lecture) do %>
+              <div class="card-dashboard">
+                <% if lecture.photo.attached? %>
+                  <%= cl_image_tag lecture.photo.key %>
+                <% else %>
+                  <%= image_tag "https://lescreasdetiti.fr/52303-large_default/motif-thermocollant-point-d-interrogation.jpg" %>
+                <% end %>
+                <div class="card-dashboard-infos">
+                  <h2><%= lecture.title %></h2>
+                  <p><%= lecture.description %></p>
+                  <div class="d-flex">
+                    <%= link_to edit_lecture_path(lecture) do %>
+                      <p class="pr-3"><i class="far fa-edit"></i></p>
+                    <% end %>
+                    <%= link_to lecture_path(lecture), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                     <p><i class="far fa-trash-alt"></i></p>
+                    <% end %>
+                  </div>
               </div> <!-- card dfashboard infos -->
             </div> <!-- card dashboard -->
           <% end %>
         <% end %>
     </div> <!-- tabs tab-pane active mt-5 -->
 
-    <div class="tabs tab-pane" id="draft">
-    </div>
+      <div class="tabs tab-pane" id="draft">
+      </div>
 
+    </div>
   </div>
-</div>
 <% end %>
+</div>
+
+
 
 <div class="theme_background">
   <div class="container">
@@ -95,8 +94,15 @@
       </div>
     <% end %>
   </div>
-  </div>
 </div>
+
+
+<%= link_to new_lecture_path do %>
+  <div class="plus-btn fixed-bottom fixed-right">
+    <i class="fas fa-plus"></i>
+  </div>
+<% end %>
+
 
 
 
