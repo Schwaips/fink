@@ -21,7 +21,7 @@
                  <h4><%= "Cours numéro #{ index + 1 }" %></h4>
                   <span> Type : <%= block.block_type %></span>
                   <div class="d-flex">
-                      <%= link_to "/" do %>
+                      <%= link_to edit_lecture_path(@lecture, block_id: block.id) do %>
                         <p class="pr-3"><i class="far fa-edit"></i></p>
                       <% end %>
                       <%= link_to "/", method: :delete, data: { confirm: 'Are you sure?' } do %>
@@ -33,28 +33,51 @@
           <% end %>
     </div> <!-- col 4 -->
 
-    <div class="col-8">
-        <div class="text-center">
-          <h2 class="tab-edit">Gérer les cours pour <%= @lecture.title %></h2>
-          <br>
-          <div class="edit-lecture-modal">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn button-red" data-toggle="modal" data-target="#exampleModal">
-              Modifier la lecture
-            </button>
-              <!-- Modal -->
-            <%= render partial:'lectures/shared/edit-modal', :locals => { lecture: @lecture } %>
-          </div> <!-- edit lecture modal-->
-          <h6 class="text-center m-3">Ou bien...</h6>
-            <div class="create-block-modal">
+
+    <% if @block.persisted? %>
+    <div class="col-8 text-center">
+
+    <h2 class="tab-edit">Modifier le cours</h2>
+      <div class="form-group">
+        <%= simple_form_for [@lecture, @block] do |f| %>
+          <%= f.input :block_type, label: "Categorie de votre lecture", collection: Block::BLOCK_TYPE %>
+          <%= f.input :photos, as: :file, label: "Ajouter des médias a la lecture", input_html: { multiple: true } %>
+          <div class="field">
+            <%= f.label :content %>
+            <%= f.rich_text_area :content %>
+          </div>
+        <% end %>
+      </div>
+    </div> <!-- fin form simple form -->
+    <% else %>
+      <div class="col-8">
+          <div class="text-center">
+            <h2 class="tab-edit">Gérer les cours pour <%= @lecture.title %></h2>
+            <br>
+            <div class="edit-lecture-modal">
               <!-- Button trigger modal -->
-              <button type="button" class="btn button-blue" data-toggle="modal" data-target="#newblock">
-                Ajouter un contenu
+              <button type="button" class="btn button-red" data-toggle="modal" data-target="#exampleModal">
+                Modifier la lecture
               </button>
                 <!-- Modal -->
-              <%= render partial:'blocks/new', :locals => { lecture: @lecture } %>
-            </div> <!-- create block modal-->
-      </div> <!-- text center -->
-    </div> <!--col 8-->
+              <%= render partial:'lectures/shared/edit-modal', :locals => { lecture: @lecture } %>
+            </div> <!-- edit lecture modal-->
+            <h6 class="text-center m-3">Ou bien...</h6>
+              <div class="create-block-modal">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn button-blue" data-toggle="modal" data-target="#newblock">
+                  Ajouter un contenu
+                </button>
+                  <!-- Modal -->
+                <%= render partial:'blocks/new', :locals => { lecture: @lecture } %>
+              </div> <!-- create block modal-->
+        </div> <!-- text center -->
+      </div> <!--col 8-->
+    <% end %>
+
+
+
+
+
   </div> <!-- row -->
 </div>
