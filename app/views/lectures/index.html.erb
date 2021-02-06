@@ -1,12 +1,5 @@
 
-<div>
-
-
-</div>
-
-
-
-<div class="background">
+<div class="background margintop">
 
   <h1>Les cours disponibles</h1>
   <%= link_to  "Créer un cours", new_lecture_path, class: "btn btn-primary" %>
@@ -17,8 +10,6 @@
     <div class="card-board">
       <% @lectures.where(category: categorie).each do |lecture| %>
         <div class="card-lecture">
-
-
           <div class="card-lecture-image"
 
           style=

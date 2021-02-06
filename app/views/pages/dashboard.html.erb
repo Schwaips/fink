@@ -1,24 +1,27 @@
 
-<div class="mb-5 container d-flex justify-content-between">
+<div class="mb-5 container d-flex justify-content-between margintop">
 
   <div class="d-flex">
 
-    <% if @user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key, class: 'avatar-large avatar-bordered img-circle' %>
+    <% if current_user.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, class: 'avatar-large avatar-bordered img-circle' %>
     <% else %>
       <%= image_tag "https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg", class: 'avatar-large avatar-bordered img-circle' %>
     <% end %>
-    <div class="ml-3">
-      <p>Bonjour <%= @user.first_name %> </p>
-      <p><%= @user.email %></p>
-      <p> Vous êtes un <%= @user.role %> </p>
+    <div class="ml-4">
+      <h3>Bonjour <strong><%= current_user.first_name %></strong> </h3>
+      <p><%= current_user.email %></p>
+      <p> Vous êtes un <%= current_user.role %> </p>
+      <%= link_to  do %>
+        <p class="pr-3"><i class="far fa-edit"></i> Modifier le profil </p>
+      <% end %>
     </div>
 
 
   </div>
 
 
-  <% if @user.role == "teacher" %>
+  <% if current_user.role == "teacher" %>
         <div class="stat-card">
           <h4>Mes statistiques mensuelles</h4>
         </div>
@@ -29,7 +32,7 @@
     <% end %>
 </div>
 
-<% if @user.role == "teacher" %>
+<% if current_user.role == "teacher" %>
 <div class="container mb-5">
   <ul class="list-inline tabs-underlined">
     <li>
@@ -44,7 +47,7 @@
   <div class="tab-content">
 
     <div class="tabs tab-pane active mt-5" id="publish">
-        <% @user.lectures.each do |lecture| %>
+        <% current_user.lectures.each do |lecture| %>
           <%= link_to lecture_path(lecture) do %>
             <div class="card-dashboard">
               <% if lecture.photo.attached? %>
@@ -55,7 +58,15 @@
               <div class="card-dashboard-infos">
                 <h2><%= lecture.title %></h2>
                 <p><%= lecture.description %></p>
-                <p><%= link_to "Editer", edit_lecture_path(lecture) %></p>
+                <div class="d-flex">
+                  <%= link_to edit_lecture_path(lecture) do %>
+                    <p class="pr-3"><i class="far fa-edit"></i></p>
+                  <% end %>
+                  <%= link_to lecture_path(lecture), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                   <p><i class="far fa-trash-alt"></i></p>
+                  <% end %>
+                </div>
+
               </div>
             </div>
           <% end %>
@@ -72,10 +83,18 @@
 <div class="theme_background">
   <div class="container">
     <h3 class="pt-3">Mes cours suivis</h3>
-    <% @user.lectures_as_pupil.each do |lecture| %>
-      <p> <%= lecture.title %> </p>
-      <p> <%= lecture.description %> </p>
+    <div class="card-board">
+    <% current_user.lectures_as_pupil.each do |lecture| %>
+      <div class="card-lecture">
+        <div class="card-lecture-image" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= lecture.photo.attached? ? cl_image_path(lecture.photo.key, crop: :fit) : "https://source.unsplash.com/300x150/?#{lecture.category}" %>">
+        </div>
+        <h1><%= lecture.title %></h1>
+        <p><%= lecture.description %></p>
+        <p>Created by <%= lecture.user.first_name %></p>
+        <%= link_to "Découvrir", lecture_path(lecture), class: "btn button-invisible" %>
+      </div>
     <% end %>
+  </div>
   </div>
 </div>
 
