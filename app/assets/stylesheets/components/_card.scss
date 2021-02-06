@@ -4,7 +4,7 @@
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
-  white-space: nowrap;
+  // white-space: nowrap;
   width: 90%;
   margin: 0 auto;
     &::-webkit-scrollbar {
@@ -26,13 +26,14 @@
 
 
   h1 {
-    padding-top: 5px;
+    padding: 10px;
+
     color: $gray;
     font-size: 22px;
   }
 
   p {
-    padding: 8px;
+    padding: 0 10px;
     text-align: left;
     line-height: 1.2;
     font-size: 0.9rem;
@@ -69,6 +70,7 @@
   position: relative;
 }
 
+// L'avatar dépend de card lecture image
 .card-avatar {
   position: absolute;
   right: 16px;
