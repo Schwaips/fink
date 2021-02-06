@@ -1,15 +1,33 @@
-
-            <h1>AJOUTER DU CONTENU A VOTRE COURS</h1>
+<div class="modal fade" id="newblock" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1>AJOUTER DU CONTENU A VOTRE COURS</h1>
               <div class="form-group">
                 <%= simple_form_for [@lecture, @block] do |f| %>
                   <%= f.input :block_type, label: "Categorie de votre lecture", collection: Block::BLOCK_TYPE %>
-                  <%= f.input :photos, as: :file, label: "ajouter des médias a la lecture", input_html: { multiple: true } %>
+                  <%= f.input :photos, as: :file, label: "Ajouter des médias a la lecture", input_html: { multiple: true } %>
 
 
                   <div class="field">
                     <%= f.label :content %>
                     <%= f.rich_text_area :content %>
                   </div>
-                  <%= f.submit "Ajouter ce block", class: "btn button-pink mt-4" %>
-                <% end %>
+
               </div> <!-- fin form simple form -->
+      </div>
+      <div class="modal-footer">
+          <%= f.submit "Ajouter ce block", class: "btn button-pink mt-4" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

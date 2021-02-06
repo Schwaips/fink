@@ -1,69 +1,61 @@
-
-
-<div class="background margintop">
-
+<div class="margintop">
   <div class="card-category" style=
-        "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-        url(<%= @lecture.photo.attached? ? cl_image_path(@lecture.photo.key, crop: :scale)
-        : "https://source.unsplash.com/300x150/?#{@lecture.category}" %>">
-          <h1><%= @lecture.title.upcase %></h1>
-  </div>
+          "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+          url(<%= @lecture.photo.attached? ? cl_image_path(@lecture.photo.key, crop: :scale)
+          : "https://source.unsplash.com/300x150/?#{@lecture.category}" %>">
+            <h1><%= @lecture.title.upcase %></h1>
+  </div> <!-- card category -->
 
+  <div class="row">
+    <div class="col-4">
+        <div class="text-center">
+          <h2 class="tab-edit">Liste des cours</h2>
+          <br/>
+        </div> <!-- text center -->
 
-  <div class="container">
-
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Editer la lecture
-  </button>
-
-  <!-- Modal -->
-    <%= render partial:'lectures/shared/edit-modal', :locals => { lecture: @lecture } %>
-
-    <div class="row">
-      <div class="col-4">
-        <%= link_to  lectures_path do %>
-          <% @lecture.blocks.each_with_index do |block, index| %>
-              <div class="card-dashboard">
-                <div class="card-dashboard-infos">
-                  <%= link_to "Cours numéro #{ index + 1 }", "/" %></h2>
+          <% if @lecture.blocks.empty? %>
+            <h5 class="text-center">Rien pour le moment, ajouter un cours</h5>
+          <% else %>
+            <% @lecture.blocks.each_with_index do |block, index| %>
+          <div class="card-edit">
+                 <h4><%= "Cours numéro #{ index + 1 }" %></h4>
                   <span> Type : <%= block.block_type %></span>
-                </div>
-              </div>
-          <% end %>
+                  <div class="d-flex">
+                      <%= link_to "/" do %>
+                        <p class="pr-3"><i class="far fa-edit"></i></p>
+                      <% end %>
+                      <%= link_to "/", method: :delete, data: { confirm: 'Are you sure?' } do %>
+                        <p><i class="far fa-trash-alt"></i></p>
+                      <% end %>
+                  </div> <!-- end of d flex -->
+            </div> <!-- card -->
         <% end %>
+          <% end %>
+    </div> <!-- col 4 -->
 
-      </div> <!-- fin COl-4 -->
-      <div class="col-6">
-        <div class="mr-auto">
-          <%= render partial:'blocks/new', :locals => { lecture: @lecture } %>
-        </div> <!-- end of render block new -->
-      </div>
-    </div> <!-- end of row -->
-
-    </div> <!-- end of container div for color -->
-</div> <!-- end of background div for color -->
-
-<!-- begining of -->
-<div class="container">
-<br/>
-  <h2>Cours</h2>
-  <% @lecture.blocks.each_with_index do |block, index| %>
-    <div class="card-dashboard">
-      <div class="card-dashboard-infos">
-        <h2>Cours numéro <%= index + 1  %></h2>
-        <span> Type : <%= block.block_type %></span>
-        <p><%= block.content %></p>
-        <div class="d-flex">
-            <%= link_to "/" do %>
-              <p class="pr-3"><i class="far fa-edit"></i></p>
-            <% end %>
-            <%= link_to "/", method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <p><i class="far fa-trash-alt"></i></p>
-            <% end %>
-        </div> <!-- end of d flex -->
-      </div> <!-- end of card dashboard infos -->
-    </div> <!-- end of card dashboard -->
-  <% end %>
-</div> <!-- end of container of existing blocks -->
+    <div class="col-8">
+        <div class="text-center">
+          <h2 class="tab-edit">Gérer les cours pour <%= @lecture.title %></h2>
+          <br>
+          <div class="edit-lecture-modal">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn button-red" data-toggle="modal" data-target="#exampleModal">
+              Modifier la lecture
+            </button>
+              <!-- Modal -->
+            <%= render partial:'lectures/shared/edit-modal', :locals => { lecture: @lecture } %>
+          </div> <!-- edit lecture modal-->
+          <h6 class="text-center m-3">Ou bien...</h6>
+            <div class="create-block-modal">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn button-blue" data-toggle="modal" data-target="#newblock">
+                Ajouter un contenu
+              </button>
+                <!-- Modal -->
+              <%= render partial:'blocks/new', :locals => { lecture: @lecture } %>
+            </div> <!-- create block modal-->
+      </div> <!-- text center -->
+    </div> <!--col 8-->
+  </div> <!-- row -->
+</div>
 
