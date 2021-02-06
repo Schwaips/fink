@@ -1,5 +1,5 @@
 
-<div class="mb-5 container d-flex justify-content-between">
+<div class="mb-5 container d-flex justify-content-between margintop">
 
   <div class="d-flex">
 
@@ -86,14 +86,10 @@
 <div class="theme_background">
   <div class="container">
     <h3 class="pt-3">Mes cours suivis</h3>
+    <div class="card-board">
     <% current_user.lectures_as_pupil.each do |lecture| %>
       <div class="card-lecture">
-        <div class="card-lecture-image">
-          <% if lecture.photo.attached? %>
-            <%= cl_image_tag lecture.photo.key %>
-          <% else %>
-            <%= image_tag "" %>
-          <% end %>
+        <div class="card-lecture-image" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= lecture.photo.attached? ? cl_image_path(lecture.photo.key, crop: :fit) : "https://source.unsplash.com/300x150/?#{lecture.category}" %>">
         </div>
         <h1><%= lecture.title %></h1>
         <p><%= lecture.description %></p>
@@ -101,6 +97,7 @@
         <%= link_to "Découvrir", lecture_path(lecture), class: "btn button-invisible" %>
       </div>
     <% end %>
+  </div>
   </div>
 </div>
 
