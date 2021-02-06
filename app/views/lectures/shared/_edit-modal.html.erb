@@ -1,10 +1,16 @@
-  <div class="container margintop">
-    <div class="row">
-     <div class="col-6">
-        <div class="form-edit">
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Mettre à jour votre cours</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-edit">
           <h1></h1>
           <br/>
-          <h1>Créer un nouveau cours</h1>
           <%= simple_form_for(@lecture) do |f| %>
             <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
             <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
@@ -15,17 +21,12 @@
                 item_wrapper_class: 'category-item',
                 input_html: {class: 'category-selector'},
                 collection: Lecture::CATEGORY %>
-            <%= f.submit "Suivant", class: "btn button-pink" %>
+            <%= f.submit "Sauvegarder", class: "btn button-pink" %>
             <br/>
               <br/>
           <% end %>
         </div> <!-- fin form-edit -->
-      </div> <!-- fin col-6 -->
-      <div class="col-4">
-      <br/>
-      <h2>Comment ca fonctionne?</h2>
-      <span><i class="far fa-plus-square"></i> Créer votre cours</span>
-      <img src="app/assets/images/arrow-left.png" alt="">
+        </div>
       </div>
-    </div> <!-- row -->
+    </div>
   </div>
