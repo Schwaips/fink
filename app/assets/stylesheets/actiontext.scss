@@ -36,3 +36,7 @@
     }
   }
 }
+
+#block-content.trix-content::before {
+background: white !important;
+}
