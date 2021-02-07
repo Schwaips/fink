@@ -36,7 +36,7 @@ import { initButton } from '../components/button_create';
 // import { initSelect2 } from '../components/init_select2';
 import { initScroll } from '../controllers/scroll_controller';
 
-import { editBlock } from '../components/edit-block';
+import { editLecture } from '../components/edit-lecture';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -44,4 +44,5 @@ document.addEventListener('turbolinks:load', () => {
   initScroll(gsap, ScrollTrigger);
   initTabs();
   setTimeout(initButton(), 3000);
+  editLecture();
 });

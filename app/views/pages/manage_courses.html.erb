@@ -13,7 +13,7 @@
           <div class="d-flex">
             <img src="https://res.cloudinary.com/cb-dev/image/upload/e_bgremoval/v1612710092/Fink/icon-cours.png", class="image-left" alt="">
             <h3><%= lecture.title %></h3>
-            <%= link_to edit_lecture_path(lecture), class:"modify-course" do %>
+            <%= link_to edit_lecture_path(lecture), class:"edit-lecture", remote: true do %>
               <p class="pr-3"><i class="far fa-edit"></i></p>
             <% end %>
           </div> <!--d flex -->
@@ -33,7 +33,9 @@
     </div> <!-- col-3 -->
 
     <div class="col-9">
+      <div id="form-for-edit-lecture">
 
+      </div>
     </div> <!-- col 9-->
 
   </div> <!--row  -->
