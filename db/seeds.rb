@@ -36,11 +36,11 @@ file = URI.open('https://mi0.rightinthebox.com/images/x/201905/dveccr15573969676
 lecture1.photo.attach(io: file, filename: 'paint-oil.jpg', content_type: 'image/jpg')
 
 
-b = Block.create!(lecture_id: lecture.id, block_type: "Video", content: "Découvrez le monde de Rails grâce à mon tutoriel de deux heures. Apprenez à faire des seeds " )
-b1 = Block.create!(lecture_id: lecture.id, block_type: "Podcast", content: "Je vous explique a travers ce podcast comment créer une app rails" )
+b = Block.create!(lecture_id: lecture.id, title:"Introduction à rails", block_type: "Video", content: "Découvrez le monde de Rails grâce à mon tutoriel de deux heures. Apprenez à faire des seeds " )
+b1 = Block.create!(lecture_id: lecture.id, block_type: "Podcast", title:"Utilisation des controllers", content: "Je vous explique a travers ce podcast comment créer une app rails" )
 
-b2 = Block.create!(lecture_id: lecture1.id, block_type: "Text", content: "Voici un cheatsheet pour savoir comment faire une belle peinture à l'huile" )
-b3 = Block.create!(lecture_id: lecture1.id, block_type: "Video", content: "Une démonstration, comment faire des dragons avec de la peinture à l'huile" )
+b2 = Block.create!(lecture_id: lecture1.id, block_type: "Text", title:"Tricks pour peinture", content: "Voici un cheatsheet pour savoir comment faire une belle peinture à l'huile" )
+b3 = Block.create!(lecture_id: lecture1.id, block_type: "Video", title:"Dragons en peinture", content: "Une démonstration, comment faire des dragons avec de la peinture à l'huile" )
 
 
 puts "-- lecture pour amélien--"
@@ -54,11 +54,11 @@ file = URI.open('https://www.alternance-professionnelle.fr/wp-content/uploads/20
 lecture9.photo.attach(io: file, filename: 'english-class.jpg', content_type: 'image/jpg')
 
 
-b4 = Block.create!(lecture_id: lecture8.id, block_type: "Text", content: "voyez une de mes création pour vous divertir et apprendre à écrire des chansons" )
-b5 = Block.create!(lecture_id: lecture8.id, block_type: "Video", content: "Entrainez votre thorax avant de faire un concert" )
+b4 = Block.create!(lecture_id: lecture8.id, block_type: "Text", title:"Mes créations", content: "voyez une de mes création pour vous divertir et apprendre à écrire des chansons" )
+b5 = Block.create!(lecture_id: lecture8.id, block_type: "Video", title:"Echauffement, les bases", content: "Entrainez votre thorax avant de faire un concert" )
 
-b6 = Block.create!(lecture_id: lecture9.id, block_type: "Video", content: "Tous sur les prononciations des UKs, mieux comprendre et avancer." )
-b6 = Block.create!(lecture_id: lecture9.id, block_type: "Text", content: "Tous vos verbes irrégulier, facile à apprendre" )
+b6 = Block.create!(lecture_id: lecture9.id, block_type: "Video", title:"Les prononciations", content: "Tous sur les prononciations des UKs, mieux comprendre et avancer." )
+b6 = Block.create!(lecture_id: lecture9.id, block_type: "Text", title:"Verbes irréguliers", content: "Tous vos verbes irrégulier, facile à apprendre" )
 
 
 puts "---seeds ending---"

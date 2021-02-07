@@ -3,8 +3,6 @@ const initButton = () => {
   if (button) {
     button.forEach((but) => {
       but.addEventListener('mouseover', (event) => {
-
-        console.log('Hello');
         but.innerHTML = `Créer un nouveau cours`;
       });
     but.addEventListener('mouseleave', (event) => {
