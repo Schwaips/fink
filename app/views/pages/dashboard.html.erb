@@ -56,7 +56,7 @@
                   <h2><%= lecture.title %></h2>
                   <p><%= lecture.description %></p>
                   <div class="d-flex">
-                    <%= link_to edit_lecture_path(lecture) do %>
+                    <%= link_to manage_courses_path do %>
                       <p class="pr-3"><i class="far fa-edit"></i></p>
                     <% end %>
                     <%= link_to lecture_path(lecture), method: :delete, data: { confirm: 'Are you sure?' } do %>
