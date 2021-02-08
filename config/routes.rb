@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: "pages#dashboard"
   get '/manage_courses', to: "pages#manage_courses"
+  get '/test', to: "pages#test"
 end
