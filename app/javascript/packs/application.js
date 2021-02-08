@@ -44,5 +44,5 @@ document.addEventListener('turbolinks:load', () => {
   initScroll(gsap, ScrollTrigger);
   initTabs();
   setTimeout(initButton(), 3000);
-  editLecture();
+  // editLecture();
 });

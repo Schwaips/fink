@@ -32,3 +32,20 @@
 .modify-course {
   margin-left: 10px;
 }
+
+.link-edit-lecture-left {
+  color: $blue;
+  margin-left: 5px;
+}
+
+.link-edit-lecture-left:hover {
+  color: white;
+}
+
+.modal-title {
+  color: $blue;
+}
+
+.modal-body {
+  color: $gray;
+}
