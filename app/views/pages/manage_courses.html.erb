@@ -11,8 +11,8 @@
       <% @lectures.each do |lecture| %>
         <div class="card-menu-course">
           <div class="d-flex">
-            <img src="https://res.cloudinary.com/cb-dev/image/upload/e_bgremoval/v1612710092/Fink/icon-cours.png", class="image-left" alt="">
-            <h3><%= lecture.title %></h3>
+
+            <h3><i class="fas fa-graduation-cap"></i>  <%= lecture.title %></h3>
             <div data-toggle="modal" data-target="#editLectureModal" class="link-edit-lecture-left">
              <p class="pr-3"><i class="far fa-edit"></i></p>
             </div>
