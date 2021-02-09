@@ -2,7 +2,8 @@
 <div class="screen background">
 
   <div class="card-big-lecture margintop">
-    <h1><%= @lecture.title %></h1>
+
+    <p class="title"><h1><%= @lecture.title %></h1>par <%= @lecture.user.first_name %></p>
 
       <% if @lecture.photo.attached? %>
         <%= cl_image_tag @lecture.photo.key, class: "card-lecture-bigimage" %>
@@ -29,26 +30,70 @@
     </div>
   </div>
 </div>
-<div class="screen">
+
+
+<div class="container">
   <h2>BLOCK DU LECTURE</h2>
 
-  <% @lecture.blocks.each do |block| %>
-    <%= block.content %>
-    <%= block.block_type %>
-    <% block.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, class:"card-avatar avatar-bordered" %>
-    <% end %>
-  <% end %>
+  <div class="bloc-displayer">
 
-  <div class="videobloc">
-    <div class="round"></div>
-    <div class="play"></div>
-    <div class="play-red"></div>
+    <% @lecture.blocks.each_with_index do |block, index| %>
+      <div class="bloc">
+      <!-- Début d'un bloc -->
+        <h4>Chapitre <%= index + 1 %></h4>
+        <p><em><%= block.content %></em></p>
+        <% if block.block_type == "Video" %>
+          <p>Cette session est sous forme de <%= block.block_type %></p>
+          <div class="videobloc" style="margin: 45px auto;">
+            <img style="opacity: 0.1;" src="https://source.unsplash.com/250x180/?video"/>
+            <div class="round"></div>
+            <div class="play"></div>
+            <div class="play-red"></div>
+          </div>
+        <% elsif block.block_type == "Text"%>
+          <p>Cette session est sous forme de <%= block.block_type %></p>
+          <div class="videobloc" style="margin: 45px auto;"></div>
+        <% elsif block.block_type == "Podcast"%>
+          <p>Cette session est sous forme de <%= block.block_type %></p>
+          <div class="videobloc" style="margin: 45px auto;">
+            <div>Icons made by
+              <a href="https://www.flaticon.com/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a>
+              from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+          </div>
+        <% else %>
+          <p>Cette session est sous forme de <%= block.block_type %></p>
+          <div class="videobloc" style="margin: 45px auto;"></div>
+        <% end %>
+            <!-- Mettre un if -->
+            <% block.photos.each do |photo| %>
+              <%= cl_image_tag photo.key %>
+            <% end %>
+    </div>
+    <% end %> <!-- fin de mon bloc -->
   </div>
+</div>
 
-  <div class="videobloc">
-    <div class="round"></div>
-    <div class="play"></div>
-  <div class="play-red"></div>
+<div class="header pt-3 mt-3">
+
+  <h1>
+    FIN DES COURS
+  </h1>
+  <div>
+
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+        <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+      </g>
+    </svg>
+  </div>
+  <!--Waves end-->
+
 </div>
-</div>
+<%= render 'shared/footer' %>
