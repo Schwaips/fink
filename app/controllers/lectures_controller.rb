@@ -3,13 +3,7 @@ skip_before_action :authenticate_user!, only: [:index, :show]
 before_action :set_lecture, only: [:show, :edit, :update]
 
   def index
-    if params[:query].present?
-      sql_query = "title ILIKE :query OR category ILIKE :query"
-      @lectures = Lecture.where(sql_query, query: "%#{params[:query]}%")
-    else
-      @lectures = Lecture.all
-    end
-
+    @lectures = Lecture.all
     @schooling = Schooling.new
   end
 
