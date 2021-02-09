@@ -16,7 +16,7 @@
 // card individuelle
 .card-lecture {
   background: #fff;
-  border-radius: 36px;
+  border-radius: 15px;
   display: inline-block;
   height: 350px;
   position: relative;
@@ -70,7 +70,7 @@
   background-size: cover;
   height:120px;
   width:250px;
-  border-radius: 36px 36px 0px 0px;
+  border-radius: 15px 15px 0px 0px;
   transition: height 1s ease, opacity 0.3s ease, padding-top 0.3s ease;
   position: relative;
 }
@@ -99,7 +99,7 @@
   background-size: cover;
   height:400px;
   width:650px;
-  border-radius: 36px;
+  border-radius: 15px;
   transition: height 1s ease, opacity 0.3s ease, padding-top 0.3s ease;
   position: relative;
 }
@@ -108,7 +108,7 @@
   background: white;
   height:400px;
   width: screen;
-  border-radius: 36px;
+  border-radius: 15px;
   transition: height 1s ease, opacity 0.3s ease, padding-top 0.3s ease;
   position: relative;
   border: solid 1px;
@@ -126,7 +126,7 @@
 .card-big-lecture {
   background: #fff;
   padding: 55px;
-  border-radius: 36px;
+  border-radius: 15px;
   display: inline-block;
   height: 550px;
   position: relative;
@@ -141,6 +141,15 @@
     font-size: 22px;
     position: absolute;
     top: 20px;
+  }
+
+  .title {
+    padding-top: 5px;
+    color: $gray;
+    font-size: 22px;
+    position: relative;
+    font-size: 0.9rem;
+    font-weight: 200;
   }
 
   p {
