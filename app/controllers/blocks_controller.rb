@@ -1,6 +1,12 @@
 class BlocksController < ApplicationController
 before_action :new_block, only: [ :create ]
 
+
+
+  def new
+    @block = Block.new
+  end
+
   def create
     @lecture = Lecture.find(params[:lecture_id])
     @block.lecture = @lecture
@@ -32,7 +38,7 @@ before_action :new_block, only: [ :create ]
   end
 
   def params_block
-     params.require(:block).permit(:block_type, :content, photos: [] )
+     params.require(:block).permit(:block_type, :content, :title, photos: [])
   end
 
 

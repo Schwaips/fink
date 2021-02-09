@@ -3,7 +3,7 @@ skip_before_action :authenticate_user!, only: [:index, :show]
 before_action :set_lecture, only: [:show, :edit, :update]
 
   def index
-     if params[:query].present?
+    if params[:query].present?
       sql_query = "title ILIKE :query OR category ILIKE :query"
       @lectures = Lecture.where(sql_query, query: "%#{params[:query]}%")
     else
@@ -41,7 +41,7 @@ before_action :set_lecture, only: [:show, :edit, :update]
 
   def update
     @lecture.update(params_lecture)
-    redirect_to edit_lecture_path(@lecture)
+    redirect_to manage_courses_path
     flash[:notice] = "Votre lecture #{@lecture.title} est à jour, merci!"
   end
 

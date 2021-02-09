@@ -1,17 +1,17 @@
- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="editLectureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Mettre à jour votre cours</h5>
+          <h5 class="modal-title text-center" id="exampleModalLabel">Cours <%= lecture.title %></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <div class="form-edit">
-          <h1></h1>
+            <h1 class="text-center">Mettre à jour votre cours</h1>
           <br/>
-          <%= simple_form_for(@lecture) do |f| %>
+          <%= simple_form_for(lecture) do |f| %>
             <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
             <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
             <%= f.input :photo, as: :file, label: "Miniature de l'offre", label: "Choisir une nouvelle photo" %>
