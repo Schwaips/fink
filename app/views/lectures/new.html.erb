@@ -22,10 +22,17 @@
         </div> <!-- fin form-edit -->
       </div> <!-- fin col-6 -->
       <div class="col-4">
-      <br/>
-      <h2>Comment ca fonctionne?</h2>
-      <span><i class="far fa-plus-square"></i> Créer votre cours</span>
-      <img src="app/assets/images/arrow-left.png" alt="">
-      </div>
+        <br/>
+        <h1>Comment ca fonctionne?</h1>
+          <div class="d-flex justify-content-evenly align-items-center">
+           <%= cl_image_tag "idea-pic", class:"p-5" %>
+            <h1> Créer votre cours</h1>
+          </div> <!-- d flex-->
+          <div class="d-flex justify-content-evenly align-items-center">
+           <h1 class="p-5 text-right" style="color: #DCDCDC" > puis ajouter vos chapitres...</h1>
+           <%= cl_image_tag "chapitre-pic" %>
+
+          </div> <!-- d flex-->
+      </div> <!-- fin col 4 -->
     </div> <!-- row -->
   </div>
