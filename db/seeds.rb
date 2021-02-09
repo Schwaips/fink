@@ -45,15 +45,15 @@ artcomt = Lecture.create!(title: "Histoire de l'Art comtemporain", description: 
 file = URI.open('https://www.guide-artistique.com/images/header/art-contemporain.jpg')
 artcomt.photo.attach(io: file, filename: 'art-comtem.jpg', content_type: 'image/jpg')
 
-  bartcomt1 = Block.create!(lecture_id: lecture1.id, block_type: "Video", title:"Introduction", content: "Quels sont les impacts de l'art comtenporain sur notre société actuelle?" )
-  bartcomp2 = Block.create!(lecture_id: lecture1.id, block_type: "Video", title:"Les grands acteurs du XXeme siecle", content: "Un plongeon au coeur des grands noms de l'art qui ont faconnés notre mode de vie" )
+  bartcomt1 = Block.create!(lecture_id: artcomt.id, block_type: "Video", title:"Introduction", content: "Quels sont les impacts de l'art comtenporain sur notre société actuelle?" )
+  bartcomp2 = Block.create!(lecture_id: artcomt.id, block_type: "Video", title:"Les grands acteurs du XXeme siecle", content: "Un plongeon au coeur des grands noms de l'art qui ont faconnés notre mode de vie" )
 
 artegy = Lecture.create!(title: "L'Egypte antique et l'art", description: "Les egyptiens a l'époque des pharaons et leurs approches vis à vis de l'art", category: "Art", user: c)
 file = URI.open('https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/%C3%84gyptischer_Maler_um_1360_v._Chr._001.jpg/384px-%C3%84gyptischer_Maler_um_1360_v._Chr._001.jpg')
 artegy.photo.attach(io: file, filename: 'art-comtem.jpg', content_type: 'image/jpg')
 
-  bartegy = Block.create!(lecture_id: lecture1.id, block_type: "Video", title:"Des pharaons à aujourd'hui", content: "Les pyramides, le Sphinx, les pharaons...l'art d'aimer l'art" )
-  bartegy2 = Block.create!(lecture_id: lecture1.id, block_type: "Video", title:"De l'or et des esclaves", content: "L'art, raconté en histoire par les égyptiens antiques" )
+  bartegy = Block.create!(lecture_id: artegy.id, block_type: "Video", title:"Des pharaons à aujourd'hui", content: "Les pyramides, le Sphinx, les pharaons...l'art d'aimer l'art" )
+  bartegy2 = Block.create!(lecture_id: artegy.id, block_type: "Video", title:"De l'or et des esclaves", content: "L'art, raconté en histoire par les égyptiens antiques" )
 
 
 
@@ -64,16 +64,16 @@ lecture8 = Lecture.create!(title: "Chants", description: "Je suis prêt à entra
 file = URI.open('https://p5.storage.canalblog.com/57/71/1380236/106139385.jpg')
 lecture8.photo.attach(io: file, filename: 'sing.jpg', content_type: 'image/jpg')
 
+  b4 = Block.create!(lecture_id: lecture8.id, block_type: "Text", title:"Mes créations", content: "voyez une de mes création pour vous divertir et apprendre à écrire des chansons" )
+  b5 = Block.create!(lecture_id: lecture8.id, block_type: "Video", title:"Echauffement, les bases", content: "Entrainez votre thorax avant de faire un concert" )
+
+
 lecture9 = Lecture.create!(title: "Cours d'anglais 101", description: "Accompagnement pour l'apprentissage d'anglais niveau débutant", category: "Langue", user: a)
 file = URI.open('https://www.alternance-professionnelle.fr/wp-content/uploads/2019/03/cours-anglais-intensif-300x209.jpg')
 lecture9.photo.attach(io: file, filename: 'english-class.jpg', content_type: 'image/jpg')
 
-
-b4 = Block.create!(lecture_id: lecture8.id, block_type: "Text", title:"Mes créations", content: "voyez une de mes création pour vous divertir et apprendre à écrire des chansons" )
-b5 = Block.create!(lecture_id: lecture8.id, block_type: "Video", title:"Echauffement, les bases", content: "Entrainez votre thorax avant de faire un concert" )
-
-b6 = Block.create!(lecture_id: lecture9.id, block_type: "Video", title:"Les prononciations", content: "Tous sur les prononciations des UKs, mieux comprendre et avancer." )
-b6 = Block.create!(lecture_id: lecture9.id, block_type: "Text", title:"Verbes irréguliers", content: "Tous vos verbes irrégulier, facile à apprendre" )
+  b6 = Block.create!(lecture_id: lecture9.id, block_type: "Video", title:"Les prononciations", content: "Tous sur les prononciations des UKs, mieux comprendre et avancer." )
+  b6 = Block.create!(lecture_id: lecture9.id, block_type: "Text", title:"Verbes irréguliers", content: "Tous vos verbes irrégulier, facile à apprendre" )
 
 
 puts "---seeds ending---"
