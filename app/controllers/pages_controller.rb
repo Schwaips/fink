@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :dashboard ]
+  skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
   end
@@ -13,4 +13,12 @@ class PagesController < ApplicationController
     @block = Block.new
   end
 
+  def search
+    if params[:query].present?
+      sql_query = "title ILIKE :query OR category ILIKE :query"
+      @lectures = Lecture.where(sql_query, query: "%#{params[:query]}%")
+    else
+      redirect_to(request.referrer || root_url)
+    end
+  end
 end

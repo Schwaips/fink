@@ -1,0 +1,49 @@
+<div class="margintop">
+  <div class="container">
+    <% if @lectures.empty? %>
+      <h2 class="pt-5">Désolé, mais nous n'avons pas trouvé de cours correspondant</h2>
+    <% else %>
+      <h2 class="pt-5">Voici ce qui pourrait vous intéresser :</h2>
+      <div class="card-board pb-5">
+        <% @lectures.each do |lecture| %>
+          <div class="card-lecture mt-5 mr-5">
+            <% if lecture.photo.attached? %>
+              <div class="card-lecture-image" style="background-image: url('<%= cl_image_path lecture.photo.key, crop: :fill %>')">
+                  <% if lecture.user.photo.attached? %>
+                    <img src="<%= cl_image_tag lecture.user.photo.key %>" class="card-avatar avatar-bordered" data-toggle="tooltip" data-placement="top" title="Tooltip on top" />
+                  <% else %>
+                    <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg" class="card-avatar avatar-bordered" data-toggle="tooltip" data-placement="top" title="Tooltip on top"/>
+                  <% end %>
+                </div>
+            <% else %>
+              <div class="card-lecture-image" style="background: url("<%= 'https://source.unsplash.com/300x150/?#{lecture.category'%>")">
+                <% if lecture.user.photo.attached? %>
+                  <img src="<%= cl_image_tag lecture.user.photo.key %>" class="card-avatar avatar-bordered" />
+                <% else %>
+                  <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg" class="card-avatar avatar-bordered"/>
+                <% end %>
+              </div>
+            <% end %>
+            <div class="card-text">
+              <h1><%= lecture.title %></h1>
+                <p><%= lecture.description %></p>
+                <p>Created by <%= lecture.user.first_name %></p>
+                <%= link_to "Découvrir", lecture_path(lecture), class: "btn button-invisible" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
