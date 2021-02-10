@@ -22,7 +22,7 @@ before_action :set_lecture, only: [:show, :edit, :update]
     # @block = Block.new(params[:lecture][:blocks_attributes]["0"])
     if @lecture.save
       flash[:notice] = "Lecture #{@lecture.title} publiée, rajouter du contenu"
-      redirect_to edit_lecture_path(@lecture)
+      redirect_to new_lecture_block_path(@lecture)
     else
       render :new
     end

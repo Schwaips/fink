@@ -11,6 +11,7 @@ class PagesController < ApplicationController
   def manage_courses
     @lectures = Lecture.where(user: current_user)
     @block = Block.new
+    # @lecture = Lecture.find(params[:lecture_id])
   end
 
   def search

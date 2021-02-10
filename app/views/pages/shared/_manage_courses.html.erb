@@ -11,9 +11,7 @@
       <% @lectures.each do |lecture| %>
         <div class="card-menu-course">
           <div class="d-flex">
-
             <!-- <%= link_to  "Editer", edit_lecture_path(lecture), class: "btn btn-primary", class: "edit-lecture", remote: true %> -->
-
             <h3><i class="fas fa-graduation-cap"></i> <%= lecture.title %> </h3>
             <div data-toggle="modal" data-target="#editLectureModal" class="link-edit-lecture-left">
              <p class="pr-3"><i class="far fa-edit"></i></p>
@@ -29,13 +27,15 @@
                 <div data-toggle="modal" data-target="#addBlockModal" class="link-new-block-left">
 
             <% end %> <!-- each for blocks -->
-            <%= link_to  new_lecture_block_path(lecture_id: lecture.id, block: @block) do %>
+
+            <%= link_to  new_lecture_block_path(lecture_id: lecture, block: @block) do %>
               <li><i class="fas fa-plus-circle"></i> Ajouter un chapitre</li>
             <% end %> <!-- link to end-->
+
             </div> <!-- end of edit modal block-->
               </ul>
-              <!-- modal edit block-->
-              <%= render partial:'blocks/shared/new', :locals => { lecture_id: @lecture } %>
+            
+
           </div> <!-- div chapitre -->
         </div> <!-- card menu course -->
       <% end %> <!-- each for lectures -->
