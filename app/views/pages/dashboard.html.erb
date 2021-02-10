@@ -44,6 +44,8 @@
 
     <div class="tab-content">
       <div class="tabs tab-pane active mt-5" id="publish">
+      <br>
+      <h3>Cours publiés</h3>
           <% current_user.lectures.each do |lecture| %>
             <%= link_to lecture_path(lecture) do %>
               <div class="card-dashboard">
@@ -59,7 +61,7 @@
                     <%= link_to manage_courses_path do %>
                       <p class="pr-3"><i class="far fa-edit"></i></p>
                     <% end %>
-                    <%= link_to lecture_path(lecture), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <%= link_to lecture_path(lecture), method: :delete, data: { confirm: "Supprimer #{lecture.title}?" } do %>
                      <p><i class="far fa-trash-alt"></i></p>
                     <% end %>
                   </div>
@@ -70,6 +72,10 @@
     </div> <!-- tabs tab-pane active mt-5 -->
 
       <div class="tabs tab-pane" id="draft">
+        <br>
+        <h3>Désolé, vous n'avez aucun brouillon pour le moment</h3>
+        <p>Pour créer un nouveau cours, cliquez sur le bouton ci-dessous</p>
+        <%= link_to  "Ajouter un cours", new_lecture_path, class:"btn button-gray" %>
       </div>
 
     </div>
