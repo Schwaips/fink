@@ -42,6 +42,17 @@ before_action :set_lecture, only: [:show, :edit, :update]
     flash[:notice] = "Votre lecture #{@lecture.title} est à jour, merci!"
   end
 
+  def destroy
+    @lecture = Lecture.find(params[:id])
+    if @lecture.destroy
+      flash[:notice] = "Le cours #{@lecture.title} bien supprimé, merci"
+      redirect_to manage_courses_path
+    else
+      render :show
+    end
+  end
+
+
 private
 
   def set_lecture

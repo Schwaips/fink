@@ -5,6 +5,7 @@ before_action :new_block, only: [ :create ]
 
   def new
     @block = Block.new
+    @lecture = Lecture.find(params[:lecture_id])
   end
 
   def create
