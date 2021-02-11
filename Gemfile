@@ -23,6 +23,10 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 # cloudinary for media upload
 gem 'cloudinary', '~> 1.16.0'
+#Slack
+gem 'omniauth'
+gem 'omniauth-slack'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
