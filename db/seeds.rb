@@ -56,6 +56,17 @@ artegy.photo.attach(io: file, filename: 'art-comtem.jpg', content_type: 'image/j
   bartegy2 = Block.create!(lecture_id: artegy.id, block_type: "Video", title:"De l'or et des esclaves", content: "L'art, raconté en histoire par les égyptiens antiques" )
 
 
+lecture13 = Lecture.create!(title: "Cours d'espagnol", description: "Apprenez l'espagnol, et envolez vous pour Barcelone", category: "Langue", user: c)
+file = URI.open('https://www.managementdelaformation.fr/wp-content/uploads/2018/05/RHEXIS_Actu_Espagne.jpg')
+lecture13.photo.attach(io: file, filename: 'spanish-class.jpg', content_type: 'image/jpg')
+
+lecture14 = Lecture.create!(title: "Cours d'italien", description: "Venez apprendre l'italien avec Charlie le polyglotte", category: "Langue", user: c)
+file = URI.open('https://www.airtransat.com/getmedia/06aeacd6-0120-454c-906b-d324b859577a/italie-cinque-terre-italy-2050x1200.aspx?width=2050&height=1200&ext=.jpg')
+lecture14.photo.attach(io: file, filename: 'italian-class.jpg', content_type: 'image/jpg')
+
+lecture15 = Lecture.create!(title: "Cours de français", description: "Parlez français avec Charlie", category: "Langue", user: c)
+file = URI.open('https://www.touteleurope.eu/fileadmin/user_upload/France.png')
+lecture15.photo.attach(io: file, filename: 'french-class.jpg', content_type: 'image/jpg')
 
 
 puts "-- lecture pour amélien--"
@@ -74,6 +85,20 @@ lecture9.photo.attach(io: file, filename: 'english-class.jpg', content_type: 'im
 
   b6 = Block.create!(lecture_id: lecture9.id, block_type: "Video", title:"Les prononciations", content: "Tous sur les prononciations des UKs, mieux comprendre et avancer." )
   b6 = Block.create!(lecture_id: lecture9.id, block_type: "Text", title:"Verbes irréguliers", content: "Tous vos verbes irrégulier, facile à apprendre" )
+
+lecture10 = Lecture.create!(title: "Python", description: "Venez découvrir Python", category: "Developpement", user: a)
+file = URI.open('https://www.lobservateurdebeauvais.fr/wp-content/uploads/2020/09/python.jpg')
+lecture10.photo.attach(io: file, filename: 'sing.jpg', content_type: 'image/jpg')
+
+lecture11 = Lecture.create!(title: "Javascript", description: "Venez découvrir Javascript", category: "Developpement", user: a)
+file = URI.open('https://www.developpez.net/forums/attachments/p513560d1/a/a/a')
+lecture11.photo.attach(io: file, filename: 'sing.jpg', content_type: 'image/jpg')
+
+lecture12 = Lecture.create!(title: "SQL", description: "Venez découvrir SQL", category: "Developpement", user: a)
+file = URI.open('https://www.softfluent.fr/wp-content/uploads/2019/10/SQL.png')
+lecture12.photo.attach(io: file, filename: 'sing.jpg', content_type: 'image/jpg')
+
+
 
 
 puts "---seeds ending---"
