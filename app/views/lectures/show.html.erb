@@ -3,37 +3,52 @@
 
   <div class="card-big-lecture margintop">
 
-    <p class="title"><h1><%= @lecture.title %></h1>par <%= @lecture.user.first_name %></p>
+    <div class="d-flex align-items-center mb-2">
+      <% if @lecture.user.photo.attached? %>
+        <img src="<%= cl_image_tag lecture.user.photo.key %>" class=" avatar img-circle mr-2" />
+      <% else %>
+        <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg" class="avatar img-circle mr-2"/>
+      <% end %>
 
-      <% if @lecture.photo.attached? %>
-        <%= cl_image_tag @lecture.photo.key, class: "card-lecture-bigimage" %>
+      <p>Ce cours est proposé par <strong> <%= @lecture.user.first_name %> </strong></p>
+
+    </div>
+
+
+    <div class="d-flex">
+      <div>
+        <% if @lecture.photo.attached? %>
+          <%= cl_image_tag @lecture.photo.key, class: "card-lecture-bigimage" %>
         <% else %>
-        <img src="https://source.unsplash.com/800x600/?<%= @lecture.category%>" alt="" class="card-lecture-bigimage">
-      <% end %>
+          <img src="https://source.unsplash.com/800x600/?<%= @lecture.category%>" alt="" class="card-lecture-bigimage">
+        <% end %>
+      </div>
 
-      <div class="card-lecture-bigtext">
-        <h1>La show pour la lecture intitulé <%= @lecture.title %></h1>
+      <div class="ml-3 d-flex flex-column justify-content-between">
+        <div class="d-flex align-items-end">
+          <h2><%= @lecture.title %></h2>
+          <p class="pl-4">Catégorie <%= @lecture.category %></p>
+        </div>
+        <p><%= @lecture.description %></p>
+          <div class="card-lecture-bigbuttons d-flex justify-content-end">
+            <%= link_to  "Retour à la l'index des lectures", lectures_path, class: "btn button-gray mr-2" %>
+            <%if (@lecture.user_id == current_user.id) %>
+              <%= link_to  "Editer", manage_courses_path(), class: "btn button-gray mr-2" %>
+            <% end %>
+            <%if (@lecture.user_id != current_user.id)  %>
+              <%= link_to  "Suivre ce cours", lecture_schoolings_path(@lecture), method: "POST", class: "btn button-blue" %>
+            <%end %>
+          </div>
+      </div>
+    </div>
 
-      <p><%= @lecture.user.first_name %></p>
-      <span><%= @lecture.description %></span>
-      <br>
-      <p><%= @lecture.category %></p>
-    </div>
-    <div class="card-lecture-bigbuttons">
-      <%= link_to  "Retour à la l'index des lectures", lectures_path, class: "btn button-gray" %>
-      <%if (@lecture.user_id == current_user.id) %>
-        <%= link_to  "Editer", manage_courses_path(), class: "btn button-gray" %>
-      <% end %>
-      <%if (@lecture.user_id != current_user.id)  %>
-        <%= link_to  "Suivre ce cours", lecture_schoolings_path(@lecture), method: "POST", class: "btn button-blue" %>
-      <%end %>
-    </div>
+
   </div>
 </div>
 
 
 <div class="container">
-  <h2>BLOCK DU LECTURE</h2>
+  <h2 class="mt-4">Chapitres disponibles</h2>
 
   <div class="bloc-displayer">
 
@@ -74,10 +89,6 @@
 </div>
 
 <div class="header pt-3 mt-3">
-
-  <h1>
-    FIN DES COURS
-  </h1>
   <div>
 
     <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -96,4 +107,3 @@
   <!--Waves end-->
 
 </div>
-<%= render 'shared/footer' %>
