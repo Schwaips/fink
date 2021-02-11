@@ -53,23 +53,42 @@
   <div class="bloc-displayer">
 
     <% @lecture.blocks.each_with_index do |block, index| %>
+
+    <%= render partial:'lectures/shared/show-modal', :locals => { block: block, index: index } %>
+
+
       <div class="bloc">
       <!-- Début d'un bloc -->
         <h4>Chapitre <%= index + 1 %></h4>
         <p><em><%= block.content %></em></p>
         <% if block.block_type == "Video" %>
-          <p>Cette session est sous forme de <%= block.block_type %></p>
-          <div class="videobloc" style="margin: 45px auto;">
-            <img style="opacity: 0.1;" src="https://source.unsplash.com/250x180/?video"/>
+          <p>Cette session est sous forme de vidéo</p>
+
+          <% if block.photos.attached? %>
+
+          <div class="videobloc" style="margin: 45px auto;" type="button" data-toggle="modal" data-target="#blockmodal<%= index %>">
+            <% block.photos.each do |video| %>
+              <%= cl_video_thumbnail_tag video.key, crop: :fill, class: "videocl" %>
+            <% end %>
             <div class="round"></div>
             <div class="play"></div>
             <div class="play-red"></div>
           </div>
+
+          <% else %>
+            <div class="videobloc" style="margin: 45px auto;" type="button" data-toggle="modal" data-target="#blockmodal<%= index %>">
+            <img style="opacity: 0.1;" src="https://source.unsplash.com/250x180/?video"/ class="videocl">
+              <div class="round"></div>
+              <div class="play"></div>
+              <div class="play-red"></div>
+            </div>
+
+          <% end %>
         <% elsif block.block_type == "Text"%>
-          <p>Cette session est sous forme de <%= block.block_type %></p>
+          <p>Cette session est à lire partout où vous voulez</p>
           <div class="videobloc" style="margin: 45px auto;"></div>
         <% elsif block.block_type == "Podcast"%>
-          <p>Cette session est sous forme de <%= block.block_type %></p>
+          <p>Cette session est sous forme de podcast</p>
           <div class="videobloc" style="margin: 45px auto;">
             <div>Icons made by
               <a href="https://www.flaticon.com/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a>
@@ -80,15 +99,13 @@
           <div class="videobloc" style="margin: 45px auto;"></div>
         <% end %>
             <!-- Mettre un if -->
-            <% block.photos.each do |photo| %>
-              <%= cl_image_tag photo.key %>
-            <% end %>
     </div>
     <% end %> <!-- fin de mon bloc -->
   </div>
 </div>
 
 <div class="header pt-3 mt-3">
+
   <div>
 
     <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
