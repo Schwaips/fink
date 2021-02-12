@@ -18,4 +18,9 @@ class User < ApplicationRecord
   def students
     lectures.map(&:students).flatten.uniq
   end
+
+  def checking_schoolings
+
+  end
+
 end

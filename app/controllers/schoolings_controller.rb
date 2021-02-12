@@ -23,6 +23,16 @@ class SchoolingsController < ApplicationController
       end
   end
 
+  def destroy
+    @schooling = Schooling.find(params[:id])
+    if @schooling.destroy
+      flash[:notice] = "Le cours #{@lecture.title} bien supprimé, merci"
+      redirect_to lectures_path
+    else
+      render :show
+    end
+  end
+
   private
 
   def params_schooling

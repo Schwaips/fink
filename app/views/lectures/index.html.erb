@@ -41,31 +41,33 @@
       <h3 class="pl-5 pt-5"><%= categorie %></h3>
         <div class="card-board">
           <% @lectures.where(category: categorie).each do |lecture| %>
-            <div class="card-lecture">
-              <% if lecture.photo.attached? %>
-                <div class="card-lecture-image" style="background-image: url('<%= cl_image_path lecture.photo.key, crop: :fill %>')">
-                  <% if lecture.user.photo.attached? %>
-                    <img src="<%= cl_image_tag lecture.user.photo.key %>" class="card-avatar avatar-bordered" data-toggle="tooltip" data-placement="top" title="Tooltip on top" />
-                  <% else %>
-                    <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg" class="card-avatar avatar-bordered" data-toggle="tooltip" data-placement="top" title="Tooltip on top"/>
-                  <% end %>
+            <% unless (lecture.user_id == current_user.id) %>
+              <div class="card-lecture">
+                <% if lecture.photo.attached? %>
+                  <div class="card-lecture-image" style="background-image: url('<%= cl_image_path lecture.photo.key, crop: :fill %>')">
+                    <% if lecture.user.photo.attached? %>
+                      <img src="<%= cl_image_tag lecture.user.photo.key %>" class="card-avatar avatar-bordered" data-toggle="tooltip" data-placement="top" title="Tooltip on top" />
+                    <% else %>
+                      <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg" class="card-avatar avatar-bordered" data-toggle="tooltip" data-placement="top" title="Tooltip on top"/>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <div class="card-lecture-image" style="background: url("<%= 'https://source.unsplash.com/300x150/?#{lecture.category'%>")">
+                    <% if lecture.user.photo.attached? %>
+                      <img src="<%= cl_image_tag lecture.user.photo.key %>" class="card-avatar avatar-bordered" />
+                    <% else %>
+                      <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg" class="card-avatar avatar-bordered"/>
+                    <% end %>
+                  </div>
+                <% end %>
+                <div class="card-text">
+                  <h1><%= lecture.title %></h1>
+                    <p><%= lecture.description %></p>
+                    <p>Created by <%= lecture.user.first_name %></p>
+                    <%= link_to "Découvrir", lecture_path(lecture), class: "btn button-invisible" %>
                 </div>
-              <% else %>
-                <div class="card-lecture-image" style="background: url("<%= 'https://source.unsplash.com/300x150/?#{lecture.category'%>")">
-                  <% if lecture.user.photo.attached? %>
-                    <img src="<%= cl_image_tag lecture.user.photo.key %>" class="card-avatar avatar-bordered" />
-                  <% else %>
-                    <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg" class="card-avatar avatar-bordered"/>
-                  <% end %>
-                </div>
-              <% end %>
-              <div class="card-text">
-                <h1><%= lecture.title %></h1>
-                  <p><%= lecture.description %></p>
-                  <p>Created by <%= lecture.user.first_name %></p>
-                  <%= link_to "Découvrir", lecture_path(lecture), class: "btn button-invisible" %>
               </div>
-            </div>
+            <% end %>
           <% end %>
         </div>
     <%end %>
