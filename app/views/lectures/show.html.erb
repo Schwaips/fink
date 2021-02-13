@@ -44,7 +44,7 @@
       <div class="bloc">
       <!-- Début d'un bloc -->
         <h4>Chapitre <%= index + 1 %></h4>
-        <p><em><%= block.content %></em></p>
+        <p><%= block.title %></p>
         <% if block.block_type == "Video" %>
           <p>Cette session est sous forme de vidéo</p>
 
@@ -69,14 +69,12 @@
 
           <% end %>
         <% elsif block.block_type == "Text"%>
-          <p>Cette session est à lire partout où vous voulez</p>
-          <div class="videobloc" style="margin: 45px auto;"></div>
+          <p>Ce chapitre est un texte</p>
+          <div class="videobloc" style="margin: 45px auto;" type="button" data-toggle="modal" data-target="#blockmodal<%= index %>"></div>
         <% elsif block.block_type == "Podcast"%>
           <p>Cette session est sous forme de podcast</p>
-          <div class="videobloc" style="margin: 45px auto;">
-            <div>Icons made by
-              <a href="https://www.flaticon.com/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a>
-              from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+          <div class="videobloc" style="margin: 45px auto;" type="button" data-toggle="modal" data-target="#blockmodal<%= index %>">
+
           </div>
         <% else %>
           <p>Cette session est sous forme de <%= block.block_type %></p>
