@@ -6,6 +6,8 @@ class PagesController < ApplicationController
 
   def dashboard
     @students = current_user.students
+    @navbar_side = true
+    @lectures = Lecture.where(user: current_user)
   end
 
   def manage_courses

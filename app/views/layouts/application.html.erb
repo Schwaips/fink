@@ -12,10 +12,17 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
 
-      <%= yield %>
+
+
+  <% if @navbar_side  == true %>
+    <%= render 'shared/flashes' %>
+    <%= render  "shared/navbar-side" %>
+  <% else %>
+    <%= render 'shared/flashes' %>
+    <%= render 'shared/navbar' %>
+    <%= yield %>
+  <% end %>
     <%= render 'shared/footer' %>
   </body>
 
