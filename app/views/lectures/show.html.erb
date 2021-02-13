@@ -9,27 +9,27 @@
   </div>
 
   <div class="show-card d-flex flex-column justify-content-between align-items-center">
-    <h2><%= @lecture.title %></h2>
-    <p>Ce cours est proposé par <strong> <%= @lecture.user.first_name %> </strong></p>
+    <div class="d-flex flex-column align-items-center">
+      <h2><%= @lecture.title %></h2>
+      <p>Ce cours est proposé par <strong> <%= @lecture.user.first_name %> </strong></p>
+    </div>
     <p><%= @lecture.description %></p>
     <div class="card-lecture-bigbuttons">
             <!--   <%= link_to  "Retour à la l'index des lectures", lectures_path, class: "btn button-gray mr-2" %>-->
       <%if (@lecture.user_id == current_user.id) %>
         <%= link_to  "Editer", manage_courses_path(), class: "btn button-gray mr-2" %>
-      <% end %>
-      <%if (@lecture.user_id != current_user.id) %>
+      <% else %>
         <% if Schooling.where(user: current_user).where(lecture: @lecture).exists? %>
-       <!--    <%= link_to  "Ne plus suivre ce cours", lecture_schoolings_path(@lecture), method: :delete, class: "btn button-blue" %> -->
-         <p>Cours suivi !</p>
+          <%= link_to  "Ne plus suivre ce cours", lecture_schooling_path(@lecture), method: :delete, class: "btn button-red" %>
         <% else %>
-          <%= link_to  "Suivre ce cours", lecture_schoolings_path(@lecture), method: "POST", class: "btn button-blue" %>
+          <%= link_to  "Suivre ce cours 🔒", lecture_schoolings_path(@lecture), method: "POST", class: "btn button-blue" %>
         <% end %>
       <%end %>
     </div>
   </div>
 
 
-<% if (Schooling.where(user: current_user).where(lecture: @lecture).exists?) || (@lecture.user_id == current_user.id) %>
+<% if (current_user.has_schooling?(@lecture)) || (@lecture.user_id == current_user.id) %>
 
 <div class="container">
   <h2 class="mt-4">Chapitres disponibles</h2>
@@ -44,9 +44,9 @@
       <div class="bloc">
       <!-- Début d'un bloc -->
         <h4>Chapitre <%= index + 1 %></h4>
-        <p><em><%= block.content %></em></p>
+        <p><%= block.title %></p>
         <% if block.block_type == "Video" %>
-          <p>Cette session est sous forme de vidéo</p>
+          <em>Ce chapitre est une vidéo</em>
 
           <% if block.photos.attached? %>
 
@@ -69,20 +69,24 @@
 
           <% end %>
         <% elsif block.block_type == "Text"%>
-          <p>Cette session est à lire partout où vous voulez</p>
-          <div class="videobloc" style="margin: 45px auto;"></div>
+          <em>Ce chapitre est un texte</em>
+          <div class="videobloc" style="margin: 45px auto;" type="button" data-toggle="modal" data-target="#blockmodal<%= index %>">
+            <div class="round"></div>
+            <p class="podcast mx-auto"><i class="fas fa-file-alt"></i></p>
+          </div>
         <% elsif block.block_type == "Podcast"%>
-          <p>Cette session est sous forme de podcast</p>
-          <div class="videobloc" style="margin: 45px auto;">
-            <div>Icons made by
-              <a href="https://www.flaticon.com/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a>
-              from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+          <em>Ce chapitre est un podcast</em>
+          <div class="videobloc" style="margin: 45px auto;" type="button" data-toggle="modal" data-target="#blockmodal<%= index %>">
+            <div class="round"></div>
+            <p class="podcast mx-auto"><i class="fas fa-podcast"></i></p>
           </div>
         <% else %>
-          <p>Cette session est sous forme de <%= block.block_type %></p>
+          <em>Ce chapitre est un <%= block.block_type %></em>
           <div class="videobloc" style="margin: 45px auto;"></div>
+          <div class="round"></div>
+          <p class="podcast mx-auto"><i class="fas fa-file-alt"></i></p>
         <% end %>
-            <!-- Mettre un if -->
+
     </div>
     <% end %> <!-- fin de mon bloc -->
   </div>

@@ -1,8 +1,6 @@
 class BlocksController < ApplicationController
 before_action :new_block, only: [ :create ]
 
-
-
   def new
     @block = Block.new
     @lecture = Lecture.find(params[:lecture_id])
@@ -15,7 +13,6 @@ before_action :new_block, only: [ :create ]
     @block.lecture = @lecture
     @block.update(params_block)
     if @block.save
-      redirect_to edit_lecture_path(@lecture) and return
       flash[:notice] = "Chapitre #{@block.title} ajouté à votre cours"
     else
       flash[:notice] = "Une erreur est survenue, veuillez réesayer."
@@ -36,7 +33,6 @@ before_action :new_block, only: [ :create ]
     flash[:notice] = "Le chapitre #{@block.title} est à jour, merci!"
   end
 
-
   private
 
   def new_block
@@ -46,8 +42,4 @@ before_action :new_block, only: [ :create ]
   def params_block
      params.require(:block).permit(:block_type, :content, :title, photos: [])
   end
-
-
-
-
 end
