@@ -24,6 +24,9 @@ gem 'redis', '~> 4.0'
 # cloudinary for media upload
 gem 'cloudinary', '~> 1.16.0'
 
+# Restclient pour creation POST request
+gem 'rest-client'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
