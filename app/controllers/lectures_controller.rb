@@ -78,7 +78,7 @@ private
     # parametre de slack :
     create_conv = RestClient.post 'https://slack.com/api/conversations.create', { name: @lecture.title.to_s.parameterize }, {Authorization:"Bearer #{ENV["SLACK_TOKEN"]}"}
     channel_id = JSON.parse(create_conv).dig("channel", "id")
-    join_conv = RestClient.post 'https://slack.com/api/conversations.join', { channel: channel_id}, {Authorization:"Bearer #{ENV["SLACK_TOKEN"]}"}
+    join_conv = RestClient.post 'https://slack.com/api/conversations.invite', { channel: channel_id, users: current_user.slack_workspace_uid }, {Authorization:"Bearer #{ENV["SLACK_TOKEN"]}"}
     p join_conv.body
   end
 
