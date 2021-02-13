@@ -10,7 +10,7 @@ class FlashcardsController < ApplicationController
     @flashcard.block = @block
     @flashcard.update(params_flashcard)
   if @flashcard.save
-      flash[:notice] = "Flashcard ajouté à votre lecture"
+      flash[:notice] = "Votre QCM a bien été ajouté à votre cours !"
     else
       flash[:notice] = "Une erreur est survenue, veuillez réesayer."
     end
