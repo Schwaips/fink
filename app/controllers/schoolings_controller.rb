@@ -14,10 +14,10 @@ class SchoolingsController < ApplicationController
     @schooling.user = current_user
       if Schooling.where(user: current_user).where(lecture: @lecture).exists?
         redirect_to lectures_path
-        flash[:notice] = "Vous suivez déjà ce cours."
+        flash[:notice] = "Bonne nouvelle, vous suivez déjà ce cours !"
       elsif @schooling.save
         redirect_to lecture_path(@lecture)
-        flash[:notice] = "Vous suivez mainteant ce cours."
+        flash[:notice] = "Vous êtes maintenant inscrit à ce cours."
       else
         flash[:notice] = "Une erreur est survenue pendant la réservation."
       end
@@ -26,7 +26,7 @@ class SchoolingsController < ApplicationController
   def destroy
     @schooling = Schooling.find(params[:id])
     if @schooling.destroy
-      flash[:notice] = "Le cours #{@lecture.title} bien supprimé, merci"
+      flash[:notice] = "Voilà ! Vous ne suivez plus le cours de #{@lecture.title} "
       redirect_to lectures_path
     else
       render :show

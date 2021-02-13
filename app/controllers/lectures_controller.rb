@@ -21,7 +21,7 @@ before_action :set_lecture, only: [:show, :edit, :update]
     # @block = Block.new(content: params[:lecture][:blocks_attributes]["0"][:content], block_type: params[:lecture][:blocks_attributes]["0"][:block_type])
     # @block = Block.new(params[:lecture][:blocks_attributes]["0"])
     if @lecture.save
-      flash[:notice] = "Lecture #{@lecture.title} publiée, rajouter du contenu"
+      flash[:notice] = "Le cours #{@lecture.title} a bien été créé, rajouter maintenant du contenu"
       redirect_to new_lecture_block_path(@lecture)
     else
       render :new
@@ -39,13 +39,13 @@ before_action :set_lecture, only: [:show, :edit, :update]
   def update
     @lecture.update(params_lecture)
     redirect_to manage_courses_path
-    flash[:notice] = "Votre lecture #{@lecture.title} est à jour, merci!"
+    flash[:notice] = "Votre cours #{@lecture.title} est à jour, merci !"
   end
 
   def destroy
     @lecture = Lecture.find(params[:id])
     if @lecture.destroy
-      flash[:notice] = "Le cours #{@lecture.title} bien supprimé, merci"
+      flash[:notice] = "Le cours #{@lecture.title} est bien supprimé !"
       redirect_to manage_courses_path
     else
       render :show

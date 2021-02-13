@@ -46,7 +46,7 @@
         <h4>Chapitre <%= index + 1 %></h4>
         <p><%= block.title %></p>
         <% if block.block_type == "Video" %>
-          <p>Cette session est sous forme de vidéo</p>
+          <em>Ce chapitre est une vidéo</em>
 
           <% if block.photos.attached? %>
 
@@ -69,18 +69,24 @@
 
           <% end %>
         <% elsif block.block_type == "Text"%>
-          <p>Ce chapitre est un texte</p>
-          <div class="videobloc" style="margin: 45px auto;" type="button" data-toggle="modal" data-target="#blockmodal<%= index %>"></div>
-        <% elsif block.block_type == "Podcast"%>
-          <p>Cette session est sous forme de podcast</p>
+          <em>Ce chapitre est un texte</em>
           <div class="videobloc" style="margin: 45px auto;" type="button" data-toggle="modal" data-target="#blockmodal<%= index %>">
-
+            <div class="round"></div>
+            <p class="podcast mx-auto"><i class="fas fa-file-alt"></i></p>
+          </div>
+        <% elsif block.block_type == "Podcast"%>
+          <em>Ce chapitre est un podcast</em>
+          <div class="videobloc" style="margin: 45px auto;" type="button" data-toggle="modal" data-target="#blockmodal<%= index %>">
+            <div class="round"></div>
+            <p class="podcast mx-auto"><i class="fas fa-podcast"></i></p>
           </div>
         <% else %>
-          <p>Cette session est sous forme de <%= block.block_type %></p>
+          <em>Ce chapitre est un <%= block.block_type %></em>
           <div class="videobloc" style="margin: 45px auto;"></div>
+          <div class="round"></div>
+          <p class="podcast mx-auto"><i class="fas fa-file-alt"></i></p>
         <% end %>
-            <!-- Mettre un if -->
+
     </div>
     <% end %> <!-- fin de mon bloc -->
   </div>

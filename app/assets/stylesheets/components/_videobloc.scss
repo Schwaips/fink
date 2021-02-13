@@ -83,3 +83,20 @@
   border-radius: 15px;
 }
 
+.podcast {
+  font-size: 80px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: color 0.3s ease, opacity 1s ease;
+  font-weight: 100;
+  opacity: 0.8;
+
+}
+
+.podcast:hover {
+  font-size: 80px;
+  color: $blue;
+  opacity: 0.4;
+
+}
