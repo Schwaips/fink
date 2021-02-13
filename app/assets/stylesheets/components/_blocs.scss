@@ -16,4 +16,9 @@
   overflow-wrap: break-word;
   padding: 15px;
   text-align: center;
+  transition: background 1s ease;
+}
+
+.bloc:hover {
+  background: #F5F5F5;
 }

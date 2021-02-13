@@ -14,10 +14,12 @@ class SchoolingsController < ApplicationController
     @schooling.user = current_user
       if Schooling.where(user: current_user).where(lecture: @lecture).exists?
         redirect_to lectures_path
-        flash[:notice] = "Vous suivez déjà ce cours."
+        flash[:notice] = "Bonne nouvelle, vous suivez déjà ce cours !"
       elsif @schooling.save
         redirect_to lecture_path(@lecture)
+
         flash[:notice] = "🚀 Vous suivez maintenant ce cours."
+
       else
         flash[:notice] = "Une erreur est survenue pendant la réservation. 😥"
       end

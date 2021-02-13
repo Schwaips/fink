@@ -13,15 +13,18 @@ before_action :set_lecture, only: [:show, :edit, :update]
   def new
     @lecture = Lecture.new
     @lecture.blocks.build
+    @lectures = Lecture.where(user: current_user)
+    @navbar_side = true
   end
 
   def create
+    @navbar_side = true
     @lecture = Lecture.new(params_lecture)
     @lecture.user = current_user
     # @block = Block.new(content: params[:lecture][:blocks_attributes]["0"][:content], block_type: params[:lecture][:blocks_attributes]["0"][:block_type])
     # @block = Block.new(params[:lecture][:blocks_attributes]["0"])
     if @lecture.save
-      flash[:notice] = "Lecture #{@lecture.title} publiée, rajouter du contenu"
+      flash[:notice] = "Le cours #{@lecture.title} a bien été créé, rajouter maintenant du contenu"
       redirect_to new_lecture_block_path(@lecture)
     else
       render :new
@@ -29,6 +32,8 @@ before_action :set_lecture, only: [:show, :edit, :update]
   end
 
   def edit
+    @navbar_side = true
+    @lectures = Lecture.where(user: current_user)
     @lecture = Lecture.find(params[:id])
     @block = params[:block_id] ?  Block.find(params[:block_id]) : Block.new
     # respond_to do |format|
@@ -37,15 +42,19 @@ before_action :set_lecture, only: [:show, :edit, :update]
   end
 
   def update
+    @navbar_side = true
+    @lectures = Lecture.where(user: current_user)
     @lecture.update(params_lecture)
     redirect_to manage_courses_path
-    flash[:notice] = "Votre lecture #{@lecture.title} est à jour, merci!"
+    flash[:notice] = "Votre cours #{@lecture.title} est à jour, merci !"
   end
 
   def destroy
+    @navbar_side = true
+    @lectures = Lecture.where(user: current_user)
     @lecture = Lecture.find(params[:id])
     if @lecture.destroy
-      flash[:notice] = "Le cours #{@lecture.title} bien supprimé, merci"
+      flash[:notice] = "Le cours #{@lecture.title} est bien supprimé !"
       redirect_to manage_courses_path
     else
       render :show

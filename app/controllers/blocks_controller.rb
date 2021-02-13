@@ -13,7 +13,7 @@ before_action :new_block, only: [ :create ]
     @block.lecture = @lecture
     @block.update(params_block)
     if @block.save
-      flash[:notice] = "Chapitre #{@block.title} ajouté à votre cours"
+      flash[:notice] = "Le chapitre #{@block.title} a été ajouté à votre cours"
     else
       flash[:notice] = "Une erreur est survenue, veuillez réesayer."
     end
@@ -28,7 +28,7 @@ before_action :new_block, only: [ :create ]
   def update
     @block.update(params_block)
     redirect_to edit_lecture_path(@lecture)
-    flash[:notice] = "Votre contenu #{@lecture.title} est à jour, merci!"
+    flash[:notice] = "Le contenu de #{@lecture.title} est à jour, merci!"
   end
 
 

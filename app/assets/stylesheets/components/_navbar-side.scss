@@ -1,0 +1,47 @@
+.left-menu {
+  background-color: $blue;
+  color: white;
+  padding: 30px;
+  height: 200vh;
+}
+
+
+.list-unstyled {
+  margin-top: 5px;
+  margin-left: 30px;
+}
+
+
+
+// link trash
+.link-delete-lecture-left {
+  color: white;
+  margin-left: 15px;
+  padding: 0px;
+}
+
+.link-delete-lecture-left:hover {
+  color: $gray;
+  padding: 0px;
+}
+
+// link add a chapter
+.link-add-chapter-lecture-left {
+  color: white;
+  margin-left: 0px;
+  padding: 0px;
+}
+
+.link-add-chapter-lecture-left:hover {
+  color: $gray;
+  padding: 0px;
+}
+
+
+// liste unstyled
+
+li {
+  padding-bottom: 5px;
+  list-style: none;
+}
+
