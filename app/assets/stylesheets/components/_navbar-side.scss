@@ -1,8 +1,11 @@
 .left-menu {
   background-color: $blue;
   color: white;
-  padding: 34px;
+  padding: 50px;
   height: 200vh;
+  position: fixed;
+  overflow-x: hidden;
+  z-index: 1;
 }
 
 

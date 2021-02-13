@@ -1,7 +1,7 @@
 
 
-<div class="row">
-  <div class="col-3 left-menu">
+
+  <div class="left-menu">
       <h1 class="text-center black-color">Menu</h1>
 
        <br>
@@ -14,24 +14,27 @@
 
       <% @lectures.each do |lecture|%>
         <div class="d-flex">
-          <h5><i class="fas fa-graduation-cap"></i> <%= lecture.title %></h5>
           <%= link_to edit_lecture_path(lecture), class: "link-delete-lecture-left" do %>
-            <p><i class="far fa-edit"></i></p>
-          <% end %> <!-- end of edit lecture-->
-          <%= link_to lecture_path(lecture), class: "link-delete-lecture-left", method: :delete, data: { confirm: "Supprimer #{lecture.title}?" } do %>
-            <p><i class="far fa-trash-alt"></i></p>
-          <% end %> <!-- end of destroy-->
+            <h5 class="py-2"><i class="fas fa-graduation-cap"></i> <%= lecture.title %></h5>
+          <% end %>
         </div> <!-- end of d flex for title and edit and destroy-->
       <% end %> <!-- lectures each  end -->
     <br>
     <h3 class="text-align-right gray-color mb-3">Parametres</h3>
-      <h5> <i class="fas fa-user-cog setting-list"></i>  Profile</h5>
+      <%= link_to dashboard_path, class: "link-delete-lecture-left" do %>
+        <h5> <i class="fas fa-user-cog setting-list"></i>  Profile</h5>
+      <% end %>
       <h5> <i class="fas fa-people-carry setting-list"></i>  Aide</h5>
       <h5> <i class="fas fa-money-check-alt setting-list"></i>  Abonnements</h5>
       <h5> <i class="fas fa-terminal setting-list"></i>  CGV</h5>
   </div> <!--col 3-->
 
-  <div class="col-9">
+  <div>
       <%= yield %>
   </div>
-</div> <!--row -->
+ <!--row -->
+
+
+
+
+
