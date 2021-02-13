@@ -1,5 +1,5 @@
 .teacher {
-  background: url('https://images.unsplash.com/photo-1544995855-49d7e8920726?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2468&q=80');
+  background: url('https://images.unsplash.com/reserve/LJIZlzHgQ7WPSh5KVTCB_Typewriter.jpg?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=682&q=80');
     /* Set rules to fill background */
   min-height: 100%;
 
@@ -21,6 +21,8 @@
     top: 200px;
     text-align: right;
     color: white;
+    text-shadow: -1px -1px 14px rgba(0,0,0,0.65);
+
   }
 
   .button-blue {
@@ -53,6 +55,8 @@
     font-size: 4em;
     top: 310px;
     color: $blue;
+    text-shadow: -1px -1px 9px rgba(0,0,0,0.65);
+
   }
 
   .button-gray {
@@ -68,11 +72,7 @@
 }
 
 .teacher:hover {
-  background: url('https://source.unsplash.com/1600x900/?learning'), linear-gradient(rgba(250,250,250,0.1));
-
-  .button-blue:hover {
-    opacity: 1;
-  }
+  opacity: 0.5;
 }
 
 .student:hover {
