@@ -1,36 +1,91 @@
-<div class="mb-5  margin-left">
-  <div class="d-flex align-items-center pt-5">
-    <% if current_user.photo.attached? %>
-      <%= cl_image_tag current_user.photo.key, class: 'avatar-large avatar-bordered img-circle' %>
-    <% else %>
-      <%= image_tag "https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg", class: 'avatar-large avatar-bordered img-circle' %>
-    <% end %>
-    <div class="ml-4">
-      <h3>Bonjour <strong><%= current_user.first_name %></strong> 👨‍🏫</h3>
-      <p><%= current_user.email %></p>
-      <%= link_to  do %>
-        <p class="pr-3"><i class="far fa-edit"></i> Modifier le profil </p>
+
+<% if @current_user.role == "teacher" %>
+
+  <div class="mb-5  margin-left">
+    <div class="d-flex align-items-center mt-1">
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: 'avatar-large avatar-bordered img-circle' %>
+      <% else %>
+        <%= image_tag "https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg", class: 'avatar-large avatar-bordered img-circle' %>
       <% end %>
-    </div>
-  </div>
-  <div class="d-flex justify-content-around">
-    <div class="stat-card my-5">
-      <h4>Mes étudiants</h4>
-        <% current_user.students.first(5).each do |student| %>
-          <div class="mb-2">
-            <% if student.photo.attached? %>
-              <img src="<%= cl_image_tag student.photo.key %>" class="avatar" />
-            <% else %>
-              <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg" class="avatar"/>
-            <% end %>
-            <%= student.first_name %>
-          </div>
+      <div class="ml-4">
+        <h3>Bonjour <strong><%= current_user.first_name %></strong> 👨‍🏫</h3>
+        <p><%= current_user.email %></p>
+        <%= link_to  do %>
+          <p class="pr-3"><i class="far fa-edit"></i> Modifier le profil </p>
         <% end %>
-      <%= link_to "Voir plus", class: "btn button-blue" %>
+      </div>
     </div>
-    <div class="stat-card my-5 ">
-      <h4>Mes statistiques mensuelles</h4>
+
+      <div class="d-flex justify-content-around">
+        <div class="stat-card my-5">
+          <h4>Mes étudiants</h4>
+            <% current_user.students.first(5).each do |student| %>
+              <div class="mb-2">
+                <% if student.photo.attached? %>
+                  <img src="<%= cl_image_tag student.photo.key %>" class="avatar" />
+                <% else %>
+                  <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg" class="avatar"/>
+                <% end %>
+                <%= student.first_name %>
+              </div>
+            <% end %>
+          <%= link_to "Voir plus", class: "btn button-blue" %>
+        </div>
+        <div class="stat-card my-5 ">
+          <h4>Mes statistiques mensuelles</h4>
+        </div>
+      </div>
+    </div>
+
+  <% elsif @current_user.role == "student"%>
+
+  <div class="dashboard-margin">
+    <div class="d-flex align-items-center mt-1">
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: 'avatar-large avatar-bordered img-circle' %>
+      <% else %>
+        <%= image_tag "https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg", class: 'avatar-large avatar-bordered img-circle' %>
+      <% end %>
+      <div class="ml-4">
+        <h3>Bonjour <strong><%= current_user.first_name %></strong> 🧑‍🎓</h3>
+        <p><%= current_user.email %></p>
+        <%= link_to  do %>
+          <p class="pr-3"><i class="far fa-edit"></i> Modifier mon profil </p>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+    <div class="theme_background">
+      <h3 class="p-3">Les cours que je suis :</h3>
+      <div class="card-board">
+
+      <% current_user.lectures_as_pupil.each do |lecture| %>
+        <div class="card-lecture">
+          <% if lecture.photo.attached? %>
+            <div class="card-lecture-image" style="background-image: url('<%= cl_image_path lecture.photo.key, crop: :fill %>')">
+              <% if lecture.user.photo.attached? %>
+                <img src="<%= cl_image_tag lecture.user.photo.key %>" class="card-avatar avatar-bordered" data-toggle="tooltip" data-placement="top" title="Tooltip on top" />
+              <% else %>
+                <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg" class="card-avatar avatar-bordered" data-toggle="tooltip" data-placement="top" title="Tooltip on top"/>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="card-lecture-image" style="background: url("<%= 'https://source.unsplash.com/300x150/?#{lecture.category'%>")">
+              <% if lecture.user.photo.attached? %>
+                <img src="<%= cl_image_tag lecture.user.photo.key %>" class="card-avatar avatar-bordered" />
+              <% else %>
+                <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg" class="card-avatar avatar-bordered"/>
+              <% end %>
+          <% end %>
+          <h1><%= lecture.title %></h1>
+          <p><%= lecture.description %></p>
+          <p>Created by <%= lecture.user.first_name %></p>
+          <%= link_to "Continuer", lecture_path(lecture), class: "btn button-invisible" %>
+        </div>
+       <% end %>
+      </div>
+    </div>
+
+  <% end %>
 

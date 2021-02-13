@@ -6,7 +6,11 @@ class PagesController < ApplicationController
 
   def dashboard
     @students = current_user.students
-    @navbar_side = true
+    if @current_user.role == "teacher"
+      @navbar_side = true
+    else
+      @navbar_side = false
+    end
     @lectures = Lecture.where(user: current_user)
   end
 
