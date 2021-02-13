@@ -1,5 +1,5 @@
 .teacher {
-  background: url('https://source.unsplash.com/1600x900/?teaching,classroom');
+  background: url('https://images.unsplash.com/photo-1544995855-49d7e8920726?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2468&q=80');
     /* Set rules to fill background */
   min-height: 100%;
 
@@ -13,6 +13,7 @@
   left: 0;
   transition: opacity 0.2s ease;
   z-index: 1;
+  background-position: center;
 
   h1 {
     position: absolute;
@@ -34,7 +35,7 @@
 }
 
 .student {
-  background: url('https://source.unsplash.com/1600x900/?learning');
+  background: url('https://images.unsplash.com/photo-1479706927253-70f97eeb3607?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1500&q=80');
   min-height: 100%;
   /* Set up proportionate scaling */
   width: 50%;
@@ -45,6 +46,7 @@
   right: 0;
   transition: opacity 0.2s ease;
   margin-bottom: 10px;
+  background-position: center;
 
   h1 {
     position: absolute;
