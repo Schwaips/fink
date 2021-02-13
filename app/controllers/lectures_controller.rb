@@ -19,13 +19,16 @@ before_action :set_lecture, only: [:show, :edit, :update]
 
   def create
     @navbar_side = true
+    @lectures = Lecture.where(user: current_user )
     @lecture = Lecture.new(params_lecture)
     @lecture.user = current_user
     # @block = Block.new(content: params[:lecture][:blocks_attributes]["0"][:content], block_type: params[:lecture][:blocks_attributes]["0"][:block_type])
     # @block = Block.new(params[:lecture][:blocks_attributes]["0"])
     if @lecture.save
+      create_slack_channel
       flash[:notice] = "Le cours #{@lecture.title} a bien été créé, rajouter maintenant du contenu"
       redirect_to new_lecture_block_path(@lecture)
+
     else
       render :new
     end
@@ -70,4 +73,13 @@ private
   def params_lecture
     params.require(:lecture).permit(:title, :description, :category, :photo )
   end
+
+  def create_slack_channel
+    # parametre de slack :
+    create_conv = RestClient.post 'https://slack.com/api/conversations.create', { name: @lecture.title.to_s.parameterize }, {Authorization:"Bearer #{ENV["SLACK_TOKEN"]}"}
+    channel_id = JSON.parse(create_conv).dig("channel", "id")
+    join_conv = RestClient.post 'https://slack.com/api/conversations.join', { channel: channel_id}, {Authorization:"Bearer #{ENV["SLACK_TOKEN"]}"}
+    p join_conv.body
+  end
+
 end
