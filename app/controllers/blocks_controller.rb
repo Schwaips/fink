@@ -6,6 +6,8 @@ before_action :new_block, only: [ :create ]
   def new
     @block = Block.new
     @lecture = Lecture.find(params[:lecture_id])
+    @navbar_side = true
+    @lectures = Lecture.where(user: current_user)
   end
 
   def create
@@ -13,7 +15,7 @@ before_action :new_block, only: [ :create ]
     @block.lecture = @lecture
     @block.update(params_block)
     if @block.save
-      flash[:notice] = "Chapitre #{@block.title} ajouté à votre cours"
+      flash[:notice] = "Chapitre #{@block.title} $ajouté à votre cours"
     else
       flash[:notice] = "Une erreur est survenue, veuillez réesayer."
     end

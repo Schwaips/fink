@@ -6,32 +6,45 @@
             <h1><%= @lecture.title.upcase %></h1>
   </div> <!-- card category -->
 
-
   <div class="row">
-    <div class="col-4 border-right">
-    <h3 class="text-center">Liste des chapitres</h3>
-    <br>
-      <% if @lecture.blocks.empty? == false %>
-        <ul>
-          <% @lecture.blocks.each_with_index do |block, index|%>
-           <li class="list-unstyled"> <span>Chapitre <%= index + 1 %> - <%= block.title %></span></li>
-          <% end %> <!-- end of each block-->
-        </ul>
-          <div class="text-center">
-            <%= link_to "/", class: "link-add-chapter-lecture-right" do %>
-              <li><i class="fas fa-plus-circle"></i> Ajouter un chapitre</li>
-            <% end %> <!-- end of button new chapter-->
-          </div> <!-- button text center-->
-      <% else %>
-         <h5 class="text-center">Aucun chapitre</h5>
-          <div class="text-center">
-            <%= link_to edit_lecture_path(@lecture), class: "btn button-gray" do %>
-              <i class="far fa-edit"></i>Ajouter un chapitre
-            <% end %> <!-- end of destroy-->
-          </div> <!-- text center for button-->
-      <% end %> <!-- end of if block empty -->
-    </div> <!--col 4-->
+    <div class="col-7">
+      <h3 class="text-center">Modifier votre cours</h3>
+    </div> <!-- col 6 -->
 
+    <div class="col-3 border-left">
+      <h3 class="text-center">Liste des chapitres</h3>
+      <br>
+        <% if @lecture.blocks.empty? == false %>
+          <ul>
+            <% @lecture.blocks.each_with_index do |block, index|%>
+            <li class="list-unstyled"><span>Chapitre <%= index + 1 %> - <strong><%= block.title %></strong></span></li>
+            <li class="list-unstyled">
+              <% if block.block_type == "Podcast" %>
+                <i class="fas fa-headphones-alt"></i> <%= block.block_type %>
+              <% elsif block.block_type == "Video" %>
+                <i class="fas fa-video"></i> <%= block.block_type %>
+              <% elsif block.block_type == "Text" %>
+                <i class="far fa-file-alt"></i> <%= block.block_type %>
+                <% elsif block.block_type == "Live" %>
+                <i class="fas fa-podcast"></i><%= block.block_type %>
+              <% end %>
+            </li>
+            <% end %> <!-- end of each block-->
+          </ul>
+            <div class="text-center">
+              <%= link_to "/", class: "link-add-chapter-lecture-right" do %>
+                <li><i class="fas fa-plus-circle"></i> Ajouter un chapitre</li>
+              <% end %> <!-- end of button new chapter-->
+            </div> <!-- button text center-->
+        <% else %>
+          <h5 class="text-center">Aucun chapitre</h5>
+            <div class="text-center">
+              <%= link_to edit_lecture_path(@lecture), class: "btn button-gray" do %>
+                <i class="far fa-edit"></i>Ajouter un chapitre
+              <% end %> <!-- end of destroy-->
+            </div> <!-- text center for button-->
+        <% end %> <!-- end of if block empty -->
+      </div> <!--col 4-->
   </div> <!--row -->
 
 
