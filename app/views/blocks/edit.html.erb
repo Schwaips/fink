@@ -1,6 +1,18 @@
 
-                  <%= simple_form_for [@block, @flashcard] do |f| %>
-                    <%= f.input :question, label: "Ajouter une question", as: :text, input_html: { class: "offer-bar" } %>
-                    <%= f.input :answer, label: "Ajouter une réponse", as: :text, input_html: { class: "offer-bar" } %>
-                    <%= f.submit "Sauvegarder", class: "btn btn-pink mt-4" %>
-                  <% end %>
+
+<div class="form-group">
+  <%= simple_form_for [@lecture, @block] do |f| %>
+    <%= f.input :title, label: "Titre de votre chapitre" %>
+    <%= f.input :block_type, label: "Type de média", collection: Block::BLOCK_TYPE %>
+    <%= f.input :photos, as: :file, label: "Ajouter des médias a la lecture", input_html: { multiple: true } %>
+
+
+    <div class="field">
+      <%= f.label :content %>
+      <%= f.rich_text_area :content %>
+    </div>
+
+  <% end %>
+
+</div> <!-- fin form simple form -->
+

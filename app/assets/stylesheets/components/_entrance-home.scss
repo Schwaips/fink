@@ -1,0 +1,80 @@
+.teacher {
+  background: url('https://source.unsplash.com/1600x900/?teaching,classroom');
+    /* Set rules to fill background */
+  min-height: 100%;
+
+  /* Set up proportionate scaling */
+  width: 50%;
+  height: auto;
+
+  /* Set up positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.2s ease;
+  z-index: 1;
+
+  h1 {
+    position: absolute;
+    font-size: 4em;
+    top: 200px;
+    text-align: right;
+    color: white;
+  }
+
+  .button-blue {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 35%;
+    z-index: 2;
+  }
+}
+
+.student {
+  background: url('https://source.unsplash.com/1600x900/?learning');
+  min-height: 100%;
+  /* Set up proportionate scaling */
+  width: 50%;
+  height: auto;
+  /* Set up positioning */
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: opacity 0.2s ease;
+  margin-bottom: 10px;
+
+  h1 {
+    position: absolute;
+    font-size: 4em;
+    top: 310px;
+    color: $blue;
+  }
+
+  .button-gray {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 35%;
+    z-index: 2;
+
+  }
+}
+
+.teacher:hover {
+  background: url('https://source.unsplash.com/1600x900/?learning'), linear-gradient(rgba(250,250,250,0.1));
+
+  .button-blue:hover {
+    opacity: 1;
+  }
+}
+
+.student:hover {
+  opacity: 0.5;
+
+}
+

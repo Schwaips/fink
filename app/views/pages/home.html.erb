@@ -1,62 +1,107 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div style="height: 100vh;">
+  <div class="teacher">
+    <h1 class='not-a'>Mettez en avant vos connaissances</h1>
+    <%= link_to  "Gagnez de l'argent", '/lectures', class: "btn button-blue" %>
+  </div>
+  <div class="student">
+    <h1>Apprenez simplement</h1>
+    <%= link_to  "Devenez intelligent", '/lectures', class: "btn button-gray" %>
+  </div>
+</div>
 
 
-<!-- VOILA LES BOUTONS -->
-
-<%= link_to  "Réserver", '#', class: "btn button-pink" %>
-<%= link_to  "Sauvegarder", '#', class: "btn button-blue" %>
-<%= link_to  "Publier", '#', class: "btn button-gray" %>
-<%= link_to  "S'inscrire", '#', class: "btn button-red" %>
+<div class="theme_backgroundxs d-flex justify-content-center align-items-center">
+  <p style="width: 700px;">Dévelopez vos compétences avec Fink </br>
+  Il existe tellement de sources de contenu pour se former, retrouvez le contenu exclusif des experts que vous suivez sur vos réseaux et ne gardez que le meilleur.</p>
+</div>
 
 
-<!-- CECI EST UN BLOC VIDEO -->
-<div class="videobloc">
-  <div class="round"></div>
-  <div class="play"></div>
-  <div class="play-red"></div>
+<div>
+  <h2 class="mx-auto py-4" style="width: 200px;">Nos abonnements</h2>
+  <div class="d-flex justify-content-center">
+    <div class="card-lecture mb-5 mr-5">
+      <div class="card-lecture-image" style= "background: linear-gradient(60deg, rgba(93, 87, 107, 0.5) 0%, rgba(0, 175, 181, 0.5) 100%);">
+        <h2 class="text-center pt-3 pl-3">Basic</h2>
+        <h3 class="text-center pt-2 pl-3">7,99€ par mois</h3>
+        </div>
+        <div class="mt-4 px-3">
+          <p><i class="fas fa-check"></i> 1500 contenus audios et écrits en illimité </p>
+          <p class="py-2"><i class="fas fa-check"></i> + 100 formations </p>
+          <p><i class="fas fa-times"></i> Slack privé avec les professeurs </p>
+          <p class="mx-auto" style="width: 130px;"><%= link_to  "S'inscrire", '#', class: "btn button-red" %></p>
+        </div>
+    </div>
+
+    <div class="card-lecture ml-5">
+        <div class="card-lecture-image" style= "background: linear-gradient(60deg, rgba(93, 87, 107, 0.5) 0%, rgba(0, 175, 181, 0.5) 100%);">
+          <h2 class="text-center pt-3 pl-3">Premium</h2>
+          <h3 class="text-center pt-2 pl-3">10,99€ par mois</h3>
+        </div>
+        <div class="mt-4 px-3">
+          <p><i class="fas fa-check"></i> 1500 contenus audios et écrits en illimité </p>
+          <p class="py-2"><i class="fas fa-check"></i> + 100 formations </p>
+          <p><i class="fas fa-check"></i> Slack privé avec les professeurs </p>
+          <p class="mx-auto" style="width: 130px;"><%= link_to  "S'inscrire", '#', class: "btn button-red" %></p>
+
+        </div>
+      </div>
+  </div>
+
+</div>
+
+
+<div class="theme_backgroundxs d-flex justify-content-around align-items-center">
+  <p>500 000+ </br> Utilisateurs</p>
+  <p>30 </br> Contenus ajoutés par mois</p>
+  <p>1500 </br> Contenus disponibles</p>
+</div>
+
+<div>
+  <h2 class="mx-auto py-5" style="width: 200px;" >Les thématiques</h2>
+  <div class="d-flex justify-content-around pb-5">
+    <%= image_tag "music.png", width: 150%>
+    <%= image_tag "art.png", width: 150%>
+    <%= image_tag "code.png", width: 150%>
+    <%= image_tag "cook.png", width: 150%>
+    <%= image_tag "language.png", width: 150%>
+  </div>
 </div>
 
 
 <div class="header">
 
 <!--Content before waves-->
-  <div class="inner-header flex">
-    <h1>Découvrez nos cours</h1>
-
-  </div>
-
-  <a href="#" class="btn button-red">Découvrir</a>
+    <h2 class="py-5">Découvrez nos cours</h2>
+    <a href="/lectures" class="btn button-red mb-3">Découvrir</a>
 
 
-  <div class="card-board">
+  <div class=" d-flex justify-content-center">
+
     <div class="card-lecture">
-      <div class="card-lecture-image">
-        <p>Hey</p>
+        <div class="card-lecture-image" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
         <img src="https://kitt.lewagon.com/placeholder/users/Schwaips" class="card-avatar avatar-bordered" />
       </div>
-      <h1>Je suis un cours</h1>
+      <h1>Web Development</h1>
+      <p class="pt-3">Retrouvez ici tous les cours en web development proposés par Charlie</p>
     </div>
-    <div class="card-lecture">
-      <div class="card-lecture-image">
-        <p>Je suis dans la card image</p>
+
+    <div class="card-lecture mx-5">
+      <div class="card-lecture-image" style="background-image: url('https://images.unsplash.com/photo-1517697471339-4aa32003c11a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1955&q=80')">
         <img src="https://kitt.lewagon.com/placeholder/users/ameliend" class="card-avatar avatar-bordered" />
       </div>
-      <h1>Je suis un titre</h1>
-      <p>Je suis dans card lecture</p>
+      <h1>Art</h1>
+      <p class="pt-3">Retrouvez ici tous les cours d'art proposés par Amélien</p>
     </div>
+
     <div class="card-lecture">
-      <div class="card-lecture-image">
-        <p>Hey</p>
+      <div class="card-lecture-image" style="background-image: url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
         <img src="https://kitt.lewagon.com/placeholder/users/olhll" class="card-avatar avatar-bordered" />
-
       </div>
-      <h1>Je suis un titre</h1>
-      <p>Lorem ipsum blablabla, je regarde ce que ça donne si j'écris beaucoup de texte</p>
-
+      <h1>Musique</h1>
+      <p class="pt-3">Retrouvez ici tous les cours de musique proposés par Olivia</p>
     </div>
   </div>
-
 
 <!--Waves Container-->
   <div>
@@ -76,4 +121,4 @@
 <!--Waves end-->
 
 </div>
-<%= render 'shared/footer' %>
+

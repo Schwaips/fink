@@ -1,0 +1,42 @@
+
+
+      <h1 class="text-center">Gerer vos cours</h1>
+      <div class="text-center">
+      <%= link_to new_lecture_path, class:"btn button-gray" do %>
+         <i class="fas fa-plus-circle"></i> Ajouter un cours
+      <% end %>
+
+      </div> <!-- text center add a course button -->
+      <br>
+      <% @lectures.each do |lecture| %>
+        <div class="card-menu-course">
+          <div class="d-flex">
+            <!-- <%= link_to  "Editer", edit_lecture_path(lecture), class: "btn btn-primary", class: "edit-lecture", remote: true %> -->
+            <h3><i class="fas fa-graduation-cap"></i> <%= lecture.title %> </h3>
+            <div data-toggle="modal" data-target="#editLectureModal" class="link-edit-lecture-left">
+             <p class="pr-3"><i class="far fa-edit"></i></p>
+            </div>
+              <!-- Modal edit lecture -->
+              <%= render partial:'lectures/shared/edit-modal', :locals => { lecture: lecture } %>
+          </div> <!--d flex -->
+
+          <div class="list-chapitre">
+            <ul class="list-unstyled">
+            <% lecture.blocks.each_with_index do |block, index| %>
+                <li>Chapitre <%= index + 1 %> - <%= block.title %> </li>
+                <div data-toggle="modal" data-target="#addBlockModal" class="link-new-block-left">
+
+            <% end %> <!-- each for blocks -->
+
+            <%= link_to  new_lecture_block_path(lecture_id: lecture, block: @block) do %>
+              <li><i class="fas fa-plus-circle"></i> Ajouter un chapitre</li>
+            <% end %> <!-- link to end-->
+
+            </div> <!-- end of edit modal block-->
+              </ul>
+
+
+          </div> <!-- div chapitre -->
+        </div> <!-- card menu course -->
+      <% end %> <!-- each for lectures -->
+

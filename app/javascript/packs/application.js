@@ -31,14 +31,18 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
 
 import { initTabs } from '../components/tabs';
-
+import { initButton } from '../components/button_create';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initScroll } from '../controllers/scroll_controller';
+
+import { editLecture } from '../components/edit-lecture';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initScroll(gsap, ScrollTrigger);
   initTabs();
+  setTimeout(initButton(), 3000);
+  // editLecture();
 });

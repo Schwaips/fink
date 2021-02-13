@@ -30,17 +30,43 @@ lecture = Lecture.create!(title: "Developpement Web Ruby", description: "Apprene
 file = URI.open('https://www.ideematic.com/wp-content/uploads/2018/05/ruby-on-rails.png')
 lecture.photo.attach(io: file, filename: 'rails.png', content_type: 'image/png')
 
+  b = Block.create!(lecture_id: lecture.id, title:"Introduction à rails", block_type: "Video", content: "Découvrez le monde de Rails grâce à mon tutoriel de deux heures. Apprenez à faire des seeds " )
+  b1 = Block.create!(lecture_id: lecture.id, block_type: "Podcast", title:"Utilisation des controllers", content: "Je vous explique a travers ce podcast comment créer une app rails" )
+
 
 lecture1 = Lecture.create!(title: "Peinture à l'huile", description: "Je vous accompagne pour vos projets de peinture à l'huile. Toutes les techiques nécéssaires à l'implémentation de vos peintures", category: "Art", user: c)
 file = URI.open('https://mi0.rightinthebox.com/images/x/201905/dveccr1557396967601.jpg')
 lecture1.photo.attach(io: file, filename: 'paint-oil.jpg', content_type: 'image/jpg')
 
+  b2 = Block.create!(lecture_id: lecture1.id, block_type: "Text", title:"Tricks pour peinture", content: "Voici un cheatsheet pour savoir comment faire une belle peinture à l'huile" )
+  b3 = Block.create!(lecture_id: lecture1.id, block_type: "Video", title:"Dragons en peinture", content: "Une démonstration, comment faire des dragons avec de la peinture à l'huile" )
 
-b = Block.create!(lecture_id: lecture.id, block_type: "Video", content: "Découvrez le monde de Rails grâce à mon tutoriel de deux heures. Apprenez à faire des seeds " )
-b1 = Block.create!(lecture_id: lecture.id, block_type: "Podcast", content: "Je vous explique a travers ce podcast comment créer une app rails" )
+artcomt = Lecture.create!(title: "Histoire de l'Art comtemporain", description: "Toutes les racines de l'art comtemporain", category: "Art", user: c)
+file = URI.open('https://www.guide-artistique.com/images/header/art-contemporain.jpg')
+artcomt.photo.attach(io: file, filename: 'art-comtem.jpg', content_type: 'image/jpg')
 
-b2 = Block.create!(lecture_id: lecture1.id, block_type: "Text", content: "Voici un cheatsheet pour savoir comment faire une belle peinture à l'huile" )
-b3 = Block.create!(lecture_id: lecture1.id, block_type: "Video", content: "Une démonstration, comment faire des dragons avec de la peinture à l'huile" )
+  bartcomt1 = Block.create!(lecture_id: artcomt.id, block_type: "Video", title:"Introduction", content: "Quels sont les impacts de l'art comtenporain sur notre société actuelle?" )
+  bartcomp2 = Block.create!(lecture_id: artcomt.id, block_type: "Video", title:"Les grands acteurs du XXeme siecle", content: "Un plongeon au coeur des grands noms de l'art qui ont faconnés notre mode de vie" )
+
+artegy = Lecture.create!(title: "L'Egypte antique et l'art", description: "Les egyptiens a l'époque des pharaons et leurs approches vis à vis de l'art", category: "Art", user: c)
+file = URI.open('https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/%C3%84gyptischer_Maler_um_1360_v._Chr._001.jpg/384px-%C3%84gyptischer_Maler_um_1360_v._Chr._001.jpg')
+artegy.photo.attach(io: file, filename: 'art-comtem.jpg', content_type: 'image/jpg')
+
+  bartegy = Block.create!(lecture_id: artegy.id, block_type: "Video", title:"Des pharaons à aujourd'hui", content: "Les pyramides, le Sphinx, les pharaons...l'art d'aimer l'art" )
+  bartegy2 = Block.create!(lecture_id: artegy.id, block_type: "Video", title:"De l'or et des esclaves", content: "L'art, raconté en histoire par les égyptiens antiques" )
+
+
+lecture13 = Lecture.create!(title: "Cours d'espagnol", description: "Apprenez l'espagnol, et envolez vous pour Barcelone", category: "Langue", user: c)
+file = URI.open('https://www.managementdelaformation.fr/wp-content/uploads/2018/05/RHEXIS_Actu_Espagne.jpg')
+lecture13.photo.attach(io: file, filename: 'spanish-class.jpg', content_type: 'image/jpg')
+
+lecture14 = Lecture.create!(title: "Cours d'italien", description: "Venez apprendre l'italien avec Charlie le polyglotte", category: "Langue", user: c)
+file = URI.open('https://www.airtransat.com/getmedia/06aeacd6-0120-454c-906b-d324b859577a/italie-cinque-terre-italy-2050x1200.aspx?width=2050&height=1200&ext=.jpg')
+lecture14.photo.attach(io: file, filename: 'italian-class.jpg', content_type: 'image/jpg')
+
+lecture15 = Lecture.create!(title: "Cours de français", description: "Parlez français avec Charlie", category: "Langue", user: c)
+file = URI.open('https://www.touteleurope.eu/fileadmin/user_upload/France.png')
+lecture15.photo.attach(io: file, filename: 'french-class.jpg', content_type: 'image/jpg')
 
 
 puts "-- lecture pour amélien--"
@@ -49,16 +75,30 @@ lecture8 = Lecture.create!(title: "Chants", description: "Je suis prêt à entra
 file = URI.open('https://p5.storage.canalblog.com/57/71/1380236/106139385.jpg')
 lecture8.photo.attach(io: file, filename: 'sing.jpg', content_type: 'image/jpg')
 
+  b4 = Block.create!(lecture_id: lecture8.id, block_type: "Text", title:"Mes créations", content: "voyez une de mes création pour vous divertir et apprendre à écrire des chansons" )
+  b5 = Block.create!(lecture_id: lecture8.id, block_type: "Video", title:"Echauffement, les bases", content: "Entrainez votre thorax avant de faire un concert" )
+
+
 lecture9 = Lecture.create!(title: "Cours d'anglais 101", description: "Accompagnement pour l'apprentissage d'anglais niveau débutant", category: "Langue", user: a)
 file = URI.open('https://www.alternance-professionnelle.fr/wp-content/uploads/2019/03/cours-anglais-intensif-300x209.jpg')
 lecture9.photo.attach(io: file, filename: 'english-class.jpg', content_type: 'image/jpg')
 
+  b6 = Block.create!(lecture_id: lecture9.id, block_type: "Video", title:"Les prononciations", content: "Tous sur les prononciations des UKs, mieux comprendre et avancer." )
+  b6 = Block.create!(lecture_id: lecture9.id, block_type: "Text", title:"Verbes irréguliers", content: "Tous vos verbes irrégulier, facile à apprendre" )
 
-b4 = Block.create!(lecture_id: lecture8.id, block_type: "Text", content: "voyez une de mes création pour vous divertir et apprendre à écrire des chansons" )
-b5 = Block.create!(lecture_id: lecture8.id, block_type: "Video", content: "Entrainez votre thorax avant de faire un concert" )
+lecture10 = Lecture.create!(title: "Python", description: "Venez découvrir Python", category: "Developpement", user: a)
+file = URI.open('https://www.lobservateurdebeauvais.fr/wp-content/uploads/2020/09/python.jpg')
+lecture10.photo.attach(io: file, filename: 'sing.jpg', content_type: 'image/jpg')
 
-b6 = Block.create!(lecture_id: lecture9.id, block_type: "Video", content: "Tous sur les prononciations des UKs, mieux comprendre et avancer." )
-b6 = Block.create!(lecture_id: lecture9.id, block_type: "Text", content: "Tous vos verbes irrégulier, facile à apprendre" )
+lecture11 = Lecture.create!(title: "Javascript", description: "Venez découvrir Javascript", category: "Developpement", user: a)
+file = URI.open('https://www.developpez.net/forums/attachments/p513560d1/a/a/a')
+lecture11.photo.attach(io: file, filename: 'sing.jpg', content_type: 'image/jpg')
+
+lecture12 = Lecture.create!(title: "SQL", description: "Venez découvrir SQL", category: "Developpement", user: a)
+file = URI.open('https://www.softfluent.fr/wp-content/uploads/2019/10/SQL.png')
+lecture12.photo.attach(io: file, filename: 'sing.jpg', content_type: 'image/jpg')
+
+
 
 
 puts "---seeds ending---"
