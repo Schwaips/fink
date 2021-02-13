@@ -27,7 +27,7 @@
                   <h1><%= lecture.title %></h1>
                     <p><%= lecture.description %></p>
                     <p>Created by <%= lecture.user.first_name %></p>
-                    <%= link_to "Découvrir", lecture_path(lecture), class: "btn button-invisible" %>
+                    <%= link_to "Reprendre", lecture_path(lecture), class: "btn button-invisible" %>
                 </div>
               </div>
         <% end %>

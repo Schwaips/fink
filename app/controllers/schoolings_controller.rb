@@ -17,26 +17,24 @@ class SchoolingsController < ApplicationController
         flash[:notice] = "Vous suivez déjà ce cours."
       elsif @schooling.save
         redirect_to lecture_path(@lecture)
-        flash[:notice] = "Vous suivez mainteant ce cours."
+        flash[:notice] = "🚀 Vous suivez maintenant ce cours."
       else
-        flash[:notice] = "Une erreur est survenue pendant la réservation."
+        flash[:notice] = "Une erreur est survenue pendant la réservation. 😥"
       end
   end
 
   def destroy
-    @schooling = Schooling.find(params[:id])
-    if @schooling.destroy
-      flash[:notice] = "Le cours #{@lecture.title} bien supprimé, merci"
-      redirect_to lectures_path
-    else
-      render :show
-    end
+    @lecture = Lecture.find(params[:id])
+    @schooling = Schooling.find_by(user_id: current_user.id, lecture_id: @lecture.id)
+    @schooling.destroy
+    flash[:notice] = "🗑️ #{@lecture.title} a été retiré"
+    redirect_to lecture_path(@lecture)
   end
 
   private
 
   def params_schooling
-     params.require(:schooling).permit(:user_id, :lecture_id)
+    params.require(:schooling).permit(:user_id, :lecture_id)
   end
 
   def set_lecture
@@ -46,5 +44,4 @@ class SchoolingsController < ApplicationController
   def new_schooling
     @schooling = Schooling.new
   end
-
 end

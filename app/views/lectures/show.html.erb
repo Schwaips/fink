@@ -9,27 +9,27 @@
   </div>
 
   <div class="show-card d-flex flex-column justify-content-between align-items-center">
-    <h2><%= @lecture.title %></h2>
-    <p>Ce cours est proposé par <strong> <%= @lecture.user.first_name %> </strong></p>
+    <div class="d-flex flex-column align-items-center">
+      <h2><%= @lecture.title %></h2>
+      <p>Ce cours est proposé par <strong> <%= @lecture.user.first_name %> </strong></p>
+    </div>
     <p><%= @lecture.description %></p>
     <div class="card-lecture-bigbuttons">
             <!--   <%= link_to  "Retour à la l'index des lectures", lectures_path, class: "btn button-gray mr-2" %>-->
       <%if (@lecture.user_id == current_user.id) %>
         <%= link_to  "Editer", manage_courses_path(), class: "btn button-gray mr-2" %>
-      <% end %>
-      <%if (@lecture.user_id != current_user.id) %>
+      <% else %>
         <% if Schooling.where(user: current_user).where(lecture: @lecture).exists? %>
-       <!--    <%= link_to  "Ne plus suivre ce cours", lecture_schoolings_path(@lecture), method: :delete, class: "btn button-blue" %> -->
-         <p>Cours suivi !</p>
+          <%= link_to  "Ne plus suivre ce cours", lecture_schooling_path(@lecture), method: :delete, class: "btn button-red" %>
         <% else %>
-          <%= link_to  "Suivre ce cours", lecture_schoolings_path(@lecture), method: "POST", class: "btn button-blue" %>
+          <%= link_to  "Suivre ce cours 🔒", lecture_schoolings_path(@lecture), method: "POST", class: "btn button-blue" %>
         <% end %>
       <%end %>
     </div>
   </div>
 
 
-<% if (Schooling.where(user: current_user).where(lecture: @lecture).exists?) || (@lecture.user_id == current_user.id) %>
+<% if (current_user.has_schooling?(@lecture)) || (@lecture.user_id == current_user.id) %>
 
 <div class="container">
   <h2 class="mt-4">Chapitres disponibles</h2>

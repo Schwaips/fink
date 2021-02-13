@@ -16,11 +16,11 @@ class User < ApplicationRecord
   end
 
   def students
-    lectures.map(&:students).flatten.uniq
+    lectures.map(&:students).flatten.uniq.reverse!
   end
 
-  def checking_schoolings
-
+  def has_schooling?(lecture)
+    Schooling.where(user: self, lecture: lecture).exists?
   end
 
 end

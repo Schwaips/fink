@@ -1,113 +1,40 @@
-
-<div class="mb-5 container d-flex justify-content-between margintop">
-
-  <div class="d-flex mt-5">
+<div class="mb-5 container  margintop">
+  <div class="d-flex align-items-center mt-5">
     <% if current_user.photo.attached? %>
       <%= cl_image_tag current_user.photo.key, class: 'avatar-large avatar-bordered img-circle' %>
     <% else %>
       <%= image_tag "https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg", class: 'avatar-large avatar-bordered img-circle' %>
     <% end %>
     <div class="ml-4">
-      <h3>Bonjour <strong><%= current_user.first_name %></strong> </h3>
+      <h3>Bonjour <strong><%= current_user.first_name %></strong> 👨‍🏫</h3>
       <p><%= current_user.email %></p>
-      <p> Vous êtes un <%= current_user.role %> </p>
       <%= link_to  do %>
         <p class="pr-3"><i class="far fa-edit"></i> Modifier le profil </p>
       <% end %>
     </div>
   </div>
 
-
-  <% if current_user.role == "teacher" %>
-        <div class="stat-card my-5 ">
-          <h4>Mes statistiques mensuelles</h4>
-        </div>
-
-        <div class="stat-card my-5">
-          <h4>Mes étudiants</h4>
-        </div>
-    <% end %>
-</div>
-
-<div class="mt-5">
-  <% if current_user.role == "teacher" %>
-  <div class="container mb-5">
-    <ul class="list-inline tabs-underlined">
-      <li>
-        <a data-toggle="tab" href="#publish" class="tab-underlined active">Mes cours en ligne</a>
-      </li>
-
-      <li>
-        <a data-toggle="tab" href="#draft" class="tab-underlined">Mes brouillons</a>
-      </li>
-    </ul>
-
-    <div class="tab-content">
-      <div class="tabs tab-pane active mt-5" id="publish">
-      <br>
-      <h3>Cours publiés</h3>
-          <% current_user.lectures.each do |lecture| %>
-            <%= link_to lecture_path(lecture) do %>
-              <div class="card-dashboard">
-                <% if lecture.photo.attached? %>
-                  <%= cl_image_tag lecture.photo.key %>
-                <% else %>
-                  <%= image_tag "https://lescreasdetiti.fr/52303-large_default/motif-thermocollant-point-d-interrogation.jpg" %>
-                <% end %>
-                <div class="card-dashboard-infos">
-                  <h2><%= lecture.title %></h2>
-                  <p><%= lecture.description %></p>
-                  <div class="d-flex">
-                    <%= link_to manage_courses_path do %>
-                      <p class="pr-3"><i class="far fa-edit"></i></p>
-                    <% end %>
-                    <%= link_to lecture_path(lecture), method: :delete, data: { confirm: "Supprimer #{lecture.title}?" } do %>
-                     <p><i class="far fa-trash-alt"></i></p>
-                    <% end %>
-                  </div>
-              </div> <!-- card dfashboard infos -->
-            </div> <!-- card dashboard -->
-          <% end %>
+  <div class="d-flex justify-content-around">
+    <div class="stat-card my-5">
+      <h4>Mes étudiants</h4>
+        <% current_user.students.first(5).each do |student| %>
+          <div class="mb-2">
+            <% if student.photo.attached? %>
+              <img src="<%= cl_image_tag student.photo.key %>" class="avatar" />
+            <% else %>
+              <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg" class="avatar"/>
+            <% end %>
+            <%= student.first_name %>
+          </div>
         <% end %>
-    </div> <!-- tabs tab-pane active mt-5 -->
-
-      <div class="tabs tab-pane" id="draft">
-        <br>
-        <h3>Désolé, vous n'avez aucun brouillon pour le moment</h3>
-        <p>Pour créer un nouveau cours, cliquez sur le bouton ci-dessous</p>
-        <%= link_to  "Ajouter un cours", new_lecture_path, class:"btn button-gray" %>
-      </div>
-
+      <%= link_to "Voir plus", class: "btn button-blue" %>
+    </div>
+    <div class="stat-card my-5 ">
+      <h4>Mes statistiques mensuelles</h4>
     </div>
   </div>
-<% end %>
 </div>
 
-
-
-<div class="theme_background">
-  <div class="container">
-    <h3 class="pt-3">Mes cours suivis</h3>
-    <div class="card-board">
-    <% current_user.lectures_as_pupil.each do |lecture| %>
-      <div class="card-lecture">
-        <div class="card-lecture-image" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= lecture.photo.attached? ? cl_image_path(lecture.photo.key, crop: :fit) : "https://source.unsplash.com/300x150/?#{lecture.category}" %>">
-        </div>
-        <h1><%= lecture.title %></h1>
-        <p><%= lecture.description %></p>
-        <p>Created by <%= lecture.user.first_name %></p>
-        <%= link_to "Découvrir", lecture_path(lecture), class: "btn button-invisible" %>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-
-  <div class="plus-btn">
-<%= link_to new_lecture_path do %>
-    <i class="fas fa-plus"></i>
-<% end %>
-  </div>
 
 
 
