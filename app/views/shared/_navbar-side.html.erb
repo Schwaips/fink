@@ -2,11 +2,16 @@
 
 <div class="row">
   <div class="col-3 left-menu">
-      <h1 class="text-center light-color">Menu</h1>
+      <h1 class="text-center black-color">Menu</h1>
 
        <br>
-      <h3 class="text-align-right light-color">Gestion de vos cours</h3>
-      <br>
+      <h3 class="text-align-right gray-color">Gestion de vos cours</h3>
+      <div class="text-center my-4">
+        <%= link_to new_lecture_path, class:"btn button-white" do %>
+          <i class="fas fa-plus-circle"></i> Ajouter un cours
+        <% end %> <!-- Ajoute d'un cours boutton-->
+      </div> <!-- text center button -->
+
       <% @lectures.each do |lecture|%>
         <div class="d-flex">
           <h5><i class="fas fa-graduation-cap"></i> <%= lecture.title %></h5>
@@ -18,16 +23,12 @@
           <% end %> <!-- end of destroy-->
         </div> <!-- end of d flex for title and edit and destroy-->
       <% end %> <!-- lectures each  end -->
-      <div class="text-center my-4">
-        <%= link_to new_lecture_path, class:"btn button-white" do %>
-          <i class="fas fa-plus-circle"></i> Ajouter un cours
-        <% end %> <!-- Ajoute d'un cours boutton-->
-      </div> <!-- text center button -->
-    <h3 class="text-align-right light-color mb-3">Parametres</h3>
-      <h5><i class="fas fa-user-cog setting-list"></i> profil</h5>
-      <h5><i class="fas fa-people-carry setting-list"></i> Aide </h5>
-      <h5><i class="fas fa-money-check-alt setting-list"></i> Abonnements</h5>
-      <h5><i class="fas fa-terminal setting-list"></i>CGV</h5>
+    <br>
+    <h3 class="text-align-right gray-color mb-3">Parametres</h3>
+      <h5> <i class="fas fa-user-cog setting-list"></i>  Profile</h5>
+      <h5> <i class="fas fa-people-carry setting-list"></i>  Aide</h5>
+      <h5> <i class="fas fa-money-check-alt setting-list"></i>  Abonnements</h5>
+      <h5> <i class="fas fa-terminal setting-list"></i>  CGV</h5>
   </div> <!--col 3-->
 
   <div class="col-9">

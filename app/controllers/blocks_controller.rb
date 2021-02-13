@@ -15,22 +15,25 @@ before_action :new_block, only: [ :create ]
     @block.lecture = @lecture
     @block.update(params_block)
     if @block.save
-      flash[:notice] = "Chapitre #{@block.title} $ajouté à votre cours"
+      redirect_to edit_lecture_path(@lecture) and return
+      flash[:notice] = "Chapitre #{@block.title} ajouté à votre cours"
     else
       flash[:notice] = "Une erreur est survenue, veuillez réesayer."
     end
-    redirect_to manage_courses_path()
+    redirect_to edit_lecture_path(@lecture)
   end
 
-  def edit
-    @block = Block.find(params[:id])
-    @lecture = Lecture.find(params[:lecture_id])
-  end
+  # def edit
+  #   @block = Block.find(params[:id])
+  #   @lecture = Lecture.find(params[:lecture_id])
+  # end
 
   def update
+    @block = Block.find(params[:id])
+    @lecture = Lecture.find(params[:lecture_id])
     @block.update(params_block)
     redirect_to edit_lecture_path(@lecture)
-    flash[:notice] = "Votre contenu #{@lecture.title} est à jour, merci!"
+    flash[:notice] = "Le chapitre #{@block.title} est à jour, merci!"
   end
 
 

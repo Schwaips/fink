@@ -7,17 +7,44 @@
   </div> <!-- card category -->
 
   <div class="row">
-    <div class="col-7">
-      <h3 class="text-center">Modifier votre cours</h3>
+    <div class="col-9 container">
+      <h3 class="text-center"><i class="fas fa-graduation-cap"></i> Modifier votre cours "<%= @lecture.title %>"</h3>
+      <br>
+          <%= simple_form_for(@lecture) do |f| %>
+            <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
+            <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
+            <%= f.input :photo, as: :file, label: "Miniature de l'offre", label: "Choisir une nouvelle photo", class:"btn button-blue" %>
+            <%= f.input :category, label: "Categorie", as: :radio_buttons,
+                collection_wrapper_tag: 'div',
+                collection_wrapper_class: 'category-wrapper',
+                item_wrapper_class: 'category-item',
+                input_html: {class: 'category-selector'},
+                collection: Lecture::CATEGORY %>
+            <%= f.submit "Sauvegarder", class: "btn button-blue" %>
+            <br/>
+            <br/>
+          <% end %>
     </div> <!-- col 6 -->
 
-    <div class="col-3 border-left">
-      <h3 class="text-center">Liste des chapitres</h3>
+    <div class="col-4 border-left">
+      <h3 class="text-center"><i class="fas fa-bookmark"></i> Liste des chapitres</h3>
       <br>
         <% if @lecture.blocks.empty? == false %>
           <ul>
             <% @lecture.blocks.each_with_index do |block, index|%>
-            <li class="list-unstyled"><span>Chapitre <%= index + 1 %> - <strong><%= block.title %></strong></span></li>
+            <span class="mr-2"><strong>Chapitre <%= index + 1 %></strong></span>
+
+            <!-- Button trigger modal edit block -->
+            <%= link_to edit_lecture_block_path(@lecture, block), { :class => "link-add-chapter-lecture-right", 'data-toggle' => 'modal', 'data-target' => "#editBlock" } do %>
+              <span>  <i class="far fa-edit mr-2"></i></span>
+            <% end %> <!-- edit block end -->
+            <!--Modal pour edit block -->
+            <!-- Edit block-->
+            <!-- la deuxieme valeur des locals, c'est la valeur qu'on a dans le fichier ou vous lisez ce commentaire. La premiere valuer, c'est la variable qu'on va utiliser dans le render. -->
+            <%= render partial:'blocks/shared/edit', locals: { block: block, lecture: @lecture } %>
+
+            <span>  <i class="far fa-trash-alt"></i></span>
+            <li class="list-unstyled"><%= block.title %></li>
             <li class="list-unstyled">
               <% if block.block_type == "Podcast" %>
                 <i class="fas fa-headphones-alt"></i> <%= block.block_type %>
@@ -29,6 +56,7 @@
                 <i class="fas fa-podcast"></i><%= block.block_type %>
               <% end %>
             </li>
+
             <% end %> <!-- end of each block-->
           </ul>
             <div class="text-center">
@@ -48,4 +76,9 @@
   </div> <!--row -->
 
 
+
+<!--MODAL -->
+
+
+<!-- Delete block --
 

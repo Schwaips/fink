@@ -35,7 +35,7 @@ before_action :set_lecture, only: [:show, :edit, :update]
     @navbar_side = true
     @lectures = Lecture.where(user: current_user)
     @lecture = Lecture.find(params[:id])
-    @block = params[:block_id] ?  Block.find(params[:block_id]) : Block.new
+    # @block = params[:block_id] ?  Block.find(params[:block_id]) : Block.new
     # respond_to do |format|
     #   format.js { render :file => "app/views/lectures/edit.js.erb" }
     # end
@@ -45,7 +45,7 @@ before_action :set_lecture, only: [:show, :edit, :update]
     @navbar_side = true
     @lectures = Lecture.where(user: current_user)
     @lecture.update(params_lecture)
-    redirect_to manage_courses_path
+    redirect_to edit_lecture_path(@lecture)
     flash[:notice] = "Votre lecture #{@lecture.title} est à jour, merci!"
   end
 
@@ -55,7 +55,7 @@ before_action :set_lecture, only: [:show, :edit, :update]
     @lecture = Lecture.find(params[:id])
     if @lecture.destroy
       flash[:notice] = "Le cours #{@lecture.title} bien supprimé, merci"
-      redirect_to manage_courses_path
+      redirect_to dashboard_path
     else
       render :show
     end

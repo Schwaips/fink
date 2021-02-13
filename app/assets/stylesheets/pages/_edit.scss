@@ -14,3 +14,34 @@
 .border-left {
   border-left: $gray solid;
 }
+
+
+input#lecture_title, textarea#lecture_description {
+  border-radius: 10px;
+}
+
+input#lecture_title {
+  width: 60%;
+}
+
+input#file-upload-button {
+  padding: 8px 24px;
+  color: $white;
+  background: $blue;
+  border-radius: 10px;
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+input#file-upload-button:hover {
+  text-decoration: none;
+  color: $blue;
+  background: $white;
+  border: 1px solid;
+  border-color: $blue;
+}
+
+
+
+textarea#lecture_description {
+  height: 100px;
+}
