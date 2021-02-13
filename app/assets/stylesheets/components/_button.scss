@@ -69,3 +69,18 @@
 }
 
 
+.button-white {
+  padding: 8px 24px;
+  color: $blue;
+  background: $light;
+  border-radius: 10px;
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+.button-white:hover {
+  text-decoration: none;
+  color: $blue;
+  background: $white;
+  border: 1px solid;
+  border-color: $blue;
+}
