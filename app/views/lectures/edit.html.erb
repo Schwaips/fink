@@ -1,4 +1,4 @@
-<div class="margintop">
+
   <div class="card-category" style=
           "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
           url(<%= @lecture.photo.attached? ? cl_image_path(@lecture.photo.key, crop: :scale)
@@ -7,72 +7,78 @@
   </div> <!-- card category -->
 
   <div class="row">
-    <div class="col-4">
-        <div class="text-center">
-          <h2 class="tab-edit">Liste des cours</h2>
-          <br/>
-        </div> <!-- text center -->
-
-          <% if @lecture.blocks.empty? %>
-            <h5 class="text-center">Rien pour le moment, ajouter un cours</h5>
-          <% else %>
-            <% @lecture.blocks.each_with_index do |block, index| %>
-          <div class="card-edit">
-                 <h4><%= "Cours numéro #{ index + 1 }" %></h4>
-                  <span> Type : <%= block.block_type %></span>
-                  <div class="d-flex">
-                      <%= link_to edit_lecture_path(@lecture, block_id: block.id) do %>
-                        <p class="pr-3"><i class="far fa-edit"></i></p>
-                      <% end %>
-                      <%= link_to "/", method: :delete, data: { confirm: 'Are you sure?' } do %>
-                        <p><i class="far fa-trash-alt"></i></p>
-                      <% end %>
-                  </div> <!-- end of d flex -->
-            </div> <!-- card -->
-        <% end %>
+    <div class="col-9 container">
+      <h3 class="text-center"><i class="fas fa-graduation-cap"></i> Modifier votre cours "<%= @lecture.title %>"</h3>
+      <br>
+          <%= simple_form_for(@lecture) do |f| %>
+            <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
+            <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
+            <%= f.input :photo, as: :file, label: "Miniature de l'offre", label: "Choisir une nouvelle photo", class:"btn button-blue" %>
+            <%= f.input :category, label: "Categorie", as: :radio_buttons,
+                collection_wrapper_tag: 'div',
+                collection_wrapper_class: 'category-wrapper',
+                item_wrapper_class: 'category-item',
+                input_html: {class: 'category-selector'},
+                collection: Lecture::CATEGORY %>
+            <%= f.submit "Sauvegarder", class: "btn button-blue" %>
+            <br/>
+            <br/>
           <% end %>
-    </div> <!-- col 4 -->
+    </div> <!-- col 6 -->
+
+    <div class="col-4 border-left">
+      <h3 class="text-center"><i class="fas fa-bookmark"></i> Liste des chapitres</h3>
+      <br>
+        <% if @lecture.blocks.empty? == false %>
+          <ul>
+            <% @lecture.blocks.each_with_index do |block, index|%>
+            <span class="mr-2"><strong>Chapitre <%= index + 1 %></strong></span>
+
+            <!-- Button trigger modal edit block -->
+            <%= link_to edit_lecture_block_path(@lecture, block), { :class => "link-add-chapter-lecture-right", 'data-toggle' => 'modal', 'data-target' => "#editBlock" } do %>
+              <span>  <i class="far fa-edit mr-2"></i></span>
+            <% end %> <!-- edit block end -->
+            <!--Modal pour edit block -->
+            <!-- Edit block-->
+            <!-- la deuxieme valeur des locals, c'est la valeur qu'on a dans le fichier ou vous lisez ce commentaire. La premiere valuer, c'est la variable qu'on va utiliser dans le render. -->
+            <%= render partial:'blocks/shared/edit', locals: { block: block, lecture: @lecture } %>
+
+            <span>  <i class="far fa-trash-alt"></i></span>
+            <li class="list-unstyled"><%= block.title %></li>
+            <li class="list-unstyled">
+              <% if block.block_type == "Podcast" %>
+                <i class="fas fa-headphones-alt"></i> <%= block.block_type %>
+              <% elsif block.block_type == "Video" %>
+                <i class="fas fa-video"></i> <%= block.block_type %>
+              <% elsif block.block_type == "Text" %>
+                <i class="far fa-file-alt"></i> <%= block.block_type %>
+                <% elsif block.block_type == "Live" %>
+                <i class="fas fa-podcast"></i><%= block.block_type %>
+              <% end %>
+            </li>
+
+            <% end %> <!-- end of each block-->
+          </ul>
+            <div class="text-center">
+              <%= link_to "/", class: "link-add-chapter-lecture-right" do %>
+                <li><i class="fas fa-plus-circle"></i> Ajouter un chapitre</li>
+              <% end %> <!-- end of button new chapter-->
+            </div> <!-- button text center-->
+        <% else %>
+          <h5 class="text-center">Aucun chapitre</h5>
+            <div class="text-center">
+              <%= link_to edit_lecture_path(@lecture), class: "btn button-gray" do %>
+                <i class="far fa-edit"></i>Ajouter un chapitre
+              <% end %> <!-- end of destroy-->
+            </div> <!-- text center for button-->
+        <% end %> <!-- end of if block empty -->
+      </div> <!--col 4-->
+  </div> <!--row -->
 
 
-    <% if @block.persisted? %>
-    <div class="col-8 text-center">
-    <h2 class="tab-edit">Modifier le cours</h2>
-      <div class="form-group">
-        <%= simple_form_for [@lecture, @block] do |f| %>
-          <%= f.input :block_type, label: "Categorie de votre lecture", collection: Block::BLOCK_TYPE %>
-          <%= f.input :photos, as: :file, label: "Ajouter des médias a la lecture", input_html: { multiple: true } %>
-          <div class="field">
-            <%= f.label :content %>
-            <%= f.rich_text_area :content %>
-          </div>
-        <% end %>
-      </div>
-    </div> <!-- fin form simple form -->
-    <% else %>
-      <div class="col-8">
-          <div class="text-center">
-            <h2 class="tab-edit">Gérer les cours pour <%= @lecture.title %></h2>
-            <br>
-            <div class="edit-lecture-modal">
-              <!-- Button trigger modal -->
-              <button type="button" class="btn button-red" data-toggle="modal" data-target="#exampleModal">
-                Modifier la lecture
-              </button>
-                <!-- Modal -->
-              <%= render partial:'lectures/shared/edit-modal', :locals => { lecture: @lecture } %>
-            </div> <!-- edit lecture modal-->
-            <h6 class="text-center m-3">Ou bien...</h6>
-              <div class="create-block-modal">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn button-blue" data-toggle="modal" data-target="#newblock">
-                  Ajouter un contenu
-                </button>
-                  <!-- Modal -->
-                
-              </div> <!-- create block modal-->
-        </div> <!-- text center -->
-      </div> <!--col 8-->
-    <% end %>
 
-  </div> <!-- row -->
-</div>
+<!--MODAL -->
+
+
+<!-- Delete block --
+
