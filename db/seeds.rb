@@ -109,7 +109,4 @@ lecture12 = Lecture.create!(title: "SQL", description: "Venez découvrir SQL", c
 file = URI.open('https://www.softfluent.fr/wp-content/uploads/2019/10/SQL.png')
 lecture12.photo.attach(io: file, filename: 'sing.jpg', content_type: 'image/jpg')
 
-
-
-
 puts "---seeds ending---"
