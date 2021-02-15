@@ -16,6 +16,9 @@
         <%= link_to  do %>
           <p class="pr-3"><i class="far fa-edit"></i> Modifier le profil </p>
         <% end %>
+        <%= link_to destroy_user_session_path, method: "DELETE" do %>
+          <span><i class="fas fa-power-off"></i> Se déconnecter</span>
+        <% end %>
       </div>
     </div>
 

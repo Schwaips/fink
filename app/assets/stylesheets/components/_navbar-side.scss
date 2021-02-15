@@ -51,3 +51,16 @@ li {
 .setting-list {
   margin-bottom: 8px;
 }
+
+
+.log-out-link {
+  color: white;
+  margin-left: 0px;
+  padding: 0px;
+}
+
+.log-out-link:hover {
+  color: $gray;
+  padding: 0px;
+  text-decoration: none;
+}

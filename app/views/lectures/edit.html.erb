@@ -35,7 +35,7 @@
         <h3 class="mt-5 pt-5 text-center" id="chapter"><i class="fas fa-bookmark"></i> Liste des chapitres</h3>
           <% if @lecture.blocks.empty? == false %>
             <div class="mt-4">
-                <%= link_to "/", class: "link-add-chapter-lecture-right" do %>
+                <%= link_to new_lecture_block_path(@lecture, @block), class: "link-add-chapter-lecture-right" do %>
                   <li><i class="fas fa-plus-circle"></i> Ajouter un chapitre</li>
                 <% end %> <!-- end of button new chapter-->
               </div> <!-- button text center-->
@@ -73,10 +73,9 @@
             </ul>
           <% else %>
             <h5 class="text-center">Aucun chapitre pour le moment</h5>
-            <br>
               <div class="text-center mt-1">
-                <%= link_to edit_lecture_path(@lecture), class: "link-add-chapter-lecture-right" do %>
-                  <span><i class="far fa-edit"></i>Ajouter un chapitre</span>
+                <%= link_to new_lecture_block_path(@lecture, @block), class: "link-add-chapter-lecture-right" do %>
+                  <span><i class="fas fa-plus-circle"></i> Ajouter un chapitre</span>
                 <% end %> <!-- end of add chapter -->
               </div> <!-- text center mt1-->
           <% end %> <!-- end of if block empty -->
@@ -84,9 +83,4 @@
 
 </div> <!--margin-left -->
 
-
-<!--MODAL -->
-
-
-<!-- Delete block --
 

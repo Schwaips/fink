@@ -1,7 +1,11 @@
 
   <div class="left-menu">
       <h1 class="text-center black-color">Menu</h1>
-
+      <div class="text-center">
+        <%= link_to destroy_user_session_path, method: "DELETE", class:"mt-2 log-out-link" do %>
+            <span><i class="fas fa-power-off"></i> Se déconnecter</span>
+          <% end %>
+      </div> <!-- text center log out -->
        <br>
       <h3 class="text-align-right gray-color">Gestion de vos cours</h3>
       <div class="text-center my-4">
