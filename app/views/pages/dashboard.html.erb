@@ -1,7 +1,9 @@
 
 <% if @current_user.role == "teacher" %>
 
-  <div class="mb-5  margin-left">
+  <div class="mb-5 margin-left col-9">
+  <br>
+  <br>
     <div class="d-flex align-items-center mt-1">
       <% if current_user.photo.attached? %>
         <%= cl_image_tag current_user.photo.key, class: 'avatar-large avatar-bordered img-circle' %>
@@ -13,6 +15,9 @@
         <p><%= current_user.email %></p>
         <%= link_to  do %>
           <p class="pr-3"><i class="far fa-edit"></i> Modifier le profil </p>
+        <% end %>
+        <%= link_to destroy_user_session_path, method: "DELETE" do %>
+          <span><i class="fas fa-power-off"></i> Se déconnecter</span>
         <% end %>
       </div>
     </div>

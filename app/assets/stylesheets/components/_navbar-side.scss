@@ -4,8 +4,9 @@
   padding: 50px;
   height: 200vh;
   position: fixed;
-  overflow-x: hidden;
+  // overflow-x: hidden;
   z-index: 1;
+  // overflow: scroll;
 }
 
 
@@ -13,8 +14,6 @@
   margin-top: 5px;
   margin-left: 30px;
 }
-
-
 
 // link trash
 .link-delete-lecture-left {
@@ -51,4 +50,17 @@ li {
 
 .setting-list {
   margin-bottom: 8px;
+}
+
+
+.log-out-link {
+  color: white;
+  margin-left: 0px;
+  padding: 0px;
+}
+
+.log-out-link:hover {
+  color: $gray;
+  padding: 0px;
+  text-decoration: none;
 }

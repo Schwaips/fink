@@ -42,3 +42,7 @@ margin-top: 66px;
 .margin-right{
   margin-right: 200px;
 }
+
+.main {
+  min-height: calc(100vh - 60px); // if your footer height is 60px
+}
