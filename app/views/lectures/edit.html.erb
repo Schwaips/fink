@@ -14,6 +14,11 @@
         <%= link_to edit_lecture_path(@lecture, anchor: "chapter"), class: "link-add-chapter-lecture-right" do %>
           <span><i class="far fa-bookmark"></i> Aller aux chapitres</span>
         <% end %> <!-- end of anchor chapter -->
+
+        <%= link_to lecture_path(@lecture), method: "DELETE", data: { confirm: "Supprimer définitivement le cours #{@lecture.title} et les chapitres associés?" }, class: "ml-3 link-remove-lecture-right" do %>
+          <span><i class="far fa-trash-alt"></i> Supprimer ce cours</span>
+        <% end %> <!-- end of anchor chapter -->
+
       </div> <!--text center pour button got to chapitre-->
         <br>
         <div class="p-5">
