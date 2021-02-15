@@ -15,7 +15,13 @@ puts "--starting seedings"
 # creating teacher example
 puts "--creating teachers--"
   c = User.create!(first_name: "Charlie", last_name: "Bertrand", email: "charlie.bertrand@live.com", password: "123456", role: "teacher")
+  cb = URI.open('https://media-exp1.licdn.com/dms/image/C5603AQFbywQG0KAjeQ/profile-displayphoto-shrink_800_800/0/1539070374037?e=1619049600&v=beta&t=sV2smVTKLvzWhXZpAi5Oj84xwLYQ3SJ29_qpcA1O6lA')
+  c.photo.attach(io: cb, filename: 'charlie-avatar.jpg', content_type: 'image/jpg')
+
   a = User.create!(first_name: "Amelien", last_name: "Delahaie", email: "amelien.delahaie@live.com", password: "123456", role: "teacher")
+  am = URI.open('https://pbs.twimg.com/profile_images/1177317334849130496/3-AonVB8_400x400.jpg')
+  a.photo.attach(io: am, filename: 'amelien-avatar.jpg', content_type: 'image/jpg')
+
 puts "--Charlie & Amélien teacher created--"
 
 puts "-- creating students--"

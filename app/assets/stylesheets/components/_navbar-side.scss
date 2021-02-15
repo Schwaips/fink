@@ -4,8 +4,9 @@
   padding: 50px;
   height: 200vh;
   position: fixed;
-  overflow-x: hidden;
+  // overflow-x: hidden;
   z-index: 1;
+  // overflow: scroll;
 }
 
 
@@ -13,8 +14,6 @@
   margin-top: 5px;
   margin-left: 30px;
 }
-
-
 
 // link trash
 .link-delete-lecture-left {
