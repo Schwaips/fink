@@ -2,6 +2,8 @@
 <% if @current_user.role == "teacher" %>
 
   <div class="mb-5  margin-left">
+  <br>
+  <br>
     <div class="d-flex align-items-center mt-1">
       <% if current_user.photo.attached? %>
         <%= cl_image_tag current_user.photo.key, class: 'avatar-large avatar-bordered img-circle' %>
