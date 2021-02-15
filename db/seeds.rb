@@ -26,7 +26,12 @@ puts "--Charlie & Amélien teacher created--"
 
 puts "-- creating students--"
   o = User.create!(first_name: "Olivia", last_name: "Bihl", email: "olivia.bihl@live.com", password: "123456", role: "student")
+  ob = URI.open('https://media-exp1.licdn.com/dms/image/C4D03AQGQMlEDoj0jwA/profile-displayphoto-shrink_800_800/0/1524840699999?e=1619049600&v=beta&t=e_GlYITjGLOTB5KsbhekUHimPjJBHBL8mJWtuc1qnj0')
+  o.photo.attach(io: ob, filename: "olivia-avatar", content_type: "image/jpg")
+
   r = User.create!(first_name: "Raphael", last_name: "Mosca", email: "raphael.mosca@live.com", password: "123456", role: "student")
+  rm = URI.open('https://media-exp1.licdn.com/dms/image/C4D03AQFyEtL7SCBiEQ/profile-displayphoto-shrink_800_800/0/1595506575911?e=1619049600&v=beta&t=pZRj6JLzijvGfXt3C3heMG04LuUyfiXgYsAthqPZvJI')
+  r.photo.attach(io: rm, filename: "raph-avatar.jpg", content_type: "image/jpg")
 puts "--student created--"
 
 # lecture creation
