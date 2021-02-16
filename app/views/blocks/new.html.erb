@@ -1,28 +1,30 @@
-  <div class="container">
+  <div class="margin-left container">
     <div class="row">
      <div class="col-6">
         <div class="form-edit">
           <h1></h1>
           <br/>
-          <h1>Créer un nouveau chapitre</h1>
+          <br/>
+          <h2>Créer un nouveau chapitre</h2>
             <div class="form-group">
                 <%= simple_form_for [@lecture, @block] do |f| %>
-                  <%= f.input :title, label: "Titre de votre chapitre" %>
-                  <%= f.input :block_type, label: "Type de média", collection: Block::BLOCK_TYPE %>
+                  <%= f.input :title, input_html: { class: "lecture_title" }, label: "Titre de votre chapitre" %>
+                  <%= f.input :block_type, input_html: { class: "lecture_title" }, label: "Type de média", collection: Block::BLOCK_TYPE %>
                   <%= f.input :photos, as: :file, label: "Ajouter un ou des médias", input_html: { multiple: true } %>
 
                   <div class="field">
-                    <%= f.label :content %>
+                    <%= f.label :content, input_html: { class: "lecture_title" } %>
                     <%= f.rich_text_area :content %>
                   </div>
-                  <%= f.submit "Ajouter le chapitre et sauvegarder", class: "btn button-pink mt-4" %>
+                  <%= f.submit "Ajouter le chapitre", class: "btn button-pink mt-4" %>
                 <% end %>
               </div> <!-- fin form simple form -->
         </div> <!-- fin form-edit -->
       </div> <!-- fin col-6 -->
       <div class="col-4">
         <br/>
-        <h1>Comment ca fonctionne?</h1>
+        <br/>
+        <h2>Comment ca fonctionne?</h2>
           <div class="d-flex justify-content-evenly align-items-center">
            <%= cl_image_tag "idea-pic", class:"p-5" %>
             <h1 style="color: #DCDCDC"> Créer votre cours</h1>

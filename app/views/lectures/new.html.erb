@@ -4,7 +4,8 @@
         <div class="form-edit">
           <h1></h1>
           <br/>
-          <h1>Créer un nouveau cours</h1>
+          <br/>
+          <h2>Créer un nouveau cours</h2>
           <%= simple_form_for(@lecture) do |f| %>
             <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
             <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
@@ -23,7 +24,8 @@
       </div> <!-- fin col-6 -->
       <div class="col-4">
         <br/>
-        <h1>Comment ca fonctionne?</h1>
+        <br/>
+        <h2>Comment ca fonctionne?</h2>
           <div class="d-flex justify-content-evenly align-items-center">
            <%= cl_image_tag "idea-pic", class:"p-5" %>
             <h1> Créer votre cours</h1>

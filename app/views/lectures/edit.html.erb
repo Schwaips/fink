@@ -6,9 +6,6 @@
             <h1><%= @lecture.title.upcase %></h1>
   </div> <!-- card category -->
 
-
-  <div class="pl-5">
-
     <h3 class="text-center"><i class="fas fa-graduation-cap"></i> Modifier votre cours "<%= @lecture.title %>"</h3>
       <div class="text-center mt-1">
         <%= link_to edit_lecture_path(@lecture, anchor: "chapter"), class: "link-add-chapter-lecture-right" do %>
@@ -37,7 +34,7 @@
         </div> <!-- form to edit-->
 
       <div class="mt-4">
-        <h3 class="mt-5 pt-5 text-center" id="chapter"><i class="fas fa-bookmark"></i> Liste des chapitres</h3>
+        <h3 class="mt-5 text-center" id="chapter"><i class="fas fa-bookmark"></i> Liste des chapitres</h3>
           <% if @lecture.blocks.empty? == false %>
             <div class="mt-4">
                 <%= link_to new_lecture_block_path(@lecture, @block), class: "link-add-chapter-lecture-right" do %>
