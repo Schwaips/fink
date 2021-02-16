@@ -23,7 +23,7 @@
         <div class="stat-card my-5">
           <h4>Mes étudiants</h4>
             <% current_user.students.first(5).each do |student| %>
-              <div class="mb-2">
+              <div class="mb-3">
                 <% if student.photo.attached? %>
                   <img src="<%= cl_image_tag student.photo.key %>" class="avatar" />
                 <% else %>

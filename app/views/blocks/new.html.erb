@@ -1,20 +1,21 @@
-<div class="margin-left container">
+<div class=" container margin-left">
   <div class="form-edit">
-    <h1></h1>
-    <br/>
-    <br/>
-    <h2>Créer un nouveau chapitre</h2>
-      <div class="form-group">
+    <div class="pl-5 d-flex flex-column align-items-left">
+      <h2 class="pt-5">Créer un nouveau chapitre</h2>
+        <div class="form-group pt-4">
           <%= simple_form_for [@lecture, @block] do |f| %>
             <%= f.input :title, input_html: { class: "lecture_title" }, label: "Titre de votre chapitre" %>
+            </br>
             <%= f.input :block_type, as: :radio_buttons,
                 collection_wrapper_tag: 'div',
-                collection_wrapper_class: 'category-wrapper',
-                item_wrapper_class: 'category-item',
+                collection_wrapper_class: 'category-wrapper-block',
+                item_wrapper_class: 'category-item-block',
                 input_html: {class: 'category-selector'},
+                label: "Type de médias",
                 collection: Block::BLOCK_TYPE %>
+            </br>
             <%= f.input :photos, as: :file, label: "Ajouter un ou des médias", input_html: { multiple: true } %>
-
+            </br>
             <div class="field">
               <%= f.label :content, input_html: { class: "lecture_title" } %>
               <%= f.rich_text_area :content %>
@@ -22,5 +23,6 @@
             <%= f.submit "Ajouter le chapitre", class: "btn button-gray mt-4" %>
           <% end %>
         </div> <!-- fin form simple form -->
-  </div> <!-- fin form-edit -->
+      </div> <!-- fin form-edit -->
   </div> <!-- margin left container -->
+</div>

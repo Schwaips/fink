@@ -6,23 +6,29 @@
             <h1><%= @lecture.title.upcase %></h1>
   </div> <!-- card category -->
 
-    <h3 class="text-center"><i class="fas fa-graduation-cap"></i> Modifier votre cours "<%= @lecture.title %>"</h3>
-      <div class="text-center mt-1">
+<div class="d-flex flex-column align-items-center">
+  <div class="d-flex flex-column align-items-center">
+     <h3 class="text-center"><i class="fas fa-graduation-cap"></i> Modifier votre cours "<%= @lecture.title %>"</h3>
+      <div class="mt-1">
         <%= link_to edit_lecture_path(@lecture, anchor: "chapter"), class: "link-add-chapter-lecture-right" do %>
           <span><i class="far fa-bookmark"></i> Aller aux chapitres</span>
         <% end %> <!-- end of anchor chapter -->
-
         <%= link_to lecture_path(@lecture), method: "DELETE", data: { confirm: "Supprimer définitivement le cours #{@lecture.title} et les chapitres associés?" }, class: "ml-3 link-remove-lecture-right" do %>
           <span><i class="far fa-trash-alt"></i> Supprimer ce cours</span>
         <% end %> <!-- end of anchor chapter -->
-
       </div> <!--text center pour button got to chapitre-->
-        <br>
-        <div class="p-5">
+  </div>
+
+  <div>
+
+    <div class="py-5">
             <%= simple_form_for(@lecture) do |f| %>
               <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
+              </br>
               <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
+               </br>
               <%= f.input :photo, as: :file, label: "Miniature de l'offre", label: "Choisir une nouvelle photo", class:"btn button-blue" %>
+               </br>
               <%= f.input :category, label: "Categorie", as: :radio_buttons,
                   collection_wrapper_tag: 'div',
                   collection_wrapper_class: 'category-wrapper',
@@ -33,24 +39,36 @@
             <% end %>
         </div> <!-- form to edit-->
 
+  </div>
+
+</div>
+
+
+
+
       <div class="mt-4">
         <h3 class="mt-5 text-center" id="chapter"><i class="fas fa-bookmark"></i> Liste des chapitres</h3>
           <% if @lecture.blocks.empty? == false %>
-            <div class="mt-4">
-                <%= link_to new_lecture_block_path(@lecture, @block), class: "link-add-chapter-lecture-right" do %>
-                  <li><i class="fas fa-plus-circle"></i> Ajouter un chapitre</li>
-                <% end %> <!-- end of button new chapter-->
-              </div> <!-- button text center-->
-            <ul class="grid">
+            <div class="mt-4 text-center">
+              <%= link_to new_lecture_block_path(@lecture, @block), class: "btn button-white" do %>
+                <li><i class="fas fa-plus-circle"></i> Ajouter un chapitre</li>
+              <% end %> <!-- end of button new chapter-->
+            </div> <!-- button text center-->
+            <ul class="grid container">
               <% @lecture.blocks.each_with_index do |block, index|%>
               <div class="card-dashboard d-flex justify-content-around flex-column">
                 <div class="d-flex justify-content-between">
                   <h5><strong>Chapitre <%= index + 1 %></strong></h5>
                   <div>
                     <!-- Button trigger modal edit block -->
+                    <%= link_to lecture_path(@lecture), { :class => "link-add-chapter-lecture-right pr-2"} do %>
+                      <span><i class="far fa-eye"></i></span>
+                    <% end %>
+
                     <%= link_to edit_lecture_block_path(@lecture, block), { :class => "link-add-chapter-lecture-right", 'data-toggle' => 'modal', 'data-target' => "#editBlock" } do %>
                       <span>  <i class="far fa-edit mr-2"></i></span>
                     <% end %> <!-- edit block end -->
+
                     <!--Modal pour edit block -->
                     <!-- Edit block-->
                     <!-- la deuxieme valeur des locals, c'est la valeur qu'on a dans le fichier ou vous lisez ce commentaire. La premiere valeurr, c'est la variable qu'on va utiliser dans le render. -->
@@ -75,8 +93,8 @@
             </ul>
           <% else %>
             <h5 class="text-center">Aucun chapitre pour le moment</h5>
-              <div class="text-center mt-1">
-                <%= link_to new_lecture_block_path(@lecture, @block), class: "link-add-chapter-lecture-right" do %>
+              <div class="text-center pt-4">
+                <%= link_to new_lecture_block_path(@lecture, @block), class: "btn button-white" do %>
                   <span><i class="fas fa-plus-circle"></i> Ajouter un chapitre</span>
                 <% end %> <!-- end of add chapter -->
               </div> <!-- text center mt1-->
