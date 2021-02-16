@@ -13,12 +13,11 @@ before_action :set_lecture, only: [:show, :edit, :update]
 
   def user_join_channel
     @lecture = Lecture.find(params[:lecture])
+    @user = current_user
     join_channel_slack
     flash[:notice] = "Vous avez rejoins le canal sur Slack, félicitations! Ouvrez maintenant slack et échangez avec les profs et les élèves..."
     redirect_to lecture_path(@lecture)
   end
-
-
 
   def new
     @lecture = Lecture.new
@@ -93,7 +92,7 @@ private
 
   def join_channel_slack
     channel_id = @lecture.channel_id
-    join = RestClient.post 'https://slack.com/api/conversations.invite', { channel: channel_id, users: current_user.slack_workspace_uid  }, { Authorization:"Bearer #{ENV["SLACK_TOKEN"]}" }
+    join = RestClient.post 'https://slack.com/api/conversations.invite', { channel: channel_id, users: current_user.slack_workspace_uid }, { Authorization:"Bearer #{ENV["SLACK_TOKEN"]}" }
     p join.body
   end
 
