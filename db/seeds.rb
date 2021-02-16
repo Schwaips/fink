@@ -14,7 +14,7 @@ puts "--starting seedings"
 # user creation
 # creating teacher example
 puts "--creating teachers--"
-  c = User.create!(first_name: "Charlie", last_name: "Bertrand", email: "charlie.bertrand@live.com", password: "123456", role: "teacher")
+  c = User.create!(first_name: "Charlie", last_name: "Bertrand", email: "charlie.bertrand@live.com", password: "123456", role: "teacher", slack_workspace_uid:"D01MLG5H9M5")
   cb = URI.open('https://media-exp1.licdn.com/dms/image/C5603AQFbywQG0KAjeQ/profile-displayphoto-shrink_800_800/0/1539070374037?e=1619049600&v=beta&t=sV2smVTKLvzWhXZpAi5Oj84xwLYQ3SJ29_qpcA1O6lA')
   c.photo.attach(io: cb, filename: 'charlie-avatar.jpg', content_type: 'image/jpg')
 

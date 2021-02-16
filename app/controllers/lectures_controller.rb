@@ -8,7 +8,17 @@ before_action :set_lecture, only: [:show, :edit, :update]
   end
 
   def show
+    @lecture = Lecture.find(params[:id])
   end
+
+  def user_join_channel
+    @lecture = Lecture.find(params[:lecture])
+    join_channel_slack
+    flash[:notice] = "Vous avez rejoins le canal sur Slack, félicitations! Ouvrez maintenant slack et échangez avec les profs et les élèves..."
+    redirect_to lecture_path(@lecture)
+  end
+
+
 
   def new
     @lecture = Lecture.new
@@ -75,14 +85,16 @@ private
 
   def create_slack_channel
     # parametre de slack :
-    create_conv = RestClient.post 'https://slack.com/api/conversations.create', { name: @lecture.title.to_s.parameterize }, {Authorization:"Bearer #{ENV["SLACK_TOKEN"]}"}
+    create_conv = RestClient.post 'https://slack.com/api/conversations.create', { name: @lecture.title.to_s.parameterize }, { Authorization:"Bearer #{ENV["SLACK_TOKEN"]}" }
     @lecture.channel_id = JSON.parse(create_conv).dig("channel", "id")
     @lecture.save
     # join_conv = RestClient.post 'https://slack.com/api/conversations.invite', { channel: channel_id, users: current_user.slack_workspace_uid }, {Authorization:"Bearer #{ENV["SLACK_TOKEN"]}"}
   end
 
-  def join_channel
-
+  def join_channel_slack
+    channel_id = @lecture.channel_id
+    join = RestClient.post 'https://slack.com/api/conversations.invite', { channel: channel_id, users: current_user.slack_workspace_uid  }, { Authorization:"Bearer #{ENV["SLACK_TOKEN"]}" }
+    p join.body
   end
 
 end
