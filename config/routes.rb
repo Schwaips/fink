@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   get '/manage_courses', to: "pages#manage_courses"
   get '/test', to: "pages#test"
   get '/search', to:"pages#search"
+
+  get '/user_join_channel', to: "lectures#user_join_channel"
 end

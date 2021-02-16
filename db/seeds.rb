@@ -14,11 +14,11 @@ puts "--starting seedings"
 # user creation
 # creating teacher example
 puts "--creating teachers--"
-  c = User.create!(first_name: "Charlie", last_name: "Bertrand", email: "charlie.bertrand@live.com", password: "123456", role: "teacher")
+  c = User.create!(first_name: "Charlie", last_name: "Bertrand", email: "charlie.bertrand@live.com", password: "123456", role: "teacher", slack_workspace_uid:"U01MY6XLZ29")
   cb = URI.open('https://media-exp1.licdn.com/dms/image/C5603AQFbywQG0KAjeQ/profile-displayphoto-shrink_800_800/0/1539070374037?e=1619049600&v=beta&t=sV2smVTKLvzWhXZpAi5Oj84xwLYQ3SJ29_qpcA1O6lA')
   c.photo.attach(io: cb, filename: 'charlie-avatar.jpg', content_type: 'image/jpg')
 
-  a = User.create!(first_name: "Amelien", last_name: "Delahaie", email: "amelien.delahaie@live.com", password: "123456", role: "teacher")
+  a = User.create!(first_name: "Amelien", last_name: "Delahaie", email: "amelien.delahaie@live.com", password: "123456", role: "teacher", slack_workspace_uid: "U01MJNMJ97D")
   am = URI.open('https://pbs.twimg.com/profile_images/1177317334849130496/3-AonVB8_400x400.jpg')
   a.photo.attach(io: am, filename: 'amelien-avatar.jpg', content_type: 'image/jpg')
 
@@ -29,7 +29,7 @@ puts "-- creating students--"
   ob = URI.open('https://media-exp1.licdn.com/dms/image/C4D03AQGQMlEDoj0jwA/profile-displayphoto-shrink_800_800/0/1524840699999?e=1619049600&v=beta&t=e_GlYITjGLOTB5KsbhekUHimPjJBHBL8mJWtuc1qnj0')
   o.photo.attach(io: ob, filename: "olivia-avatar", content_type: "image/jpg")
 
-  r = User.create!(first_name: "Raphael", last_name: "Mosca", email: "raphael.mosca@live.com", password: "123456", role: "student")
+  r = User.create!(first_name: "Raphael", last_name: "Mosca", email: "raphael.mosca@live.com", password: "123456", role: "student", slack_workspace_uid:"U01MM1C7L81")
   rm = URI.open('https://media-exp1.licdn.com/dms/image/C4D03AQFyEtL7SCBiEQ/profile-displayphoto-shrink_800_800/0/1595506575911?e=1619049600&v=beta&t=pZRj6JLzijvGfXt3C3heMG04LuUyfiXgYsAthqPZvJI')
   r.photo.attach(io: rm, filename: "raph-avatar.jpg", content_type: "image/jpg")
 puts "--student created--"
