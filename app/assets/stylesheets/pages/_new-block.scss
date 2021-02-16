@@ -1,0 +1,21 @@
+trix-editor#block_content {
+  height: 250px;
+}
+
+input#block_title {
+  border-radius: 10px;
+}
+
+#block_block_type_video + label {
+  color: $blue;
+  background-image: asset_url("video-icon.png");
+  background-repeat: no-repeat;
+  background-position: 90%;
+  background-size: contain;
+  background-size: 20%;
+}
+
+#block_block_type_video:checked + label {
+  background-color: $blue;
+  border-color: $blue;
+}

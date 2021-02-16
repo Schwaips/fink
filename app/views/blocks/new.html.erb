@@ -1,39 +1,26 @@
-  <div class="margin-left container">
-    <div class="row">
-     <div class="col-6">
-        <div class="form-edit">
-          <h1></h1>
-          <br/>
-          <br/>
-          <h2>Créer un nouveau chapitre</h2>
-            <div class="form-group">
-                <%= simple_form_for [@lecture, @block] do |f| %>
-                  <%= f.input :title, input_html: { class: "lecture_title" }, label: "Titre de votre chapitre" %>
-                  <%= f.input :block_type, input_html: { class: "lecture_title" }, label: "Type de média", collection: Block::BLOCK_TYPE %>
-                  <%= f.input :photos, as: :file, label: "Ajouter un ou des médias", input_html: { multiple: true } %>
+<div class="margin-left container">
+  <div class="form-edit">
+    <h1></h1>
+    <br/>
+    <br/>
+    <h2>Créer un nouveau chapitre</h2>
+      <div class="form-group">
+          <%= simple_form_for [@lecture, @block] do |f| %>
+            <%= f.input :title, input_html: { class: "lecture_title" }, label: "Titre de votre chapitre" %>
+            <%= f.input :block_type, as: :radio_buttons,
+                collection_wrapper_tag: 'div',
+                collection_wrapper_class: 'category-wrapper',
+                item_wrapper_class: 'category-item',
+                input_html: {class: 'category-selector'},
+                collection: Block::BLOCK_TYPE %>
+            <%= f.input :photos, as: :file, label: "Ajouter un ou des médias", input_html: { multiple: true } %>
 
-                  <div class="field">
-                    <%= f.label :content, input_html: { class: "lecture_title" } %>
-                    <%= f.rich_text_area :content %>
-                  </div>
-                  <%= f.submit "Ajouter le chapitre", class: "btn button-pink mt-4" %>
-                <% end %>
-              </div> <!-- fin form simple form -->
-        </div> <!-- fin form-edit -->
-      </div> <!-- fin col-6 -->
-      <div class="col-4">
-        <br/>
-        <br/>
-        <h2>Comment ca fonctionne?</h2>
-          <div class="d-flex justify-content-evenly align-items-center">
-           <%= cl_image_tag "idea-pic", class:"p-5" %>
-            <h1 style="color: #DCDCDC"> Créer votre cours</h1>
-          </div> <!-- d flex-->
-          <div class="d-flex justify-content-evenly align-items-center">
-           <h1 class="p-5 text-right" > puis ajouter vos chapitres...</h1>
-           <%= cl_image_tag "chapitre-pic" %>
-
-          </div> <!-- d flex-->
-      </div> <!-- fin col 4 -->
-    </div> <!-- row -->
-  </div>
+            <div class="field">
+              <%= f.label :content, input_html: { class: "lecture_title" } %>
+              <%= f.rich_text_area :content %>
+            </div>
+            <%= f.submit "Ajouter le chapitre", class: "btn button-gray mt-4" %>
+          <% end %>
+        </div> <!-- fin form simple form -->
+  </div> <!-- fin form-edit -->
+  </div> <!-- margin left container -->
