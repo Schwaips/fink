@@ -28,7 +28,6 @@ before_action :set_lecture, only: [:show, :edit, :update]
       create_slack_channel
       flash[:notice] = "Le cours #{@lecture.title} a bien été créé, rajouter maintenant du contenu"
       redirect_to new_lecture_block_path(@lecture)
-
     else
       render :new
     end
@@ -80,6 +79,10 @@ private
     channel_id = JSON.parse(create_conv).dig("channel", "id")
     join_conv = RestClient.post 'https://slack.com/api/conversations.invite', { channel: channel_id, users: current_user.slack_workspace_uid }, {Authorization:"Bearer #{ENV["SLACK_TOKEN"]}"}
     p join_conv.body
+  end
+
+  def join_channel
+    
   end
 
 end
