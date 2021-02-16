@@ -14,6 +14,10 @@
   transform: scale(0);
 }
 
+.input-bar{
+  width : 85%;
+}
+
 .category-selector + label {
   display: block;
   cursor: pointer;
@@ -34,7 +38,7 @@
 
 #lecture_category_developpement + label {
   color: #FD1015;
-  background-image: asset_url("icon-dev.png");
+  background-image: asset_url("code.png");
   background-repeat: no-repeat;
   background-position: 90%;
   background-size: contain;
@@ -49,7 +53,7 @@
 
 #lecture_category_art + label {
   color: #FFC65A;
-  background-image: asset_url("icon-art.png");
+  background-image: asset_url("art.png");
   background-repeat: no-repeat;
   background-position: 90%;
   background-size: contain;
@@ -93,7 +97,7 @@
 
 #lecture_category_musique + label {
   color: #BA8555;
-  background-image: asset_url("icon-music.png");
+  background-image: asset_url("music.png");
   background-repeat: no-repeat;
   background-position: 90%;
   background-size: contain;
@@ -121,7 +125,7 @@
 
 #lecture_category_gaming + label {
   color: #DE7D15;
-  background-image: asset_url("icon-game.png");
+  background-image: asset_url("gamer.png");
   background-repeat: no-repeat;
   background-position: 90%;
   background-size: contain;
@@ -164,7 +168,7 @@
   color: #8AC642;
   background-image: asset_url("icon-nature.png");
   background-repeat: no-repeat;
-  background-position: 80%;
+  background-position: 90%;
   background-size: contain;
   background-size: 20%;
 }

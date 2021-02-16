@@ -7,6 +7,10 @@
   // overflow-x: hidden;
   z-index: 1;
   // overflow: scroll;
+  h5 {
+    font-family: $body-font;
+    font-weight: lighter;
+  }
 }
 
 
@@ -16,27 +20,19 @@
 }
 
 // link trash
-.link-delete-lecture-left {
+.link-lecture-left {
   color: white;
-  margin-left: 15px;
   padding: 0px;
 }
 
-.link-delete-lecture-left:hover {
+a:hover{
+  text-decoration: none;
+}
+
+.link-lecture-left:hover {
   color: $gray;
   padding: 0px;
-}
-
-// link add a chapter
-.link-add-chapter-lecture-left {
-  color: white;
-  margin-left: 0px;
-  padding: 0px;
-}
-
-.link-add-chapter-lecture-left:hover {
-  color: $gray;
-  padding: 0px;
+  text-decoration: none;
 }
 
 
@@ -52,7 +48,6 @@ li {
   margin-bottom: 8px;
 }
 
-
 .log-out-link {
   color: white;
   margin-left: 0px;
@@ -60,7 +55,6 @@ li {
 }
 
 .log-out-link:hover {
-  color: $gray;
-  padding: 0px;
   text-decoration: none;
 }
+
