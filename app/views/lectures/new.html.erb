@@ -1,25 +1,23 @@
-  <div class="container margin-left">
-
-        <div class="form-edit">
-          <h1></h1>
-          <br/>
-          <br/>
-          <h2>Créer un nouveau cours</h2>
-          <%= simple_form_for(@lecture) do |f| %>
-            <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
-            <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
-            <%= f.input :photo, as: :file, label: "Miniature de l'offre", label: "Choisir une nouvelle photo" %>
-            <%= f.input :category, label: "Categorie de votre cours", as: :radio_buttons,
-                collection_wrapper_tag: 'div',
-                collection_wrapper_class: 'category-wrapper',
-                item_wrapper_class: 'category-item',
-                input_html: {class: 'category-selector'},
-                collection: Lecture::CATEGORY %>
-            <%= f.submit "Suivant", class: "btn button-gray" %>
-            <br/>
-              <br/>
+  <div class="margin-left">
+    <div class="form-edit">
+      <div class="pl-5 d-flex flex-column align-items-left">
+        <h2 class="pt-5">Créer un nouveau cours</h2>
+        <div class="pt-3">
+        <%= simple_form_for(@lecture) do |f| %>
+          <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
+          <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
+          </br>
+          <%= f.input :photo, as: :file, label: "Miniature de l'offre", label: "Choisir une nouvelle photo" %>
+          </br>
+          <%= f.input :category, label: "Categorie de votre cours", as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector'},
+            collection: Lecture::CATEGORY %>
+          <%= f.submit "Suivant", class: "btn button-gray" %>
           <% end %>
-        </div> <!-- fin form-edit -->
-      </div> <!-- fin col-6 -->
-
+        </div>
+      </div>
+    </div> <!-- fin form-edit -->
   </div>
