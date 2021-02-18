@@ -1,6 +1,6 @@
 class LecturesController < ApplicationController
 skip_before_action :authenticate_user!, only: [:index, :show]
-before_action :set_lecture, only: [:show, :edit, :update]
+before_action :set_lecture, only: [:show, :edit, :update, :message_slack]
 
   def index
     @lectures = Lecture.all
@@ -11,6 +11,13 @@ before_action :set_lecture, only: [:show, :edit, :update]
     @lecture = Lecture.find(params[:id])
   end
 
+  # send message from edit lecture
+  def message_slack
+    @message = message_params[:body]
+    SendMessageSlackJob.perform_now(@message, current_user.slack_workspace_uid, @lecture.channel_id)
+  end
+
+  # api to join a channel on show lecture
   def user_join_channel
     @lecture = Lecture.find(params[:lecture])
     @user = current_user
@@ -84,7 +91,12 @@ private
 
   def create_slack_channel
     # parametre de slack :
-    create_conv = RestClient.post 'https://slack.com/api/conversations.create', { name: @lecture.title.to_s.parameterize }, { Authorization:"Bearer #{ENV["SLACK_TOKEN"]}" }
+    create_conv = RestClient.post 'https://slack.com/api/conversations.create', {
+      name: @lecture.title.to_s.parameterize
+    },
+    {
+      Authorization:"Bearer #{ENV["SLACK_TOKEN"]}"
+    }
     @lecture.channel_id = JSON.parse(create_conv).dig("channel", "id")
     @lecture.save
     # join_conv = RestClient.post 'https://slack.com/api/conversations.invite', { channel: channel_id, users: current_user.slack_workspace_uid }, {Authorization:"Bearer #{ENV["SLACK_TOKEN"]}"}
@@ -92,8 +104,16 @@ private
 
   def join_channel_slack
     channel_id = @lecture.channel_id
-    join = RestClient.post 'https://slack.com/api/conversations.invite', { channel: channel_id, users: current_user.slack_workspace_uid }, { Authorization:"Bearer #{ENV["SLACK_TOKEN"]}" }
-    p join.body
+    join = RestClient.post 'https://slack.com/api/conversations.invite', {
+      channel: channel_id, users: current_user.slack_workspace_uid
+    },
+    {
+      Authorization:"Bearer #{ENV["SLACK_TOKEN"]}"
+    }
+    # p join.body
   end
 
+  def message_params
+    params.permit(:body)
+  end
 end
