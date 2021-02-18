@@ -8,8 +8,16 @@
   height: 306px;
   padding: 20px;
   margin-bottom: 69px;
+  position: relative;
 
   p{
     text-align: center;
+  }
+
+  #stop-lecture {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 6px 12px;
   }
 }
