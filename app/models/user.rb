@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :schoolings, dependent: :destroy
   has_many :lectures, dependent: :destroy
-  validates :role, presence: true, inclusion: { in: ["student", "teacher"] }
+  validates :role, inclusion: { in: ["student", "teacher"] }
   validates :first_name, :last_name, presence: true
   has_one_attached :photo
 
