@@ -1,8 +1,27 @@
 
 
-<h2> Message slack </h2>
 
 
-<%= simple_form_for :message, url:'' do |f| %>
-  <%= <%= f.input :message, label: "Message aux élèves du canal slack" %>%>
-<% end %>
+<div class="modal fade" id="sendMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="exampleModalLabel"> Message slack </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-edit">
+            <h1 class="text-center">Envoyer un message à vos élèves</h1>
+          <br/>
+            <%= simple_form_for :message, url:'' do |f| %>
+              <%= f.input :message, label: "Message aux élèves du canal slack", as: :text %>
+            <% end %>
+          <br/>
+          <br/>
+        </div> <!-- fin form-edit -->
+        </div>
+      </div>
+    </div>
+  </div>
