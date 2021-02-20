@@ -1,6 +1,6 @@
 class LecturesController < ApplicationController
 skip_before_action :authenticate_user!, only: [:index, :show]
-before_action :set_lecture, only: [:show, :edit, :update, :message_slack]
+before_action :set_lecture, only: [:show, :edit, :update]
 
   def index
     @lectures = Lecture.all
@@ -8,13 +8,18 @@ before_action :set_lecture, only: [:show, :edit, :update, :message_slack]
   end
 
   def show
-    @lecture = Lecture.find(params[:id])
   end
 
   # send message from edit lecture
   def message_slack
-    @message = message_params[:body]
-    SendMessageSlackJob.perform_now(@message, current_user.slack_workspace_uid, @lecture.channel_id)
+    @message = message_params[:message]
+    @lecture = Lecture.find(params[:lecture_id])
+    if SendMessageSlackJob.perform_now(@message, current_user.slack_workspace_uid, @lecture.channel_id)
+      redirect_to edit_lecture_path(@lecture)
+      flash[:notice] = "Message envoyé sur le canal"
+    else
+      flash[:alert] = "Erreur dans l'envoi de votre message, veuillez réessayer."
+    end
   end
 
   # api to join a channel on show lecture
@@ -116,6 +121,6 @@ private
   end
 
   def message_params
-    params.permit(:body)
+    params.require(:lecture).permit(:message)
   end
 end

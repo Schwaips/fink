@@ -9,6 +9,7 @@ class Lecture < ApplicationRecord
   has_many :blocks, inverse_of: :lecture, dependent: :destroy
   accepts_nested_attributes_for :blocks
 
+  attr_accessor :message
 
   def self.category_empty?(categorie)
     Lecture.where(category: categorie).empty?
