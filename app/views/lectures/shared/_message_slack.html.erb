@@ -15,7 +15,7 @@
 
             <%= simple_form_for :lecture,  url: lecture_message_slack_path(lecture) do |f| %>
               <%= f.input :message, label: "Message aux élèves du canal slack", as: :text %>
-              <%= f.submit "Sauvegarder", class: "btn button-gray" %>
+              <%= f.submit "Envoyer sur le canal #{lecture.title} via Slack", class: "btn button-gray" %>
             <% end %>
           <br/>
           <br/>
