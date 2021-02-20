@@ -29,10 +29,8 @@
         <%= link_to  "Editer", edit_lecture_path(@lecture), class: "btn button-gray mr-2" %>
       <% else %>
         <% if Schooling.where(user: current_user).where(lecture: @lecture).exists? %>
-
-          <%= link_to  "Ne plus suivre ce cours", lecture_schooling_path(@lecture), method: :delete, class: "btn button-red" %>
           <%= link_to user_join_channel_path( lecture: @lecture), class: "btn button-red" do %>
-            <i class="fab fa-slack"></i> Slack !
+            <i class="fab fa-slack"></i> Rejoindre les étudiants sur Slack !
           <% end %>
         <% else %>
           <%= link_to  "Suivre ce cours 🔒", lecture_schoolings_path(@lecture), method: "POST", class: "btn button-blue" %>
