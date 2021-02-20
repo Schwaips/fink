@@ -17,9 +17,7 @@ class SchoolingsController < ApplicationController
         flash[:notice] = "Bonne nouvelle, vous suivez déjà ce cours !"
       elsif @schooling.save
         redirect_to lecture_path(@lecture)
-
         flash[:notice] = "🚀 Vous suivez maintenant ce cours."
-
       else
         flash[:notice] = "Une erreur est survenue pendant la réservation. 😥"
       end
