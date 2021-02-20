@@ -1,3 +1,14 @@
+.graph {
+  position: relative;
+
+  img {
+    border-left: 1px solid $gray;
+    border-bottom: 1px solid $gray;
+    position: absolute;
+    margin-left: 25px;
+  }
+}
+
 .card-dashboard {
   overflow: hidden;
   height: 160px;
