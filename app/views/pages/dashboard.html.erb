@@ -1,11 +1,8 @@
-<div class="container &00">
+<div class="container">
   <% if @current_user.role == "teacher" %>
 
-  <div class="mb-5">
-  <br>
-  <br>
-
-    <div class="d-flex align-items-center mt-1">
+  <div class="my-5">
+    <div class="d-flex align-items-center mt-1 pl-3">
       <% if current_user.photo.attached? %>
         <%= cl_image_tag current_user.photo.key, class:'avatar-large avatar-bordered img-circle' %>
       <% else %>
@@ -20,9 +17,9 @@
       </div>
     </div>
 
-    <div class="grid pl-2">
-      <div class="stat-card my-5">
-        <h4>Mes étudiants</h4>
+    <div class="d-flex justify-content-around align-items-center mt-5">
+      <div class="student-card">
+        <h4 class="mb-4">Mes étudiants</h4>
           <% current_user.students.first(5).each do |student| %>
             <div class="mb-3">
               <% if student.photo.attached? %>
@@ -33,29 +30,35 @@
                 <%= student.first_name %>
             </div>
           <% end %>
-          <%= link_to "Voir plus", class: "btn button-blue" %>
       </div>
 
-      <div class="stat-card my-5 ">
-        <h4>Mes statistiques annuelles</h4>
-        <p><span style="color: green; font-weight: 600;"><i class="fas fa-arrow-up"></i> +20%</span> Nombre d'élèves</p>
-        <p><span style="color: green; font-weight: 600;"><i class="fas fa-arrow-up"></i> +35%</span> Revenu</p>
-        <p><span style="color: red; font-weight: 600;"><i class="fas fa-arrow-down"></i> - 5%</span> Quizz terminés</p>
-      </div>
+      <div class="grid-2 pl-2">
+        <div class="stat-card">
+          <h4 class="mb-5">Mes statistiques mensuelles</h4>
+          <p><span style="color: green; font-weight: 600;"><i class="fas fa-arrow-up"></i> +20%</span> Nombre d'élèves</p>
+          <p><span style="color: green; font-weight: 600;"><i class="fas fa-arrow-up"></i> +35%</span> Revenu</p>
+        </div>
 
-      <div class="stat-card my-5 graph">
-        <h4>Mes statistiques mensuelles</h4>
-        <%= image_tag "graph.png", width: 200 %>
-      </div>
+        <!-- <div class="stat-card graph">
+          <h4>Mes statistiques mensuelles</h4>
+          <%= image_tag "graph.png", width: 200 %>
+        </div> -->
 
-      <div class="stat-card my-2 ">
-        <%= image_tag "slack.png", id:"slack-img"%>
-        <p class="text-center pt-4"> Vous avez <span style="color: red;">9</span> notifications</p>
-      </div>
+        <div class="stat-card">
+          <h4 class="mb-5"> Mes revenus </h4>
+          <p><span style="color: green; font-weight: 600;"><i class="fas fa-coins"></i> +35O €</span> en octobre</p>
+          <p><span style="color: green; font-weight: 600;"><i class="fas fa-file-invoice-dollar"></i> Total : 903 € </span></p>
+        </div>
 
-      <div class="stat-card my-2 ">
-        <h4>Le conseil du jour</h4>
-        <p class="text-center pt-4"> Veillez à regarder souvent votre compte Slack, vos étudiants ont peut-être des questions</p>
+        <div class="stat-card my-2 ">
+          <%= image_tag "slack.png", id:"slack-img"%>
+          <p class="text-center pt-4"> Vous avez <span style="color: red;">9</span> notifications</p>
+        </div>
+
+        <div class="stat-card my-2 ">
+          <h4>Le conseil du jour</h4>
+          <p class="text-center pt-4"> Veillez à regarder souvent votre compte Slack, vos étudiants ont peut-être des questions</p>
+        </div>
       </div>
     </div>
   </div>
@@ -114,6 +117,7 @@
   <% end %>
 
 </div>
+
 
 
 
