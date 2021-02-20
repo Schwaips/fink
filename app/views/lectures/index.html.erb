@@ -35,11 +35,11 @@
   </div>
 
   <div class="background">
-    <h2 class="pt-5 pl-5 ">Explorer les autres cours 🚀 </h2>
+    <h2 class="pt-5 pl-5 white-title">Explorer les autres cours 🚀 </h2>
 
     <% Lecture::CATEGORY.each do |categorie|  %>
       <% unless Lecture.category_empty?(categorie) %>
-        <h4 class="pl-5 pt-5"><%= categorie %></h4>
+        <h4 class="pl-5 pt-5 white-title"><%= categorie %></h4>
           <div class="card-board pb-5">
             <% @lectures.where(category: categorie).each do |lecture| %>
               <% unless (lecture.user_id == current_user.id) || current_user.has_schooling?(lecture)%>

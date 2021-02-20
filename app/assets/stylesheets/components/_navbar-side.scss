@@ -2,11 +2,12 @@
   background-color: $blue;
   color: white;
   padding: 50px;
-  height: 100vh;
-  position: fixed;
-  overflow-x: hidden;
+  height: 100%;
+  // position: fixed;
+  // overflow-x: hidden;
   z-index: 1;
-  // overflow: scroll;
+  width: max-content;
+  overflow: scroll;
   h5 {
     font-family: $body-font;
     font-weight: lighter;
