@@ -26,8 +26,10 @@ gem 'cloudinary', '~> 1.16.0'
 #Slack
 gem 'omniauth'
 gem 'omniauth-slack'
+gem 'omniauth-rails_csrf_protection'
 
-
+#gem rest-client (api)
+gem 'rest-client'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
