@@ -99,7 +99,9 @@ private
     }
     @lecture.channel_id = JSON.parse(create_conv).dig("channel", "id")
     @lecture.save
-    # join_conv = RestClient.post 'https://slack.com/api/conversations.invite', { channel: channel_id, users: current_user.slack_workspace_uid }, {Authorization:"Bearer #{ENV["SLACK_TOKEN"]}"}
+    p "--- Body creation conv slack---"
+    p create_conv.body
+    p "--- End of message create conv slack ---"
   end
 
   def join_channel_slack
