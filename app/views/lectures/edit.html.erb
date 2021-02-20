@@ -13,17 +13,22 @@
         <%= link_to edit_lecture_path(@lecture, anchor: "chapter"), class: "link-add-chapter-lecture-right" do %>
           <span><i class="far fa-bookmark"></i> Aller aux chapitres</span>
         <% end %> <!-- end of anchor chapter -->
-        <%= link_to lecture_path(@lecture), method: "DELETE", data: { confirm: "Supprimer définitivement le cours #{@lecture.title} et les chapitres associés?" }, class: "ml-3 link-remove-lecture-right" do %>
-          <span><i class="far fa-trash-alt"></i> Supprimer ce cours</span>
+         <%= link_to lecture_path(@lecture), class: "link-add-chapter-lecture-right pl-3" do %>
+          <span><i class="far fa-eye"></i> Voir la page du cours</span>
         <% end %> <!-- end of anchor chapter -->
         <br>
+         <%= link_to lecture_message_slack_path(@lecture), { :class => "link-add-chapter-lecture-right pl-4", 'data-toggle' => 'modal', 'data-target' => "#sendMessage" } do %>
+          <span><i class="fab fa-slack"></i> Envoyer un message sur le canal slack</span>
+         <% end %> <!-- end of anchor chapter -->
 
-        <%= link_to lecture_message_slack_path(@lecture), { :class => "link-add-chapter-lecture-right", 'data-toggle' => 'modal', 'data-target' => "#sendMessage" } do %>
-          <span><i class="fab fa-slack"></i> Envoyer un message sur le canal slack du cours</span>
-        <% end %> <!-- end of anchor chapter -->
+
 
         <!--Modal pour message slack-->
         <%= render partial:'lectures/shared/message_slack', locals: { lecture: @lecture } %>
+
+
+        <br>
+
 
 
 
@@ -38,11 +43,11 @@
     <div class="py-5">
             <%= simple_form_for(@lecture) do |f| %>
               <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
-              </br>
+              <br>
               <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
-               </br>
+               <br>
               <%= f.input :photo, as: :file, label: "Miniature de l'offre", label: "Choisir une nouvelle photo", class:"btn button-blue" %>
-               </br>
+               <br>
               <%= f.input :category, label: "Categorie", as: :radio_buttons,
                   collection_wrapper_tag: 'div',
                   collection_wrapper_class: 'category-wrapper',
@@ -50,7 +55,12 @@
                   input_html: {class: 'category-selector'},
                   collection: Lecture::CATEGORY %>
               <%= f.submit "Sauvegarder", class: "btn button-blue" %>
+                          <%= link_to lecture_path(@lecture), method: "DELETE", data: { confirm: "Supprimer définitivement le cours #{@lecture.title} et les chapitres associés?" }, class: "ml-3 link-remove-lecture-right" do %>
+              <span><i class="far fa-trash-alt"></i> Supprimer</span>
+            <% end %> <!-- end of anchor chapter -->
             <% end %>
+            <br>
+
         </div> <!-- form to edit-->
 
   </div>
@@ -64,7 +74,7 @@
         <h3 class="mt-5 text-center" id="chapter"><i class="fas fa-bookmark"></i> Liste des chapitres</h3>
           <% if @lecture.blocks.empty? == false %>
             <div class="mt-4 text-center">
-              <%= link_to new_lecture_block_path(@lecture, @block), class: "btn button-white" do %>
+              <%= link_to new_lecture_block_path(@lecture, @block), class: "btn button-gray" do %>
                 <li><i class="fas fa-plus-circle"></i> Ajouter un chapitre</li>
               <% end %> <!-- end of button new chapter-->
             </div> <!-- button text center-->
@@ -108,7 +118,7 @@
           <% else %>
             <h5 class="text-center">Aucun chapitre pour le moment</h5>
               <div class="text-center pt-4">
-                <%= link_to new_lecture_block_path(@lecture, @block), class: "btn button-white" do %>
+                <%= link_to new_lecture_block_path(@lecture, @block), class: "btn button-gray" do %>
                   <span><i class="fas fa-plus-circle"></i> Ajouter un chapitre</span>
                 <% end %> <!-- end of add chapter -->
               </div> <!-- text center mt1-->

@@ -26,7 +26,7 @@
     <div class="card-lecture-bigbuttons">
             <!--   <%= link_to  "Retour à la l'index des lectures", lectures_path, class: "btn button-gray mr-2" %>-->
       <%if (@lecture.user_id == current_user.id) %>
-        <%= link_to  "Editer", manage_courses_path(), class: "btn button-gray mr-2" %>
+        <%= link_to  "Editer", edit_lecture_path(@lecture), class: "btn button-gray mr-2" %>
       <% else %>
         <% if Schooling.where(user: current_user).where(lecture: @lecture).exists? %>
 
