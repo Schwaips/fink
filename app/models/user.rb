@@ -2,12 +2,14 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[slack]
 
   has_many :schoolings, dependent: :destroy
   has_many :lectures, dependent: :destroy
-  validates :role, inclusion: { in: ["student", "teacher"] }
-  validates :first_name, :last_name, presence: true
+
+  validates :role, presence: true, inclusion: { in: ["student", "teacher"] }
+
   has_one_attached :photo
 
   def lectures_as_pupil
@@ -20,5 +22,12 @@ class User < ApplicationRecord
 
   def has_schooling?(lecture)
     Schooling.where(user: self, lecture: lecture).exists?
+  end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+    end
   end
 end
