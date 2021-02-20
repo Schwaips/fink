@@ -5,6 +5,19 @@ before_action :set_lecture, only: [:show, :edit, :update]
   def index
     @lectures = Lecture.all
     @schooling = Schooling.new
+    @following = current_user.lectures_as_pupil
+    @teaching = Lecture.teaching_lectures(current_user)
+    @other_lectures = []
+    @other_categories = []
+
+    @lectures.each do |lecture|
+      unless @following.include?(lecture) || @teaching.include?(lecture)
+        @other_lectures << lecture
+        @other_categories << lecture.category
+      end
+    end
+
+    @other_categories = @other_categories.uniq
   end
 
   def show

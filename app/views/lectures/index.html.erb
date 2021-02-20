@@ -36,41 +36,40 @@
 
   <div class="background">
     <h2 class="pt-5 pl-5 white-title">Explorer les autres cours 🚀 </h2>
-
-    <% Lecture::CATEGORY.each do |categorie|  %>
-      <% unless Lecture.category_empty?(categorie) %>
-        <h4 class="pl-5 pt-5 white-title"><%= categorie %></h4>
-          <div class="card-board pb-5">
-            <% @lectures.where(category: categorie).each do |lecture| %>
-              <% unless (lecture.user_id == current_user.id) || current_user.has_schooling?(lecture)%>
-                <div class="card-lecture">
-                  <% if lecture.photo.attached? %>
-                    <div class="card-lecture-image" style="background-image: url('<%= cl_image_path lecture.photo.key, crop: :fill %>')">
-                      <% if lecture.user.photo.attached? %>
-                        <%= cl_image_tag lecture.user.photo.key, class:"card-avatar avatar-bordered", data: { toggle: "tooltip", placement:"top", title: "Tooltip on top" }  %>
-                      <% else %>
-                        <%= cl_image_tag 'buddiest/anonymous', class:"card-avatar avatar-bordered", data: { toggle: "tooltip", placement:"top", title: "Tooltip on top" }%>
-                      <% end %>
-                    </div>
+    <% @other_categories.each do |category| %>
+      <h4 class="pl-5 pt-5 white-title"><%= category %></h4>
+      <div class="card-board pb-5">
+        <% lectures_filtered = @other_lectures.select { |lecture| lecture.category == category } %>
+        <% lectures_filtered.each do |lecture| %>
+            <div class="card-lecture">
+              <% if lecture.photo.attached? %>
+                <div class="card-lecture-image" style="background-image: url('<%= cl_image_path lecture.photo.key, crop: :fill %>')">
+                  <% if lecture.user.photo.attached? %>
+                    <%= cl_image_tag lecture.user.photo.key, class:"card-avatar avatar-bordered", data: { toggle: "tooltip", placement:"top", title: "Tooltip on top" }  %>
                   <% else %>
-                    <div class="card-lecture-image" style="background: url('<%= "https://source.unsplash.com/300x150/?#{lecture.category}"%>')">
-                      <% if lecture.user.photo.attached? %>
-                        <%= cl_image_tag lecture.user.photo.key, class:"card-avatar avatar-bordered" %>
-                      <% else %>
-                        <%= cl_image_tag 'buddiest/anonymous', class:"card-avatar avatar-bordered", data: { toggle: "tooltip", placement:"top", title: "Tooltip on top" }%>
-                      <% end %>
-                    </div>
+                    <%= cl_image_tag 'buddiest/anonymous', class:"card-avatar avatar-bordered", data: { toggle: "tooltip", placement:"top", title: "Tooltip on top" }%>
                   <% end %>
-                  <div class="card-text">
-                    <h1><%= lecture.title %></h1>
-                      <p><%= lecture.description %></p>
-                      <p>Created by <%= lecture.user.first_name %></p>
-                      <%= link_to "Découvrir", lecture_path(lecture), class: "btn button-invisible" %>
-                  </div>
+                </div>
+              <% else %>
+                <div class="card-lecture-image" style="background: url('<%= 'https://source.unsplash.com/300x150/?#{lecture.category}'%>')">
+                  <% if lecture.user.photo.attached? %>
+                    <%= cl_image_tag lecture.user.photo.key, class:"card-avatar avatar-bordered" %>
+                  <% else %>
+                    <%= cl_image_tag 'buddiest/anonymous', class:"card-avatar avatar-bordered", data: { toggle: "tooltip", placement:"top", title: "Tooltip on top" }%>
+                  <% end %>
                 </div>
               <% end %>
-            <% end %>
-          </div>
-      <% end %>
-    <%end %>
+              <div class="card-text">
+                <h1><%= lecture.title %></h1>
+                  <p><%= lecture.description %></p>
+                  <p>Created by <%= lecture.user.first_name %></p>
+                  <%= link_to "Découvrir", lecture_path(lecture), class: "btn button-invisible" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+
+    <% end %>
+
   </div>
+</div>
