@@ -35,8 +35,16 @@
           <%= link_to "Voir plus", class: "btn button-blue" %>
         </div>
         <div class="stat-card my-5 ">
-          <h4>Mes statistiques mensuelles</h4>
+          <h4>Mes statistiques annuelles</h4>
+          <p><span style="color: green; font-weight: 600;"><i class="fas fa-arrow-up"></i> +20%</span> Nombre d'élèves</p>
+          <p><span style="color: green; font-weight: 600;"><i class="fas fa-arrow-up"></i> +35%</span> Revenu</p>
+          <p><span style="color: red; font-weight: 600;"><i class="fas fa-arrow-down"></i> - 5%</span> Quizz terminés</p>
         </div>
+        <div class="stat-card my-5 graph">
+          <h4>Mes statistiques mensuelles</h4>
+          <%= image_tag "graph.png", width: 200 %>
+        </div>
+
       </div>
     </div>
 
