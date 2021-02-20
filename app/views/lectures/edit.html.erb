@@ -1,4 +1,4 @@
-<div class="margin-left">
+<div>
   <div class="card-category" style=
           "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
           url(<%= @lecture.photo.attached? ? cl_image_path(@lecture.photo.key, crop: :scale)
@@ -20,21 +20,9 @@
          <%= link_to lecture_message_slack_path(@lecture), { :class => "link-add-chapter-lecture-right pl-4", 'data-toggle' => 'modal', 'data-target' => "#sendMessage" } do %>
           <span><i class="fab fa-slack"></i> Envoyer un message sur le canal slack</span>
          <% end %> <!-- end of anchor chapter -->
-
-
-
         <!--Modal pour message slack-->
         <%= render partial:'lectures/shared/message_slack', locals: { lecture: @lecture } %>
-
-
         <br>
-
-
-
-
-
-
-
       </div> <!--text center pour button got to chapitre-->
   </div>
 
@@ -66,11 +54,7 @@
   </div>
 
 </div>
-
-
-
-
-      <div class="mt-4">
+      <div class="mt-4 mb-5">
         <h3 class="mt-5 text-center" id="chapter"><i class="fas fa-bookmark"></i> Liste des chapitres</h3>
           <% if @lecture.blocks.empty? == false %>
             <div class="mt-4 text-center">
@@ -124,7 +108,6 @@
               </div> <!-- text center mt1-->
           <% end %> <!-- end of if block empty -->
         </div> <!--col 4-->
-
 </div> <!--margin-left -->
 
 

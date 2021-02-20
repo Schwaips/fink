@@ -1,11 +1,10 @@
-<div class=" container margin-left">
-  <div class="form-edit">
+<div class="container">
+  <div class="form-edit mb-5">
     <div class="pl-5 d-flex flex-column align-items-left">
       <h2 class="pt-5 text-center">Créer un nouveau chapitre pour <%= @lecture.title %></h2>
         <div class="form-group pt-4">
-          <%= simple_form_for [@lecture, @block] do |f| %>
+            <%= simple_form_for [@lecture, @block] do |f| %>
             <%= f.input :title, input_html: { class: "lecture_title" }, label: "Titre de votre chapitre" %>
-            </br>
             <%= f.input :block_type, as: :radio_buttons,
                 collection_wrapper_tag: 'div',
                 collection_wrapper_class: 'category-wrapper-block',
@@ -13,9 +12,8 @@
                 input_html: {class: 'category-selector'},
                 label: "Type de médias",
                 collection: Block::BLOCK_TYPE %>
-            </br>
             <%= f.input :photos, as: :file, label: "Ajouter un ou des médias", input_html: { multiple: true } %>
-            </br>
+            <br/>
             <div class="field">
               <%= f.label :content, input_html: { class: "lecture_title" } %>
               <%= f.rich_text_area :content %>

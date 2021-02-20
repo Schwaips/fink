@@ -14,8 +14,12 @@
   <div>
     <% if @navbar_side %>
       <div class="d-flex">
-        <%= render 'shared/navbar-side' %>
-        <%= yield %>
+        <div>
+         <%= render 'shared/navbar-side' %>
+        </div>
+        <div class="flex-grow-1 margin-left">
+          <%= yield %>
+        </div>
       </div>
 
     <% else %>
