@@ -12,6 +12,15 @@
     <div class="d-flex flex-column align-items-center">
       <h2><%= @lecture.title %></h2>
       <p>Ce cours est proposé par <strong> <%= @lecture.user.first_name %> </strong></p>
+
+        <% if Schooling.where(user: current_user).where(lecture: @lecture).exists? %>
+
+            <%= link_to lecture_schooling_path(@lecture), method: :delete, class: "btn button-gray", id: "stop-lecture" do %>
+              <i class="fas fa-times"></i>
+            <% end %>
+
+        <% end %>
+
     </div>
     <p><%= @lecture.description %></p>
     <div class="card-lecture-bigbuttons">
@@ -20,9 +29,10 @@
         <%= link_to  "Editer", manage_courses_path(), class: "btn button-gray mr-2" %>
       <% else %>
         <% if Schooling.where(user: current_user).where(lecture: @lecture).exists? %>
+
           <%= link_to  "Ne plus suivre ce cours", lecture_schooling_path(@lecture), method: :delete, class: "btn button-red" %>
-          <%= link_to user_join_channel_path( lecture: @lecture) do %>
-            <span> <i class="fab fa-slack"></i> Rejoindre le canal slack </span>
+          <%= link_to user_join_channel_path( lecture: @lecture), class: "btn button-red" do %>
+            <i class="fab fa-slack"></i> Slack !
           <% end %>
         <% else %>
           <%= link_to  "Suivre ce cours 🔒", lecture_schoolings_path(@lecture), method: "POST", class: "btn button-blue" %>

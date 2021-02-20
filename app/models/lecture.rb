@@ -8,4 +8,9 @@ class Lecture < ApplicationRecord
   has_one_attached :photo
   has_many :blocks, inverse_of: :lecture, dependent: :destroy
   accepts_nested_attributes_for :blocks
+
+
+  def self.category_empty?(categorie)
+    Lecture.where(category: categorie).empty?
+  end
 end

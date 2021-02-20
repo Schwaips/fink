@@ -1,33 +1,37 @@
 
-  <div class="left-menu">
-      <%= link_to lectures_path do %>
-      <h3 class="text-center gray-color link-lecture-left mb-4"><i class="fas fa-home"></i> FINK</h3>
-      <% end %>
-      <h3 class="text-align-right gray-color">Gestion de vos cours</h3>
-      <div class="my-4">
-        <%= link_to new_lecture_path, class:"btn button-white" do %>
-          <i class="fas fa-plus-circle"></i> Ajouter un cours
-        <% end %> <!-- Ajoute d'un cours boutton-->
-      </div> <!-- text center button -->
+  <div class="left-menu d-flex flex-column justify-content-between">
+      <div>
+        <%= link_to lectures_path do %>
+        <h3 class="text-center gray-color link-lecture-left mb-4"><i class="fas fa-home"></i> FINK</h3>
+        <% end %>
+        <h3 class="text-align-right gray-color">Gestion de vos cours</h3>
+        <div class="my-4">
+          <%= link_to new_lecture_path, class:"btn button-white" do %>
+            <i class="fas fa-plus-circle"></i> Ajouter un cours
+          <% end %> <!-- Ajoute d'un cours boutton-->
+        </div> <!-- text center button -->
 
-      <% @lectures.each do |lecture|%>
-        <div class="d-flex">
-          <%= link_to edit_lecture_path(lecture), class: "link-lecture-left" do %>
-            <h5 class="py-1"><i class="fas fa-graduation-cap"></i> <%= lecture.title %></h5>
-          <% end %>
-        </div> <!-- end of d flex for title and edit and destroy-->
-      <% end %> <!-- lectures each  end -->
-    <br>
-    <h3 class="text-align-right gray-color mb-3">Parametres</h3>
-      <%= link_to dashboard_path, class: "link-lecture-left" do %>
-        <h5> <i class="fas fa-user-cog setting-list"></i>  Profil </h5>
-      <% end %>
-      <h5> <i class="fas fa-people-carry setting-list"></i>  Aide</h5>
-      <h5> <i class="fas fa-money-check-alt setting-list"></i>  Abonnements</h5>
-      <h5> <i class="fas fa-terminal setting-list"></i>  CGV</h5>
-      <%= link_to destroy_user_session_path, method: "DELETE", class:"mt-2 log-out-link" do %>
-        <h5><i class="fas fa-power-off"></i> Se déconnecter</h5>
-      <% end %>
+        <% @lectures.each do |lecture|%>
+          <div class="d-flex">
+            <%= link_to edit_lecture_path(lecture), class: "link-lecture-left" do %>
+              <h5 class="py-1"><i class="fas fa-graduation-cap"></i> <%= lecture.title %></h5>
+            <% end %>
+          </div> <!-- end of d flex for title and edit and destroy-->
+        <% end %> <!-- lectures each  end -->
+      </div>
+
+      <div>
+        <h3 class="text-align-right gray-color mb-3">Parametres</h3>
+        <%= link_to dashboard_path, class: "link-lecture-left" do %>
+          <h5> <i class="fas fa-user-cog setting-list"></i>  Profil </h5>
+        <% end %>
+        <h5> <i class="fas fa-people-carry setting-list"></i>  Aide</h5>
+        <h5> <i class="fas fa-money-check-alt setting-list"></i>  Abonnements</h5>
+        <h5> <i class="fas fa-terminal setting-list"></i>  CGV</h5>
+        <%= link_to destroy_user_session_path, method: "DELETE", class:"mt-2 log-out-link" do %>
+          <h5><i class="fas fa-power-off"></i> Se déconnecter</h5>
+        <% end %>
+      </div>
   </div> <!--col 3-->
 
   <div class="main">

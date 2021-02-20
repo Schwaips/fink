@@ -9,19 +9,20 @@
       </div>
       <div class="modal-body"><!-- Modale en fonction du contenu -->
         <% if block.photos.attached? %> <!-- s'il y a du contenu attaché sur cloudinary -->
-          <% if block.photos.first.blob.content_type == "video/mp4" %><!-- Si vidéo -->
-            <video width="450" height="340" controls>
-              <source src="<%= cl_video_path(block.photos.first.key, :height=>200, :width=>500, :resource_type=>"video") %>" type="video/mp4">
+        <!-- Pour rajouter des formats, les mettre ci-dessous -->
+          <% if block.photos.first.blob.content_type == "video/mp4" || "mov" %><!-- Si vidéo -->
+            <video width="750" height="500" controls>
+              <source src="<%= cl_video_path(block.photos.first.key, :resource_type=>"video") %>" type="video/mp4">
               Oups, votre navigateur n'affiche pas la vidéo...
             </video>
 
           <% elsif block.photos.first.blob.content_type.include?("img") %> <!-- si photo -->
             <%= cl_image_path block.photos.key %>
 
-          <% elsif block.photos.first.blob.content_type.include?("audio") %> <!-- si audio -->
-            <audio width="450" height="340" controls>
+          <% elsif block.photos.first.blob.content_type.include?("audio" || "mp3") %> <!-- si audio -->
+            <audio width="750" height="40" controls>
               <source src="<%= cl_video_path block.photos.first.key %>" type="audio/mpeg">
-              Oups, votre navigateur n'affiche pas la vidéo...
+              Oups, votre navigateur n'affiche pas le lecteur audio...
             </audio>
           <% end %>
         <% end %> <!-- Si pas de contenu -->
