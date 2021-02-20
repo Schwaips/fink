@@ -6,11 +6,12 @@
   position: fixed;
   // overflow-x: hidden;
   z-index: 1;
-  width: max-content;
+  width: 22vw;
   overflow: scroll;
   h5 {
     font-family: $body-font;
     font-weight: lighter;
+    font-size: 1rem;
   }
 }
 
