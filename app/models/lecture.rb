@@ -14,4 +14,8 @@ class Lecture < ApplicationRecord
   def self.category_empty?(categorie)
     Lecture.where(category: categorie).empty?
   end
+
+  def self.teaching_lectures(user)
+    Lecture.where(user_id: user)
+  end
 end
