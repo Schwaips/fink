@@ -43,8 +43,6 @@ before_action :set_lecture, only: [:show, :edit, :update]
     @lectures = Lecture.where(user: current_user )
     @lecture = Lecture.new(params_lecture)
     @lecture.user = current_user
-    # @block = Block.new(content: params[:lecture][:blocks_attributes]["0"][:content], block_type: params[:lecture][:blocks_attributes]["0"][:block_type])
-    # @block = Block.new(params[:lecture][:blocks_attributes]["0"])
     if @lecture.save
       create_slack_channel
       flash[:notice] = "Le cours #{@lecture.title} a bien été créé, rajouter maintenant du contenu"
@@ -91,7 +89,7 @@ private
   end
 
   def params_lecture
-    params.require(:lecture).permit(:title, :description, :category, :photo )
+    params.require(:lecture).permit(:title, :description, :category, :photo, :channel_id )
   end
 
   def create_slack_channel
