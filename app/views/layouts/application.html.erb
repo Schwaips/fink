@@ -10,18 +10,22 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
- <body class="<%= @navbar_side ? 'side-layout' : 'top-layout' %>">
+ <body>
+  <div>
     <% if @navbar_side %>
-      <%= render 'shared/navbar-side' %>
+      <div class="d-flex">
+        <%= render 'shared/navbar-side' %>
+        <%= yield %>
+      </div>
+
     <% else %>
       <%= render 'shared/navbar' %>
+        <div class="margintop">
+          <%= yield %>
+        </div>
+        <%= render 'shared/footer' %>
     <% end %>
-
-    <div class="main">
-      <%= yield %>
-      <%= render 'shared/footer' %>
-    </div>
-
+  </div>
   <%= render 'shared/flashes' %>
 </body>
 

@@ -25,9 +25,9 @@
             <% current_user.students.first(5).each do |student| %>
               <div class="mb-3">
                 <% if student.photo.attached? %>
-                  <img src="<%= cl_image_tag student.photo.key %>" class="avatar" />
+                  <%= cl_image_tag student.photo.key, class:"avatar" %>
                 <% else %>
-                  <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg" class="avatar"/>
+                <%= cl_image_tag 'buddiest/anonymous', class:"avatar"%>
                 <% end %>
                 <%= student.first_name %>
               </div>

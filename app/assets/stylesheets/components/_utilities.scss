@@ -6,51 +6,51 @@
   color:#ebebebff;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
+// html,
+// body {
+//   margin: 0;
+//   padding: 0;
+//   height: 100%;
+// }
 
-body {
-  display: grid;
-}
+// body {
+//   display: grid;
+// }
 
-.side-layout {
-  grid-template-columns: auto 1fr;
-}
+// .side-layout {
+//   grid-template-columns: auto 1fr;
+// }
 
-.top-layout {
-  grid-template-rows: auto 1fr;
-}
+// .top-layout {
+//   grid-template-rows: auto 1fr;
+// }
 
-.main {
-  overflow: scroll;
-  display: grid;
-  grid-template-rows: 1fr auto;
-}
+// .main {
+//   // overflow: scroll;
+//   display: grid;
+//   grid-template-rows: 1fr auto;
+// }
 
 .background {
   background-color: #00afb5ff;
 }
 
-// .margintop{
-// margin-top: 66px;
-// }
+.margintop{
+margin-top: 66px;
+}
 
-// .full-page{
-//   height: 100vh;
-// }
+.full-page{
+  height: 100vh;
+}
 
-// .margin-left{
-//   margin-left: 390px;
-// }
+.margin-left{
+  margin-left: 390px;
+}
 
-// .margin-right{
-//   margin-right: 200px;
-// }
+.margin-right{
+  margin-right: 200px;
+}
 
-// .main {
-//   min-height: calc(100vh - 60px); // if your footer height is 60px
-// }
+.footer {
+  min-height: calc(100vh - 60px); // if your footer height is 60px
+}
