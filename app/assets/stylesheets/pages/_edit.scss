@@ -1,0 +1,69 @@
+// link add a chapter
+.link-add-chapter-lecture-right {
+  color: $blue;
+  margin-left: 0px;
+  padding: 0px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.link-add-chapter-lecture-right:hover {
+  color: $gray;
+  padding: 0px;
+  text-decoration: none;
+}
+
+.link-remove-lecture-right {
+  color: $red;
+  padding: 0px;
+  text-align: center;
+  margin-top: 15px;
+}
+.link-remove-lecture-right:hover {
+  color: red;
+  padding: 0px;
+  text-decoration: none;
+}
+
+
+.border-left {
+  border-left: $gray solid;
+}
+
+
+input#lecture_title, textarea#lecture_description {
+  border-radius: 10px;
+}
+
+input#lecture_title {
+  width: 100%;
+}
+
+input#file-upload-button {
+  padding: 8px 24px;
+  color: $white;
+  background: $blue;
+  border-radius: 10px;
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+input#file-upload-button:hover {
+  text-decoration: none;
+  color: $blue;
+  background: $white;
+  border: 1px solid;
+  border-color: $blue;
+}
+
+
+
+textarea#lecture_description {
+  height: 100px;
+  width: 100%;
+}
+
+.category-wrapper {
+  width: 100%;
+}
+
+

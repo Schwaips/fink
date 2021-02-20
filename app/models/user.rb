@@ -7,20 +7,21 @@ class User < ApplicationRecord
 
   has_many :schoolings, dependent: :destroy
   has_many :lectures, dependent: :destroy
-  validates :role, presence: true, inclusion: { in: ["student", "teacher"] }
-  has_one_attached :photo
 
+  validates :role, presence: true, inclusion: { in: ["student", "teacher"] }
+
+  has_one_attached :photo
 
   def lectures_as_pupil
     Lecture.all.joins(:schoolings).where(schoolings: {user_id: id})
   end
 
   def students
-    lectures.map(&:students).flatten.uniq
+    lectures.map(&:students).flatten.uniq.reverse!
   end
 
-  def checking_schoolings
-
+  def has_schooling?(lecture)
+    Schooling.where(user: self, lecture: lecture).exists?
   end
 
   def self.from_omniauth(auth)

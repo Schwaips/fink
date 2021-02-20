@@ -1,13 +1,22 @@
+.graph {
+  position: relative;
+
+  img {
+    border-left: 1px solid $gray;
+    border-bottom: 1px solid $gray;
+    position: absolute;
+    margin-left: 25px;
+  }
+}
+
 .card-dashboard {
   overflow: hidden;
-  height: 120px;
+  height: 160px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
-  width: 436px;
   margin: 25px;
   border-radius: 5px;
+  padding: 24px;
 
   a{
     color: black;
@@ -39,12 +48,23 @@
 }
 
 .stat-card{
-box-shadow: 0 0 15px rgba(0,0,0,0.2);
+box-shadow: 0 10px 30px rgba(0,0,0,.1);
 border-radius: 0.25rem;
-padding: 1rem;
+padding: 20px;
 width: 297px;
+
+  h4{
+    text-align: center;
+  }
 }
 
 .card-dashboard a:hover {
   text-decoration: none;
+}
+
+
+.dashboard-margin {
+  margin-top: 80px;
+  padding: 20px;
+
 }

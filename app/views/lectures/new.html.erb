@@ -1,38 +1,23 @@
-  <div class="container margintop">
-    <div class="row">
-     <div class="col-6">
-        <div class="form-edit">
-          <h1></h1>
-          <br/>
-          <h1>Créer un nouveau cours</h1>
-          <%= simple_form_for(@lecture) do |f| %>
-            <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
-            <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
-            <%= f.input :photo, as: :file, label: "Miniature de l'offre", label: "Choisir une nouvelle photo" %>
-            <%= f.input :category, label: "Categorie de votre cours", as: :radio_buttons,
-                collection_wrapper_tag: 'div',
-                collection_wrapper_class: 'category-wrapper',
-                item_wrapper_class: 'category-item',
-                input_html: {class: 'category-selector'},
-                collection: Lecture::CATEGORY %>
-            <%= f.submit "Suivant", class: "btn button-pink" %>
-            <br/>
-              <br/>
+  <div class="container">
+    <div class="form-edit mb-5">
+      <div class="d-flex flex-column align-items-center">
+        <h2 class="pt-5">Créer un nouveau cours</h2>
+        <div class="pt-3">
+        <%= simple_form_for(@lecture) do |f| %>
+          <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
+          <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
+          </br>
+          <%= f.input :photo, as: :file, label: "Miniature de l'offre", label: "Choisir une nouvelle photo" %>
+          </br>
+          <%= f.input :category, label: "Categorie de votre cours", as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector'},
+            collection: Lecture::CATEGORY %>
+          <%= f.submit "Suivant", class: "btn button-gray" %>
           <% end %>
-        </div> <!-- fin form-edit -->
-      </div> <!-- fin col-6 -->
-      <div class="col-4">
-        <br/>
-        <h1>Comment ca fonctionne?</h1>
-          <div class="d-flex justify-content-evenly align-items-center">
-           <%= cl_image_tag "idea-pic", class:"p-5" %>
-            <h1> Créer votre cours</h1>
-          </div> <!-- d flex-->
-          <div class="d-flex justify-content-evenly align-items-center">
-           <h1 class="p-5 text-right" style="color: #DCDCDC" > puis ajouter vos chapitres...</h1>
-           <%= cl_image_tag "chapitre-pic" %>
-
-          </div> <!-- d flex-->
-      </div> <!-- fin col 4 -->
-    </div> <!-- row -->
+        </div>
+      </div>
+    </div> <!-- fin form-edit -->
   </div>

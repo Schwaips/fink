@@ -4,19 +4,33 @@
     <title>Fink</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+    <%= favicon_link_tag asset_path('logo.png') %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+ <body>
+  <div>
+    <% if @navbar_side %>
+      <div class="d-flex">
+        <div>
+         <%= render 'shared/navbar-side' %>
+        </div>
+        <div class="flex-grow-1 margin-left">
+          <%= yield %>
+        </div>
+      </div>
 
-      <%= yield %>
-    <%= render 'shared/footer' %>
-  </body>
+    <% else %>
+      <%= render 'shared/navbar' %>
+        <div class="margintop">
+          <%= yield %>
+        </div>
+        <%= render 'shared/footer' %>
+    <% end %>
+  </div>
+  <%= render 'shared/flashes' %>
+</body>
 
 </html>

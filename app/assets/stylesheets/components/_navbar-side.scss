@@ -1,0 +1,62 @@
+.left-menu {
+  background-color: $blue;
+  color: white;
+  padding: 50px;
+  height: 100%;
+  position: fixed;
+  // overflow-x: hidden;
+  z-index: 1;
+  width: 22vw;
+  overflow: scroll;
+  h5 {
+    font-family: $body-font;
+    font-weight: lighter;
+    font-size: 1rem;
+  }
+}
+
+
+.list-unstyled {
+  margin-top: 5px;
+  margin-left: 30px;
+}
+
+// link trash
+.link-lecture-left {
+  color: white;
+  padding: 0px;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+.link-lecture-left:hover {
+  color: $gray;
+  padding: 0px;
+  text-decoration: none;
+}
+
+
+// liste unstyled
+
+li {
+  padding-bottom: 5px;
+  list-style: none;
+}
+
+
+.setting-list {
+  margin-bottom: 8px;
+}
+
+.log-out-link {
+  color: white;
+  margin-left: 0px;
+  padding: 0px;
+}
+
+.log-out-link:hover {
+  text-decoration: none;
+}
+

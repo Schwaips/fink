@@ -1,5 +1,5 @@
 <div class="modal fade" id="blockmodal<%= index %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle"> Chapitre <%= index + 1 %></h5>
@@ -7,12 +7,26 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-          <% if block.photos.attached? %>
-              <p>La vidéo !</p>
-          <% else %>
-              <p>Le téléchargement de votre média va démarrer</p>
+      <div class="modal-body"><!-- Modale en fonction du contenu -->
+        <% if block.photos.attached? %> <!-- s'il y a du contenu attaché sur cloudinary -->
+        <!-- Pour rajouter des formats, les mettre ci-dessous -->
+          <% if block.photos.first.blob.content_type == "video/mp4" || "mov" %><!-- Si vidéo -->
+            <video width="750" height="500" controls>
+              <source src="<%= cl_video_path(block.photos.first.key, :resource_type=>"video") %>" type="video/mp4">
+              Oups, votre navigateur n'affiche pas la vidéo...
+            </video>
+
+          <% elsif block.photos.first.blob.content_type.include?("img") %> <!-- si photo -->
+            <%= cl_image_path block.photos.key %>
+
+          <% elsif block.photos.first.blob.content_type.include?("audio" || "mp3") %> <!-- si audio -->
+            <audio width="750" height="40" controls>
+              <source src="<%= cl_video_path block.photos.first.key %>" type="audio/mpeg">
+              Oups, votre navigateur n'affiche pas le lecteur audio...
+            </audio>
           <% end %>
+        <% end %> <!-- Si pas de contenu -->
+        <p><%= block.content %></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn button-gray" data-dismiss="modal">Fermer</button>

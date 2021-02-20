@@ -1,27 +1,45 @@
-<h2>Sign up</h2>
+<div class="margintop">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <h2>Inscrivez-vous</h2>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :first_name,
+                        label: "Prénom",
+                        required: true,
+                        autofocus: true %>
+            <%= f.input :last_name,
+                        label: "Nom",
+                        required: true,
+                        autofocus: true %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password,
+                        label: "Mot de passe",
+                        required: true,
+                        hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        label: "Confirmez le mot de passe",
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Je m'inscris", class: "btn button-blue" %>
+          </div>
+        <% end %>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
 
 <a href="https://slack.com/oauth/v2/authorize?user_scope=identity.basic,identity.email&client_id=1715641287046.1715642345142"><img alt=""Sign in with Slack"" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
 
-<%= render "devise/shared/links" %>
+
+
