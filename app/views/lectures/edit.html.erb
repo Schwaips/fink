@@ -16,6 +16,20 @@
         <%= link_to lecture_path(@lecture), method: "DELETE", data: { confirm: "Supprimer définitivement le cours #{@lecture.title} et les chapitres associés?" }, class: "ml-3 link-remove-lecture-right" do %>
           <span><i class="far fa-trash-alt"></i> Supprimer ce cours</span>
         <% end %> <!-- end of anchor chapter -->
+        <br>
+
+        <%= link_to lecture_message_slack_path(@lecture, anchor: "chapter"), { :class => "link-add-chapter-lecture-right", 'data-toggle' => 'modal', 'data-target' => "#sendMessage" } do %>
+          <span><i class="fab fa-slack"></i> Envoyer un message sur le canal slack du cours</span>
+        <% end %> <!-- end of anchor chapter -->
+
+        <!--Modal pour message slack-->
+        <%= render partial:'lectures/shared/message_slack', locals: { lecture: @lecture } %>
+
+
+
+
+
+
       </div> <!--text center pour button got to chapitre-->
   </div>
 
