@@ -116,7 +116,7 @@ private
     @lecture.channel_id = JSON.parse(create_conv).dig("channel", "id")
     @lecture.save
     p "--- Body creation conv slack---"
-    p create_conv.body
+    # p create_conv.body
     p "--- End of message create conv slack ---"
   end
 
@@ -128,7 +128,9 @@ private
     {
       Authorization:"Bearer #{ENV["SLACK_TOKEN"]}"
     }
-    # p join.body
+    p "---join channel slack---"
+    p join.body
+    p "--- end of join slack---"
   end
 
   def message_params

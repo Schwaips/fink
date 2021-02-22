@@ -15,6 +15,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
+    flash[:alert] = "Connexion échouée"
     redirect_to root_path
   end
 end
