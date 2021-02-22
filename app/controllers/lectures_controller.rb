@@ -129,7 +129,7 @@ private
       Authorization:"Bearer #{ENV["SLACK_TOKEN"]}"
     }
     p "---join channel slack---"
-    p join.body
+    # p join.body
     p "--- end of join slack---"
   end
 
