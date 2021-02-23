@@ -27,30 +27,29 @@
   </div>
 
   <div>
-
     <div class="py-5">
-            <%= simple_form_for(@lecture) do |f| %>
-              <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
-              <br>
-              <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
-               <br>
-              <%= f.input :photo, as: :file, label: "Miniature de l'offre", label: "Choisir une nouvelle photo", class:"btn button-blue" %>
-               <br>
-              <%= f.input :category, label: "Categorie", as: :radio_buttons,
-                  collection_wrapper_tag: 'div',
-                  collection_wrapper_class: 'category-wrapper',
-                  item_wrapper_class: 'category-item',
-                  input_html: {class: 'category-selector'},
-                  collection: Lecture::CATEGORY %>
-              <%= f.submit "Sauvegarder", class: "btn button-blue" %>
-                          <%= link_to lecture_path(@lecture), method: "DELETE", data: { confirm: "Supprimer définitivement le cours #{@lecture.title} et les chapitres associés?" }, class: "ml-3 link-remove-lecture-right" do %>
-              <span><i class="far fa-trash-alt"></i> Supprimer</span>
-            <% end %> <!-- end of anchor chapter -->
-            <% end %>
-            <br>
+      <%= simple_form_for(@lecture) do |f| %>
+        <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
+        <br>
+        <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
+         <br>
+        <%= f.input :photo, as: :file, label: "Miniature de l'offre", label: "Choisir une nouvelle photo", class:"btn button-blue" %>
+         <br>
+        <%= f.input :category, label: "Categorie", as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector'},
+            collection: Lecture::CATEGORY %>
+        <%= f.submit "Sauvegarder", class: "btn button-blue" %>
 
-        </div> <!-- form to edit-->
+        <!-- end of anchor chapter -->
+      <% end %>
 
+      <button id="sweet-alert-demo" class="btn btn-danger">Delete</button>
+          <%= link_to "", lecture_path(@lecture), method: "DELETE", id: "sweet-delete" %>
+      <br>
+    </div> <!-- form to edit-->
   </div>
 
 </div>

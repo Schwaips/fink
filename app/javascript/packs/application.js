@@ -38,6 +38,8 @@ import { initScroll } from '../controllers/scroll_controller';
 
 import { editLecture } from '../components/edit-lecture';
 
+import { initSweetalert } from '../components/init_sweetalert';
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
@@ -45,4 +47,19 @@ document.addEventListener('turbolinks:load', () => {
   initTabs();
   setTimeout(initButton(), 3000);
   // editLecture();
+  initSweetalert('#sweet-alert-demo', {
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this imaginary file!",
+  icon: "warning",
+  buttons: {
+    cancel: "cancel",
+    confirm: true,
+  },
+  dangerMode: true,
+  }, (value) => {
+    const link = document.querySelector('#sweet-delete');
+    if (value == true) {
+      link.click();
+    }
+  });
 });
