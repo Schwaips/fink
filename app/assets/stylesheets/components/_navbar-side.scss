@@ -4,10 +4,11 @@
   padding: 50px;
   height: 100%;
   position: fixed;
-  // overflow-x: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
   z-index: 1;
   width: 22vw;
-  overflow: scroll;
+  // overflow: scroll;
   h5 {
     font-family: $body-font;
     font-weight: lighter;
@@ -15,6 +16,10 @@
   }
 }
 
+.box-3 {
+  overflow-y: auto;
+  height: 70%;
+}
 
 .list-unstyled {
   margin-top: 5px;

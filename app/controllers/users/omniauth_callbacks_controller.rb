@@ -9,8 +9,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, event: :authentication # this will throw if @user is not activated
       set_flash_message(:notice, :success, kind: "Slack") if is_navigational_format?
     else
+      @user.save!
       session["devise.slack_data"] = request.env["omniauth.auth"]["info"].except(:extra) # Removing extra as it can overflow some session stores
-      redirect_to new_user_registration_url
+      sign_in_and_redirect @user, event: :authentication
     end
   end
 
