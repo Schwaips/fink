@@ -10,14 +10,15 @@
             <i class="fas fa-plus-circle"></i> Ajouter un cours
           <% end %> <!-- Ajoute d'un cours boutton-->
         </div> <!-- text center button -->
-
-        <% @lectures.each do |lecture|%>
-          <div class="d-flex">
-            <%= link_to edit_lecture_path(lecture), class: "link-lecture-left" do %>
-              <h5 class="py-1"><i class="fas fa-graduation-cap"></i> <%= lecture.title %></h5>
-            <% end %>
-          </div> <!-- end of d flex for title and edit and destroy-->
-        <% end %> <!-- lectures each  end -->
+        <div class="box-3">
+          <% @lectures.each do |lecture|%>
+            <div class="d-flex">
+              <%= link_to edit_lecture_path(lecture), class: "link-lecture-left" do %>
+                <h5 class="py-1"><i class="fas fa-graduation-cap"></i> <%= lecture.title %></h5>
+              <% end %>
+            </div> <!-- end of d flex for title and edit and destroy-->
+          <% end %> <!-- lectures each  end -->
+        </div><!-- box 3 -->
       </div> <!-- box 1-->
 
       <div> <!-- box 2 parametres-->
@@ -25,7 +26,9 @@
         <%= link_to dashboard_path, class: "link-lecture-left" do %>
           <h5> <i class="fas fa-user-cog setting-list"></i>  Profil </h5>
         <% end %>
-        <h5> <i class="fas fa-people-carry setting-list"></i>  Aide</h5>
+        <%= link_to  "/", class: "link-lecture-left", anchor: "#footer-anchor" do %>
+          <h5> <i class="fas fa-people-carry setting-list"></i>  Aide</h5>
+        <% end %>
         <h5> <i class="fas fa-money-check-alt setting-list"></i>  Abonnements</h5>
         <h5> <i class="fas fa-terminal setting-list"></i>  CGV</h5>
         <%= link_to destroy_user_session_path, method: "DELETE", class:"mt-2 log-out-link" do %>

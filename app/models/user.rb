@@ -25,9 +25,19 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    puts
+    puts
+    puts
+    puts auth
+    where(email: auth.info.email).first_or_create do |user|
       user.email = auth.info.email
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.slack_workspace_uid = user.uid
       user.password = Devise.friendly_token[0, 20]
+      name = auth.info.name.split(" ")
+      user.first_name = name.first
+      user.last_name = name.last
     end
   end
 end
