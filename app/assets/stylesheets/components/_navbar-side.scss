@@ -11,13 +11,13 @@
   // overflow: scroll;
   h5 {
     font-family: $body-font;
-    font-weight: lighter;
+    font-weight: 400;
     font-size: 1rem;
   }
 }
 
 .box-3 {
-  overflow-y: auto;
+  overflow-y: hidden;
   height: 70%;
 }
 
@@ -30,6 +30,7 @@
 .link-lecture-left {
   color: white;
   padding: 0px;
+  font-weight: 300;
 }
 
 a:hover{

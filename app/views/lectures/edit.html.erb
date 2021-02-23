@@ -28,7 +28,7 @@
 
   <div>
 
-    <div class="py-5">
+    <div class="py-5 formulaire-edit-lecture">
             <%= simple_form_for(@lecture) do |f| %>
               <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
               <br>
@@ -49,7 +49,7 @@
             <% end %>
             <br>
 
-        </div> <!-- form to edit-->
+    </div> <!-- form to edit-->
 
   </div>
 
@@ -62,7 +62,7 @@
                 <li><i class="fas fa-plus-circle"></i> Ajouter un chapitre</li>
               <% end %> <!-- end of button new chapter-->
             </div> <!-- button text center-->
-            <ul class="grid container">
+            <ul class="grid container edit-lecture-chapter-blocks">
               <% @lecture.blocks.each_with_index do |block, index|%>
               <div class="card-dashboard d-flex justify-content-around flex-column">
                 <div class="d-flex justify-content-between">
