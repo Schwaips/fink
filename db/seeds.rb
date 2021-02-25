@@ -38,7 +38,7 @@ puts "--starting seedings"
 
 # Creation fake teacher & student
 # charlie
-alice = User.create!(first_name: "Rindra", last_name: "Dupont", email: "rindra@mail.fr", password: "rindra@mail.fr", role: "teacher", slack_workspace_uid:"")
+alice = User.create!(first_name: "Alice", last_name: "Dupont", email: "alice@mail.fr", password: "alice@mail.fr", role: "teacher", slack_workspace_uid:"")
 alicepic = URI.open('https://images.unsplash.com/photo-1484755560615-a4c64e778a6c?ixlib=rb-1.2.1')
 alice.photo.attach(io: alicepic, filename: 'alice-avatar.jpg', content_type: 'image/jpg')
 
