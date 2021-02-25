@@ -27,7 +27,6 @@
   </div>
 
   <div>
-
     <div class="py-5 formulaire-edit-lecture">
             <%= simple_form_for(@lecture) do |f| %>
               <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
@@ -43,17 +42,16 @@
                   input_html: {class: 'category-selector'},
                   collection: Lecture::CATEGORY %>
               <%= f.submit "Sauvegarder", class: "btn button-blue" %>
-                          <%= link_to lecture_path(@lecture), method: "DELETE", data: { confirm: "Supprimer définitivement le cours #{@lecture.title} et les chapitres associés?" }, class: "ml-3 link-remove-lecture-right" do %>
-              <span><i class="far fa-trash-alt"></i> Supprimer</span>
-            <% end %> <!-- end of anchor chapter -->
-            <% end %>
+               
+             <% end %>
+            <button id="sweet-alert-demo" class="btn btn-danger">Delete</button>
+              <%= link_to "", lecture_path(@lecture), method: "DELETE", id: "sweet-delete" %>
             <br>
-
-    </div> <!-- form to edit-->
-
-  </div>
-
-</div>
+     </div> <!-- py 5-->
+      <br>
+  </div> 
+</div> <!-- d flex felx column -->
+  
       <div class="mt-4 mb-5">
         <h3 class="mt-5 text-center" id="chapter"><i class="fas fa-bookmark"></i> Liste des chapitres</h3>
           <% if @lecture.blocks.empty? == false %>
