@@ -1,6 +1,6 @@
 class Lecture < ApplicationRecord
   belongs_to :user
-  CATEGORY = ["Art", "Developpement", "Gastronomie", "Langue", "Musique", "Photo & video", "Gaming", "Culture générale", "Nature"]
+  CATEGORY = ["Art", "Developpement", "Gastronomie", "Langues", "Musique", "Photo & video", "Gaming", "Culture générale", "Nature"]
   has_many :schoolings, dependent: :destroy
   has_many :students, through: :schoolings, source: :user
   validates :title, :description, presence: true
