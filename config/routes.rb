@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :lectures, only: [:index, :show, :edit, :update, :new, :create, :destroy] do
     post '/message_slack', to: "lectures#message_slack"
     resources :schoolings, only: [:new, :create, :destroy]
-    resources :blocks, only:  [:create, :show, :edit, :new, :update] do
+    resources :blocks, only:  [:create, :show, :edit, :new, :update, :destroy] do
       resources :flashcards, only:[:new, :create]
     end
 
