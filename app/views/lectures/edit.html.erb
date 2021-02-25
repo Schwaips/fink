@@ -41,17 +41,25 @@
                   item_wrapper_class: 'category-item',
                   input_html: {class: 'category-selector'},
                   collection: Lecture::CATEGORY %>
-              <%= f.submit "Sauvegarder", class: "btn button-blue" %>
-               
-             <% end %>
-            <button id="sweet-alert-demo" class="btn btn-danger">Delete</button>
+
+              <div class="d-flex align-items-center">
+                  <%= f.submit "Sauvegarder", class: "btn button-blue" %>
+                <% end %>
+                <div>
+                  <%= link_to  lecture_path(@lecture), method: "DELETE", id:"sweet-delete", class:"ml-3 link-remove-lecture-right" do %>
+                    <span><i class="far fa-trash-alt"></i> Supprimer</span>
+                  <% end %>
+                </div>
+              </div>
+              <%# <button id="sweet-alert-demo" class="btn button-red mt-2">Supprimer</button>
               <%= link_to "", lecture_path(@lecture), method: "DELETE", id: "sweet-delete" %>
+
             <br>
      </div> <!-- py 5-->
       <br>
-  </div> 
+  </div>
 </div> <!-- d flex felx column -->
-  
+
       <div class="mt-4 mb-5">
         <h3 class="mt-5 text-center" id="chapter"><i class="fas fa-bookmark"></i> Liste des chapitres</h3>
           <% if @lecture.blocks.empty? == false %>

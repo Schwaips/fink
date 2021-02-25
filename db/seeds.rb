@@ -8,31 +8,44 @@
 require "open-uri"
 
 puts "--- Destroying current data user/lecture ---"
-User.destroy_all
-Lecture.destroy_all
+# User.destroy_all
+# Lecture.destroy_all
 puts "--starting seedings"
 # user creation
 # creating teacher example
-puts "--creating teachers--"
-  c = User.create!(first_name: "Charlie", last_name: "Bertrand", email: "charlie.bertrand@live.com", password: "123456", role: "teacher", slack_workspace_uid:"U01MY6XLZ29")
-  cb = URI.open('https://media-exp1.licdn.com/dms/image/C5603AQFbywQG0KAjeQ/profile-displayphoto-shrink_800_800/0/1539070374037?e=1619049600&v=beta&t=sV2smVTKLvzWhXZpAi5Oj84xwLYQ3SJ29_qpcA1O6lA')
-  c.photo.attach(io: cb, filename: 'charlie-avatar.jpg', content_type: 'image/jpg')
 
-  a = User.create!(first_name: "Amelien", last_name: "Delahaie", email: "amelien.delahaie@live.com", password: "123456", role: "teacher", slack_workspace_uid: "U01MJNMJ97D")
-  am = URI.open('https://pbs.twimg.com/profile_images/1177317334849130496/3-AonVB8_400x400.jpg')
-  a.photo.attach(io: am, filename: 'amelien-avatar.jpg', content_type: 'image/jpg')
+# CREATION TEACHER ET STUDENT INTERNE
+# puts "--creating teachers--"
+#   c = User.create!(first_name: "Charlie", last_name: "Bertrand", email: "charlie.bertrand@live.com", password: "123456", role: "teacher", slack_workspace_uid:"U01MY6XLZ29")
+#   cb = URI.open('https://media-exp1.licdn.com/dms/image/C5603AQFbywQG0KAjeQ/profile-displayphoto-shrink_800_800/0/1539070374037?e=1619049600&v=beta&t=sV2smVTKLvzWhXZpAi5Oj84xwLYQ3SJ29_qpcA1O6lA')
+#   c.photo.attach(io: cb, filename: 'charlie-avatar.jpg', content_type: 'image/jpg')
 
-puts "--Charlie & Amélien teacher created--"
+#   a = User.create!(first_name: "Amelien", last_name: "Delahaie", email: "amelien.delahaie@live.com", password: "123456", role: "teacher", slack_workspace_uid: "U01MJNMJ97D")
+#   am = URI.open('https://pbs.twimg.com/profile_images/1177317334849130496/3-AonVB8_400x400.jpg')
+#   a.photo.attach(io: am, filename: 'amelien-avatar.jpg', content_type: 'image/jpg')
 
-puts "-- creating students--"
-  o = User.create!(first_name: "Olivia", last_name: "Bihl", email: "olivia.bihl@live.com", password: "123456", role: "student")
-  ob = URI.open('https://media-exp1.licdn.com/dms/image/C4D03AQGQMlEDoj0jwA/profile-displayphoto-shrink_800_800/0/1524840699999?e=1619049600&v=beta&t=e_GlYITjGLOTB5KsbhekUHimPjJBHBL8mJWtuc1qnj0')
-  o.photo.attach(io: ob, filename: "olivia-avatar", content_type: "image/jpg")
+# puts "--Charlie & Amélien teacher created--"
 
-  r = User.create!(first_name: "Raphael", last_name: "Mosca", email: "raphael.mosca@live.com", password: "123456", role: "student", slack_workspace_uid:"U01MM1C7L81")
-  rm = URI.open('https://media-exp1.licdn.com/dms/image/C4D03AQFyEtL7SCBiEQ/profile-displayphoto-shrink_800_800/0/1595506575911?e=1619049600&v=beta&t=pZRj6JLzijvGfXt3C3heMG04LuUyfiXgYsAthqPZvJI')
-  r.photo.attach(io: rm, filename: "raph-avatar.jpg", content_type: "image/jpg")
-puts "--student created--"
+# puts "-- creating students--"
+#   o = User.create!(first_name: "Olivia", last_name: "Bihl", email: "olivia.bihl@live.com", password: "123456", role: "student")
+#   ob = URI.open('https://media-exp1.licdn.com/dms/image/C4D03AQGQMlEDoj0jwA/profile-displayphoto-shrink_800_800/0/1524840699999?e=1619049600&v=beta&t=e_GlYITjGLOTB5KsbhekUHimPjJBHBL8mJWtuc1qnj0')
+#   o.photo.attach(io: ob, filename: "olivia-avatar", content_type: "image/jpg")
+
+#   r = User.create!(first_name: "Raphael", last_name: "Mosca", email: "raphael.mosca@live.com", password: "123456", role: "student", slack_workspace_uid:"U01MM1C7L81")
+#   rm = URI.open('https://media-exp1.licdn.com/dms/image/C4D03AQFyEtL7SCBiEQ/profile-displayphoto-shrink_800_800/0/1595506575911?e=1619049600&v=beta&t=pZRj6JLzijvGfXt3C3heMG04LuUyfiXgYsAthqPZvJI')
+#   r.photo.attach(io: rm, filename: "raph-avatar.jpg", content_type: "image/jpg")
+# puts "--student created--"
+
+# Creation fake teacher & student
+
+alice = User.create!(first_name: "Alice", last_name: "Dupont", email: "alice@mail.fr", password: "alice@mail.fr", role: "teacher", slack_workspace_uid:"")
+alicepic = URI.open('https://images.unsplash.com/photo-1484755560615-a4c64e778a6c?ixlib=rb-1.2.1')
+alice.photo.attach(io: alicepic, filename: 'alice-avatar.jpg', content_type: 'image/jpg')
+
+pascal = User.create!(first_name: "Pascal", last_name: "Fodimian", email: "pascal@mail.fr", password: "pascal@mail.fr", role: "teacher", slack_workspace_uid:"")
+pascalpic = URI.open('https://avatars.githubusercontent.com/u/4704178?v=4')
+pascal.photo.attach(io: pascalpic, filename: 'pascal-avatar.jpg', content_type: 'image/jpg')
+
 
 # lecture creation
 
