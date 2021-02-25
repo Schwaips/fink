@@ -16,11 +16,15 @@ puts "--starting seedings"
 
 # CREATION TEACHER ET STUDENT INTERNE
 # puts "--creating teachers--"
-#   c = User.create!(first_name: "Charlie", last_name: "Bertrand", email: "charlie.bertrand@live.com", password: "123456", role: "teacher", slack_workspace_uid:"U01MY6XLZ29", uid:"U01MY6XLZ29", provider: "slack")
+#   c = User.create!(first_name: "Charlie", last_name: "Bertrand", email: "charlie.bertrand@live.com",
+#     password: "123456", role: "teacher", slack_workspace_uid:"U01MY6XLZ29",
+#     uid:"U01MY6XLZ29", provider: "slack")
 #   cb = URI.open('https://media-exp1.licdn.com/dms/image/C5603AQFbywQG0KAjeQ/profile-displayphoto-shrink_800_800/0/1539070374037?e=1619049600&v=beta&t=sV2smVTKLvzWhXZpAi5Oj84xwLYQ3SJ29_qpcA1O6lA')
 #   c.photo.attach(io: cb, filename: 'charlie-avatar.jpg', content_type: 'image/jpg')
 
-#   a = User.create!(first_name: "Amelien", last_name: "Delahaie", email: "amelien.delahaie@live.com", password: "123456", role: "teacher", slack_workspace_uid: "U01MJNMJ97D", provider: "slack", uid: "U01MJNMJ97D")
+#   a = User.create!(first_name: "Amelien", last_name: "Delahaie", email: "amelien.delahaie@live.com",
+#      password: "123456", role: "teacher", slack_workspace_uid: "U01MJNMJ97D",
+#      provider: "slack", uid: "U01MJNMJ97D")
 #   am = URI.open('https://pbs.twimg.com/profile_images/1177317334849130496/3-AonVB8_400x400.jpg')
 #   a.photo.attach(io: am, filename: 'amelien-avatar.jpg', content_type: 'image/jpg')
 
@@ -31,55 +35,56 @@ puts "--starting seedings"
 #   ob = URI.open('https://media-exp1.licdn.com/dms/image/C4D03AQGQMlEDoj0jwA/profile-displayphoto-shrink_800_800/0/1524840699999?e=1619049600&v=beta&t=e_GlYITjGLOTB5KsbhekUHimPjJBHBL8mJWtuc1qnj0')
 #   o.photo.attach(io: ob, filename: "olivia-avatar", content_type: "image/jpg")
 
-#   r = User.create!(first_name: "Raphael", last_name: "Mosca", email: "raphael.mosca@live.com", password: "123456", role: "student", slack_workspace_uid:"U01MM1C7L81", uid="U01MM1C7L81", provider: "slack")
+#   r = User.create!(first_name: "Raphael", last_name: "Mosca", email: "raphael.mosca@live.com",
+#     password: "123456", role: "student", slack_workspace_uid:"U01MM1C7L81", uid:"U01MM1C7L81", provider: "slack")
 #   rm = URI.open('https://media-exp1.licdn.com/dms/image/C4D03AQFyEtL7SCBiEQ/profile-displayphoto-shrink_800_800/0/1595506575911?e=1619049600&v=beta&t=pZRj6JLzijvGfXt3C3heMG04LuUyfiXgYsAthqPZvJI')
 #   r.photo.attach(io: rm, filename: "raph-avatar.jpg", content_type: "image/jpg")
 # puts "--student created--"
 
-# Creation fake teacher & student
-# charlie
-alice = User.create!(first_name: "Alice", last_name: "Dupont", email: "alice@mail.fr", password: "alice@mail.fr", role: "teacher", slack_workspace_uid:"")
-alicepic = URI.open('https://images.unsplash.com/photo-1484755560615-a4c64e778a6c?ixlib=rb-1.2.1')
-alice.photo.attach(io: alicepic, filename: 'alice-avatar.jpg', content_type: 'image/jpg')
+# # Creation fake teacher & student
+# # charlie
+# alice = User.create!(first_name: "Alice", last_name: "Dupont", email: "alice@mail.fr", password: "alice@mail.fr", role: "teacher", slack_workspace_uid:"")
+# alicepic = URI.open('https://images.unsplash.com/photo-1484755560615-a4c64e778a6c?ixlib=rb-1.2.1')
+# alice.photo.attach(io: alicepic, filename: 'alice-avatar.jpg', content_type: 'image/jpg')
 
-pascal = User.create!(first_name: "Pascal", last_name: "Fodimian", email: "pascal@mail.fr", password: "pascal@mail.fr", role: "teacher", slack_workspace_uid:"")
-pascalpic = URI.open('https://avatars.githubusercontent.com/u/4704178?v=4')
-pascal.photo.attach(io: pascalpic, filename: 'pascal-avatar.jpg', content_type: 'image/jpg')
+# pascal = User.create!(first_name: "Pascal", last_name: "Fodimian", email: "pascal@mail.fr", password: "pascal@mail.fr", role: "teacher", slack_workspace_uid:"")
+# pascalpic = URI.open('https://avatars.githubusercontent.com/u/4704178?v=4')
+# pascal.photo.attach(io: pascalpic, filename: 'pascal-avatar.jpg', content_type: 'image/jpg')
 
-# pour amélien
+# # pour amélien
 
-audrey = User.create!(first_name: "Audrey", last_name: "De Marco Khenissi", email: "audrey@mail.fr", password: "audrey@mail.fr", role: "teacher", slack_workspace_uid:"")
-audreypic = URI.open('https://avatars0.githubusercontent.com/u/69974522?v=4')
-audrey.photo.attach(io: audreypic, filename: 'audrey-avatar.jpg', content_type: 'image/jpg')
-
-
-antoine = User.create!(first_name: "Antoine", last_name: "Ung Bao", email: "antoine@mail.fr", password: "antoine@mail.fr", role: "teacher", slack_workspace_uid:"")
-antoinepic = URI.open('https://avatars.githubusercontent.com/u/61555263?v=4')
-antoine.photo.attach(io: antoinepic, filename: 'antoine-avatar.jpg', content_type: 'image/jpg')
-
-# olivia
-lomig = User.create!(first_name: "Lomig", last_name: "Enfroy", email: "lomig@mail.fr", password: "lomig@mail.fr", role: "teacher", slack_workspace_uid:"")
-lomigpic = URI.open('https://avatars.githubusercontent.com/u/1598346?v=4')
-lomig.photo.attach(io: lomigpic, filename: 'lomig-avatar.jpg', content_type: 'image/jpg')
-
-myriam = User.create!(first_name: "Myriam", last_name: "Faucher-Pelletier", email: "myriam@mail.fr", password: "myriam@mail.fr", role: "teacher", slack_workspace_uid:"")
-myriampic = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1599302914/hvk3p5ve0nwjkjbknybb.jpg')
-myriam.photo.attach(io: myriampic, filename: 'myriam-avatar.jpg', content_type: 'image/jpg')
+# audrey = User.create!(first_name: "Audrey", last_name: "De Marco Khenissi", email: "audrey@mail.fr", password: "audrey@mail.fr", role: "teacher", slack_workspace_uid:"")
+# audreypic = URI.open('https://avatars0.githubusercontent.com/u/69974522?v=4')
+# audrey.photo.attach(io: audreypic, filename: 'audrey-avatar.jpg', content_type: 'image/jpg')
 
 
-# raph
+# antoine = User.create!(first_name: "Antoine", last_name: "Ung Bao", email: "antoine@mail.fr", password: "antoine@mail.fr", role: "teacher", slack_workspace_uid:"")
+# antoinepic = URI.open('https://avatars.githubusercontent.com/u/61555263?v=4')
+# antoine.photo.attach(io: antoinepic, filename: 'antoine-avatar.jpg', content_type: 'image/jpg')
 
-coline = User.create!(first_name: "Coline", last_name: "Juillerat", email: "coline@mail.fr", password: "coline@mail.fr", role: "teacher", slack_workspace_uid:"")
-colinepic = URI.open('https://avatars1.githubusercontent.com/u/68182973?v=4')
-coline.photo.attach(io: colinepic, filename: 'coline-avatar.jpg', content_type: 'image/jpg')
+# # olivia
+# lomig = User.create!(first_name: "Lomig", last_name: "Enfroy", email: "lomig@mail.fr", password: "lomig@mail.fr", role: "teacher", slack_workspace_uid:"")
+# lomigpic = URI.open('https://avatars.githubusercontent.com/u/1598346?v=4')
+# lomig.photo.attach(io: lomigpic, filename: 'lomig-avatar.jpg', content_type: 'image/jpg')
 
-damien = User.create!(first_name: "Damien", last_name: "Milon", email: "damien@mail.fr", password: "damien@mail.fr", role: "teacher", slack_workspace_uid:"")
-damienpic = URI.open('https://avatars1.githubusercontent.com/u/68182973?v=4')
-damien.photo.attach(io: damienpic, filename: 'damien-avatar.jpg', content_type: 'image/jpg')
+# myriam = User.create!(first_name: "Myriam", last_name: "Faucher-Pelletier", email: "myriam@mail.fr", password: "myriam@mail.fr", role: "teacher", slack_workspace_uid:"")
+# myriampic = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1599302914/hvk3p5ve0nwjkjbknybb.jpg')
+# myriam.photo.attach(io: myriampic, filename: 'myriam-avatar.jpg', content_type: 'image/jpg')
 
-puts "-- End of teacher creation--"
 
-# lecture creation
+# # raph
+
+# coline = User.create!(first_name: "Coline", last_name: "Juillerat", email: "coline@mail.fr", password: "coline@mail.fr", role: "teacher", slack_workspace_uid:"")
+# colinepic = URI.open('https://avatars1.githubusercontent.com/u/68182973?v=4')
+# coline.photo.attach(io: colinepic, filename: 'coline-avatar.jpg', content_type: 'image/jpg')
+
+# damien = User.create!(first_name: "Damien", last_name: "Milon", email: "damien@mail.fr", password: "damien@mail.fr", role: "teacher", slack_workspace_uid:"")
+# damienpic = URI.open('https://avatars1.githubusercontent.com/u/68182973?v=4')
+# damien.photo.attach(io: damienpic, filename: 'damien-avatar.jpg', content_type: 'image/jpg')
+
+# puts "-- End of teacher creation--"
+
+# # lecture creation
 
 
 # lecture = Lecture.create!(title: "Developpement Web Ruby", description: "Apprenez à developper sur Ruby on Rails en moins de 6 mois. Je vous fournis tout plein de video de cours. En parralèle, je peux faire des 1to1 sur demandes", category: "Developpement", user: c)
@@ -154,4 +159,4 @@ puts "-- End of teacher creation--"
 # file = URI.open('https://www.softfluent.fr/wp-content/uploads/2019/10/SQL.png')
 # lecture12.photo.attach(io: file, filename: 'sing.jpg', content_type: 'image/jpg')
 
-puts "---seeds ending---"
+# puts "---seeds ending---"
