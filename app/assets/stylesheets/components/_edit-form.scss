@@ -92,7 +92,7 @@ label.form-check-label.collection_radio_buttons {
 }
 
 
-#lecture_category_langue + label {
+#lecture_category_langues + label {
   color: #E450EF;
   background-image: asset_url("icon-langue.png");
   background-repeat: no-repeat;
@@ -101,7 +101,7 @@ label.form-check-label.collection_radio_buttons {
   background-size: 20%;
 }
 
-#lecture_category_langue:checked + label {
+#lecture_category_langues:checked + label {
   background-color: #E450EF;
   border-color: #E450EF;
 }
