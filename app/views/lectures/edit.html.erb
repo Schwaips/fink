@@ -27,32 +27,31 @@
   </div>
 
   <div>
-    <div class="py-5">
-      <%= simple_form_for(@lecture) do |f| %>
-        <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
-        <br>
-        <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
-         <br>
-        <%= f.input :photo, as: :file, label: "Miniature de l'offre", label: "Choisir une nouvelle photo", class:"btn button-blue" %>
-         <br>
-        <%= f.input :category, label: "Categorie", as: :radio_buttons,
-            collection_wrapper_tag: 'div',
-            collection_wrapper_class: 'category-wrapper',
-            item_wrapper_class: 'category-item',
-            input_html: {class: 'category-selector'},
-            collection: Lecture::CATEGORY %>
-        <%= f.submit "Sauvegarder", class: "btn button-blue" %>
-
-        <!-- end of anchor chapter -->
-      <% end %>
-
-      <button id="sweet-alert-demo" class="btn btn-danger">Delete</button>
-          <%= link_to "", lecture_path(@lecture), method: "DELETE", id: "sweet-delete" %>
+    <div class="py-5 formulaire-edit-lecture">
+            <%= simple_form_for(@lecture) do |f| %>
+              <%= f.input :title, input_html: { class: "offer-bar" }, label: "Titre" %>
+              <br>
+              <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" }, label: "Description" %>
+               <br>
+              <%= f.input :photo, as: :file, label: "Miniature de l'offre", label: "Choisir une nouvelle photo", class:"btn button-blue" %>
+               <br>
+              <%= f.input :category, label: "Categorie", as: :radio_buttons,
+                  collection_wrapper_tag: 'div',
+                  collection_wrapper_class: 'category-wrapper',
+                  item_wrapper_class: 'category-item',
+                  input_html: {class: 'category-selector'},
+                  collection: Lecture::CATEGORY %>
+              <%= f.submit "Sauvegarder", class: "btn button-blue" %>
+               
+             <% end %>
+            <button id="sweet-alert-demo" class="btn btn-danger">Delete</button>
+              <%= link_to "", lecture_path(@lecture), method: "DELETE", id: "sweet-delete" %>
+            <br>
+     </div> <!-- py 5-->
       <br>
-    </div> <!-- form to edit-->
-  </div>
-
-</div>
+  </div> 
+</div> <!-- d flex felx column -->
+  
       <div class="mt-4 mb-5">
         <h3 class="mt-5 text-center" id="chapter"><i class="fas fa-bookmark"></i> Liste des chapitres</h3>
           <% if @lecture.blocks.empty? == false %>
@@ -61,7 +60,7 @@
                 <li><i class="fas fa-plus-circle"></i> Ajouter un chapitre</li>
               <% end %> <!-- end of button new chapter-->
             </div> <!-- button text center-->
-            <ul class="grid container">
+            <ul class="grid container edit-lecture-chapter-blocks">
               <% @lecture.blocks.each_with_index do |block, index|%>
               <div class="card-dashboard d-flex justify-content-around flex-column">
                 <div class="d-flex justify-content-between">

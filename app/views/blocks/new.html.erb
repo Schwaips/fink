@@ -2,13 +2,13 @@
     <div class="form-edit mb-5">
     <div class="d-flex flex-column align-items-center">
       <h2 class="pt-5 text-center">Créer un nouveau chapitre pour <%= @lecture.title %></h2>
-        <div class="form-group pt-4">
+        <div class="form-group pt-4 formulaire-block">
             <%= simple_form_for [@lecture, @block] do |f| %>
             <%= f.input :title, input_html: { class: "lecture_title" }, label: "Titre de votre chapitre" %>
             <br/>
             <%= f.input :block_type, as: :radio_buttons,
                 collection_wrapper_tag: 'div',
-                collection_wrapper_class: 'category-wrapper-block',
+                collection_wrapper_class: 'category-wrapper-block d-flex justify-content-between',
                 item_wrapper_class: 'category-item-block',
                 input_html: {class: 'category-selector'},
                 label: "Type de médias",
