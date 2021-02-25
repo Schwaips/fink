@@ -87,7 +87,10 @@
                     <!-- Edit block-->
                     <!-- la deuxieme valeur des locals, c'est la valeur qu'on a dans le fichier ou vous lisez ce commentaire. La premiere valeurr, c'est la variable qu'on va utiliser dans le render. -->
                     <%= render partial:'blocks/shared/edit', locals: { block: block, lecture: @lecture } %>
-                    <span>  <i class="far fa-trash-alt"></i></span>
+                    <%= link_to lecture_block_path(@lecture, block), method: "DELETE", data: {:confirm => "Supprimer #{block.title}?"} do %>
+                       <span>  <i class="far fa-trash-alt"></i></span>
+                    <% end %> <!-- edit block end -->
+
                   </div>
                 </div>
               <li><%= block.title %></li>

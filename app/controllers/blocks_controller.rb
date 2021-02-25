@@ -16,7 +16,7 @@ before_action :new_block, only: [ :create ]
       flash[:notice] = "Chapitre #{@block.title} ajouté à votre cours"
       redirect_to edit_lecture_path(@lecture)
     else
-      flash[:notice] = "Une erreur est survenue, veuillez réesayer."
+      flash[:notice] = "Vous n'avez pas complété tous les champs requis."
       redirect_to new_lecture_block_path(@lecture)
     end
   end
@@ -32,6 +32,18 @@ before_action :new_block, only: [ :create ]
     @block.update(params_block)
     redirect_to edit_lecture_path(@lecture)
     flash[:notice] = "Le chapitre #{@block.title} est à jour, merci!"
+  end
+
+  def destroy
+    @navbar_side = true
+    @block = Block.find(params[:id])
+    @lecture = Lecture.find(params[:lecture_id])
+    if @block.destroy
+      flash[:notice] = "Le chapitre #{@block.title} est bien supprimé, merci"
+      redirect_to edit_lecture_path(@lecture)
+    else
+      render :show
+    end
   end
 
   private
