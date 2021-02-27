@@ -58,7 +58,7 @@ before_action :set_lecture, only: [:show, :edit, :update]
     @lecture.user = current_user
     if @lecture.save
       create_slack_channel
-      flash[:notice] = "Le cours #{@lecture.title} a bien été créé, rajouter maintenant du contenu"
+      flash[:alert] = "Le cours #{@lecture.title} a bien été créé, retrouvez le sur Slack! (N'oubliez pas de mettre le canal en favoris)"
       redirect_to new_lecture_block_path(@lecture)
     else
       render :new
