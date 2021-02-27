@@ -20,7 +20,7 @@
     <div class="d-flex justify-content-around align-items-top mt-5">
       <div class="student-card">
         <h4 class="mb-4">Mes étudiants</h4>
-          <% current_user.students.reverse.first(6).each do |student| %>
+          <% current_user.students.reverse.first(5).each do |student| %>
             <div class="mb-3">
               <% if student.photo.attached? %>
                 <%= cl_image_tag student.photo.key, class:"avatar mr-1" %>
@@ -30,6 +30,7 @@
                 <span>   <%= student.first_name %></span>
             </div>
           <% end %>
+          <span class="link-add-chapter-lecture-right">Voir plus</span>
       </div>
 
       <div class="grid-2 pl-2">
